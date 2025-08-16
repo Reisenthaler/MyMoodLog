@@ -1,0 +1,7 @@
+{
+  "name": "MyMoodLog",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
