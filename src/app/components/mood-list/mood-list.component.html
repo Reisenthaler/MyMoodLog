@@ -1,27 +1,22 @@
 <ion-list>
   <ion-item *ngFor="let item of items">
     <ion-label>
-      {{ item.name }}
+      <h2>{{ item.name }}</h2>
     </ion-label>
 
-    <!-- Toggle button -->
+    <!-- Toggle active/inactive -->
     <ion-button
       [color]="item.active ? 'success' : 'medium'"
       (click)="toggleItem(item)"
     >
-      {{ item.active ? 'Aktiv' : 'Inaktiv' }}
+      {{ item.active ? 'Active' : 'Inactive' }}
     </ion-button>
 
-    <!-- Edit/Delete only for custom items -->
-    <ion-button
-      fill="clear"
-      color="primary"
-      (click)="editItem(item)"
-      *ngIf="!item.isDefault"
-    >
+    <!-- Edit button -->
+    <ion-button fill="clear" color="primary" (click)="editItem(item)">
       <ion-icon name="create"></ion-icon>
-    </ion-button>
-
+      Edit
+    </ion-button>   
     <ion-button
       fill="clear"
       color="danger"
@@ -29,17 +24,6 @@
       *ngIf="!item.isDefault"
     >
       <ion-icon name="trash"></ion-icon>
-    </ion-button>
-  </ion-item>
-</ion-list>
-
-<!-- Add new item -->
-<ion-item>
-  <ion-input
-    placeholder="Neues Element hinzufügen"
-    [(ngModel)]="newItemName"
-  ></ion-input>
-  <ion-button (click)="addItem()">
-    <ion-icon name="add"></ion-icon>
-  </ion-button>
+</ion-button>
 </ion-item>
+</ion-list>

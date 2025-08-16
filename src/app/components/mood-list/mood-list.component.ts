@@ -1,72 +1,59 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import {
   IonList,
   IonItem,
   IonLabel,
   IonButton,
-  IonInput,
   IonIcon,
+  ModalController,
   AlertController,
 } from '@ionic/angular/standalone';
-import { addIcons } from 'ionicons';
-import { add, create, trash } from 'ionicons/icons';
 import { Storage } from '@ionic/storage-angular';
 import { MoodItem } from '../../models/mood-item.model';
+import { CrisisPlan } from '../../models/crisis-plan.model';
+import { MoodScaleConfigComponent } from '../mood-scale-config/mood-scale-config.component';
 
 @Component({
   selector: 'app-mood-list',
   templateUrl: './mood-list.component.html',
   styleUrls: ['./mood-list.component.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, IonList, IonItem, IonLabel, IonButton, IonInput, IonIcon],
+  imports: [CommonModule, IonList, IonItem, IonLabel, IonButton, IonIcon],
 })
 export class MoodListComponent implements OnInit {
   private STORAGE_KEY = 'mood_items';
-
   items: MoodItem[] = [];
+  crisisPlans: CrisisPlan[] = [];
 
-  newItemName: string = '';
-
-  // Default items (cannot be removed or renamed)
-  defaultItems: MoodItem[] = [
-    { id: 1, name: 'Suizidgedanken', active: false, isDefault: true },
-    { id: 2, name: 'Anspannung', active: false, isDefault: true },
-    { id: 3, name: 'Antrieb', active: false, isDefault: true },
-    { id: 4, name: 'Gedankenkreisen', active: false, isDefault: true },
-  ];
-
-  constructor(private storage: Storage, private alertCtrl: AlertController) {
-    addIcons({ add, create, trash });
-  }
+  constructor(private storage: Storage, private alertCtrl: AlertController, private modalCtrl: ModalController) {}
 
   async ngOnInit() {
     await this.storage.create();
     await this.loadItems();
+    await this.loadCrisisPlans();
   }
 
   async loadItems() {
     const saved = (await this.storage.get(this.STORAGE_KEY)) as MoodItem[];
-
     if (saved) {
-      // 1. Default-Items laden
-      const defaults = this.defaultItems.map(def => {
-        // Prüfen, ob es einen gespeicherten Zustand für dieses Default-Item gibt
-        const savedItem = saved.find(s => s.isDefault && s.name === def.name);
-        return savedItem ? { ...def, active: savedItem.active } : def;
-      });
-
-      // 2. Custom-Items laden
-      const custom = saved.filter(i => !i.isDefault);
-
-      // 3. Zusammenführen
-      this.items = [...defaults, ...custom];
+      this.items = saved.map((item) => ({
+        ...item,
+        scalePlans: item.scalePlans || {}, // ensure defined
+      }));
     } else {
-      // Wenn noch nichts gespeichert ist → Defaults initial speichern
-      this.items = [...this.defaultItems];
+      this.items = [
+        { id: 1, name: 'Suicidal Thoughts', active: false, isDefault: true, scalePlans: {} },
+        { id: 2, name: 'Tension', active: false, isDefault: true, scalePlans: {} },
+        { id: 3, name: 'Drive', active: false, isDefault: true, scalePlans: {} },
+        { id: 4, name: 'Racing Thoughts', active: false, isDefault: true, scalePlans: {} },
+      ];
       await this.saveItems();
     }
+  }
+
+  async loadCrisisPlans() {
+    this.crisisPlans = (await this.storage.get('crisis_plans')) || [];
   }
 
   async saveItems() {
@@ -78,28 +65,27 @@ export class MoodListComponent implements OnInit {
     this.saveItems();
   }
 
-  async addItem() {
-    if (!this.newItemName.trim()) return;
-    const newItem: MoodItem = {
-      id: Date.now(),
-      name: this.newItemName.trim(),
-      active: false,
-      isDefault: false,
-    };
-    this.items.push(newItem);
-    this.newItemName = '';
-    await this.saveItems();
-  }
-
   async editItem(item: MoodItem) {
-    if (item.isDefault) return; // cannot edit defaults
-    const newName = prompt('Neuer Name:', item.name);
-    if (newName && newName.trim()) {
-      item.name = newName.trim();
-      await this.saveItems();
+    const modal = await this.modalCtrl.create({
+      component: MoodScaleConfigComponent,
+      componentProps: {
+        item: { ...item }, // pass a copy
+        crisisPlans: this.crisisPlans,
+      },
+    });
+
+    await modal.present();
+    const { data } = await modal.onWillDismiss();
+
+    if (data) {
+      // update the item with new scalePlans
+      const index = this.items.findIndex((i) => i.id === item.id);
+      if (index > -1) {
+        this.items[index] = data;
+        await this.saveItems();
+      }
     }
   }
-
   async removeItem(item: MoodItem) {
     if (item.isDefault) return; // Defaults dürfen nicht gelöscht werden
 
