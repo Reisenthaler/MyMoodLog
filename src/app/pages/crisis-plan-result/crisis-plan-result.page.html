@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Crisis Plans</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list *ngIf="plans.length > 0; else noPlans">
+    <ion-item *ngFor="let plan of plans">
+      <ion-label>
+        <h2>{{ plan.title }}</h2>
+        <ul>
+          <li *ngFor="let step of plan.steps">{{ step }}</li>
+        </ul>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ng-template #noPlans>
+    <p>No crisis plans triggered.</p>
+  </ng-template>
+</ion-content>

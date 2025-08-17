@@ -81,26 +81,26 @@ export class NotificationSettingsComponent implements OnInit {
       });
     }
 
-    // 3. Schedule new ones
-    const notifications: LocalNotificationSchema[] = this.times.map(
-      (time, index) => {
-        const [hour, minute] = time.split(':').map((t) => parseInt(t, 10));
-        const at = new Date();
-        at.setHours(hour, minute, 0, 0);
+    const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
 
-        return {
-          id: index + 1,
-          title: 'Mood Log Reminder',
-          body: 'Please fill out your mood log.',
-          schedule: {
-            repeats: true,
-            every: 'day',
-            at,
-          },
-        };
-      }
-    );
+    const notifications: LocalNotificationSchema[] = this.times.map((time, index) => {
+      const [hour, minute] = time.split(':').map((t) => parseInt(t, 10));
+      const at = new Date();
+      at.setHours(hour, minute, 0, 0);
 
+      return {
+        id: parseInt(today.replace(/-/g, '') + (index + 1)), // e.g. 20250816 + 1
+        title: 'Mood Log Reminder',
+        body: 'Please fill out your mood log.',
+        schedule: {
+          repeats: true,
+          every: 'day',
+          at,
+        },
+        extra: { notificationId: today + '_' + (index + 1) }, // store ID in extra too
+      };
+    });
+    
     await LocalNotifications.schedule({ notifications });
     console.log('Scheduled notifications:', notifications);
   }

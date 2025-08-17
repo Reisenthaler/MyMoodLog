@@ -1,11 +1,90 @@
-import { Component } from '@angular/core';
 import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
+import { Component, OnInit } from '@angular/core';
+import { App } from '@capacitor/app';
+import {
+  LocalNotifications,
+  LocalNotificationSchema,
+  LocalNotificationActionPerformed,
+} from '@capacitor/local-notifications';
+import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
+  standalone: true,
   imports: [IonApp, IonRouterOutlet],
 })
-export class AppComponent {
-  constructor() {}
+export class AppComponent implements OnInit {
+  constructor(private router: Router, private storage: Storage) {
+    this.initNotificationListeners();
+  }
+
+  async ngOnInit() {
+    await this.storage.create();
+    // Check on cold start if a mood log is pending
+    await this.checkPendingMoodLog();
+
+    // Also check when app resumes from background
+    App.addListener('resume', async () => {
+      await this.checkPendingMoodLog();
+    });
+  }
+
+  initNotificationListeners() {
+    // Fired when a notification is delivered (but not tapped yet)
+    LocalNotifications.addListener(
+      'localNotificationReceived',
+      async (notification: LocalNotificationSchema) => {
+        console.log('Notification received:', notification);
+        await this.storage.set('pending_mood_log', true);
+        await this.storage.set(
+          'pending_notification',
+          notification.extra?.notificationId || notification.id
+        );
+      }
+    );
+
+    // Fired when user taps a notification (foreground or background)
+    LocalNotifications.addListener(
+      'localNotificationActionPerformed',
+      async (action: LocalNotificationActionPerformed) => {
+        const notifId =
+          action.notification.extra?.notificationId ||
+          action.notification.id;
+
+        await this.storage.create();
+        const completed =
+          (await this.storage.get('completed_notifications')) || [];
+
+        if (completed.includes(notifId)) {
+          console.log('Notification already completed:', notifId);
+          this.router.navigateByUrl('/home');
+          return;
+        }
+
+        // Mark as pending and redirect
+        await this.storage.set('pending_notification', notifId);
+        await this.storage.set('pending_mood_log', true);
+        this.router.navigateByUrl('/mood-log');
+      }
+    );
+
+    // Fired when app is opened from a notification (cold start via deep link)
+    App.addListener('appUrlOpen', async (event) => {
+      if (event.url.includes('notification')) {
+        console.log('App opened from notification URL:', event.url);
+        await this.storage.set('pending_mood_log', true);
+        this.router.navigateByUrl('/mood-log');
+      }
+    });
+  }
+
+  private async checkPendingMoodLog() {
+    const pending = await this.storage.get('pending_mood_log');
+    if (pending) {
+      console.log('Pending mood log found, redirecting...');
+      this.router.navigateByUrl('/mood-log');
+    }
+  }
 }
