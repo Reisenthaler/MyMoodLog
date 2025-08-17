@@ -3,30 +3,24 @@ import {
   IonHeader,
   IonToolbar,
   IonTitle,
-  IonContent, 
-  IonItemDivider,
-  IonListHeader,
+  IonContent,
+  IonList,
+  IonItem,
   IonLabel,
 } from '@ionic/angular/standalone';
-import { MoodListComponent } from '../components/mood-list/mood-list.component';
-import { CrisisPlanListComponent } from '../components/crisis-plan-list/crisis-plan-list.component'; // ✅ import
-import { NotificationSettingsComponent } from '../components/notification-settings/notification-settings.component'; // ✅ import
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [
-    IonHeader,
-    IonToolbar,
-    IonTitle,
-    IonContent,
-    IonItemDivider,
-    IonListHeader,
-    IonLabel,
-    MoodListComponent,
-    CrisisPlanListComponent,
-    NotificationSettingsComponent,
-  ],
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonLabel],
 })
-export class HomePage {}
+export class HomePage {
+  constructor(private router: Router) {}
+
+  goTo(path: string) {
+    this.router.navigateByUrl('/' + path);
+  }
+}

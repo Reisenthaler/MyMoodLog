@@ -1,35 +1,25 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Meine Liste</ion-title>
+    <ion-title>My Mood Log</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <!-- Heading for Mood List -->
-  <ion-list-header>
-    <ion-label>Mood Tracking</ion-label>
-  </ion-list-header>
+  <ion-list>
+    <ion-item button detail (click)="goTo('mood-list')">
+      <ion-label>Mood Tracking Settings</ion-label>
+    </ion-item>
 
-  <!-- Mood List -->
-  <app-mood-list></app-mood-list>
+    <ion-item button detail (click)="goTo('crisis-plan-list')">
+      <ion-label>Crisis Plans</ion-label>
+    </ion-item>
 
-  <ion-item-divider></ion-item-divider>
+    <ion-item button detail (click)="goTo('notification-settings')">
+      <ion-label>Notification Settings</ion-label>
+    </ion-item>
 
-  <!-- Heading for Crisis Plans -->
-  <ion-list-header>
-    <ion-label>Crisis Plans</ion-label>
-  </ion-list-header>
-
-  <!-- Crisis Plan List -->
-  <app-crisis-plan-list></app-crisis-plan-list>
-
-  <ion-item-divider></ion-item-divider>
-
-  <!-- Heading for Notification Settings -->
-  <ion-list-header>
-    <ion-label>Notification Settings</ion-label>
-  </ion-list-header>
-
-  <!-- Notification Settings Component -->
-  <app-notification-settings></app-notification-settings>
+    <ion-item button detail (click)="goTo('mood-log-history')">
+      <ion-label>Mood Log History</ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

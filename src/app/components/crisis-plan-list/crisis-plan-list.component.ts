@@ -11,11 +11,15 @@ import {
   IonTextarea,
   IonReorderGroup,
   IonReorder,
+  IonTitle,
+  IonToolbar,
+  IonContent,
+  IonHeader,
   AlertController,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { add, create, trash } from 'ionicons/icons';
-import { Storage } from '@ionic/storage-angular';
+import { IonicStorageModule, Storage } from '@ionic/storage-angular';
 import { CrisisPlan } from '../../models/crisis-plan.model';
 import { ItemReorderEventDetail } from '@ionic/angular';
 
@@ -34,6 +38,10 @@ import { ItemReorderEventDetail } from '@ionic/angular';
     IonInput,
     IonIcon,
     IonTextarea,
+    IonTitle,
+    IonToolbar,
+    IonContent,
+    IonHeader,
     IonReorderGroup,
     IonReorder,
   ],

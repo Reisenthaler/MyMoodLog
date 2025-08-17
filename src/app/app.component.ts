@@ -8,6 +8,7 @@ import {
 } from '@capacitor/local-notifications';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
+import { StatusBar, Style } from '@capacitor/status-bar';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,7 @@ import { Storage } from '@ionic/storage-angular';
 })
 export class AppComponent implements OnInit {
   constructor(private router: Router, private storage: Storage) {
+    this.initStatusBar();
     this.initNotificationListeners();
   }
 
@@ -29,6 +31,21 @@ export class AppComponent implements OnInit {
     App.addListener('resume', async () => {
       await this.checkPendingMoodLog();
     });
+  }
+
+  async initStatusBar() {
+    try {
+      // Show the status bar
+      await StatusBar.show();
+
+      // Set style (light or dark depending on your toolbar color)
+      await StatusBar.setStyle({ style: Style.Light }); // or Style.Dark
+
+      // Prevent overlap by disabling overlay
+      await StatusBar.setOverlaysWebView({ overlay: false });
+    } catch (err) {
+      console.warn('StatusBar plugin not available in browser', err);
+    }
   }
 
   initNotificationListeners() {
