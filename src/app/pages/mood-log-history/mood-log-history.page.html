@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mood Log History</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list *ngIf="history.length > 0; else noLogs">
+    <ion-item *ngFor="let log of history">
+      <ion-label>
+        <h2>{{ log.date | date:'short' }}</h2>
+        <p>Notification: {{ log.notificationId || 'Manual' }}</p>
+        <ul>
+          <li *ngFor="let entry of (log.selections | keyvalue)">
+            Mood {{ entry.key }} → Intensity {{ entry.value }}
+          </li>
+        </ul>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ng-template #noLogs>
+    <p>No mood logs yet.</p>
+  </ng-template>
+</ion-content>  

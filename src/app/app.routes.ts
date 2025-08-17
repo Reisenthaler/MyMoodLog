@@ -18,5 +18,8 @@ export const routes: Routes = [
     path: 'crisis-plan-result',
     loadComponent: () => import('./pages/crisis-plan-result/crisis-plan-result.page').then( m => m.CrisisPlanResultPage)
   },
-
+  {
+    path: 'mood-log-history',
+    loadComponent: () => import('./pages/mood-log-history/mood-log-history.page').then( m => m.MoodLogHistoryPage)
+  },
 ];
