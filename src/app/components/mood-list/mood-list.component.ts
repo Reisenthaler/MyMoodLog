@@ -13,6 +13,8 @@ import { Storage } from '@ionic/storage-angular';
 import { MoodItem } from '../../models/mood-item.model';
 import { CrisisPlan } from '../../models/crisis-plan.model';
 import { MoodScaleConfigComponent } from '../mood-scale-config/mood-scale-config.component';
+import { addIcons } from 'ionicons';
+import { trash, create } from 'ionicons/icons';
 
 @Component({
   selector: 'app-mood-list',
@@ -26,7 +28,9 @@ export class MoodListComponent implements OnInit {
   items: MoodItem[] = [];
   crisisPlans: CrisisPlan[] = [];
 
-  constructor(private storage: Storage, private alertCtrl: AlertController, private modalCtrl: ModalController) {}
+  constructor(private storage: Storage, private alertCtrl: AlertController, private modalCtrl: ModalController) {
+      addIcons({ trash, create });
+  }
 
   async ngOnInit() {
     await this.storage.create();
@@ -65,6 +69,43 @@ export class MoodListComponent implements OnInit {
     this.saveItems();
   }
 
+  async addItem() {
+  const alert = await this.alertCtrl.create({
+    header: 'Add New Mood Item',
+    inputs: [
+      {
+        name: 'name',
+        type: 'text',
+        placeholder: 'Enter item name',
+      },
+    ],
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+      },
+      {
+        text: 'Add',
+        handler: async (data) => {
+          if (data.name && data.name.trim().length > 0) {
+            const newItem: MoodItem = {
+              id: Date.now(), // unique ID
+              name: data.name.trim(),
+              active: false,
+              isDefault: false,
+              scalePlans: {},
+            };
+            this.items.push(newItem);
+            await this.saveItems();
+          }
+        },
+      },
+    ],
+  });
+
+  await alert.present();
+}
+
   async editItem(item: MoodItem) {
     const modal = await this.modalCtrl.create({
       component: MoodScaleConfigComponent,
@@ -86,6 +127,7 @@ export class MoodListComponent implements OnInit {
       }
     }
   }
+
   async removeItem(item: MoodItem) {
     if (item.isDefault) return; // Defaults dürfen nicht gelöscht werden
 

@@ -16,7 +16,9 @@
     <ion-button fill="clear" color="primary" (click)="editItem(item)">
       <ion-icon name="create"></ion-icon>
       Edit
-    </ion-button>   
+    </ion-button>
+
+    <!-- Delete button -->
     <ion-button
       fill="clear"
       color="danger"
@@ -24,6 +26,11 @@
       *ngIf="!item.isDefault"
     >
       <ion-icon name="trash"></ion-icon>
-</ion-button>
-</ion-item>
+    </ion-button>
+  </ion-item>
 </ion-list>
+
+<!-- Add Item Button -->
+<ion-button expand="block" color="primary" (click)="addItem()">
+  Befindlichkeit hinzufügen
+</ion-button>
