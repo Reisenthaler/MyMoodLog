@@ -5,17 +5,13 @@ import {
   IonList,
   IonItem,
   IonLabel,
-  IonButton,
-  IonInput,
-  IonIcon,
-  IonTextarea,
   IonReorderGroup,
   IonReorder,
   IonTitle,
   IonToolbar,
   IonContent,
   IonHeader,
-    AlertController,
+  AlertController,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { add, create, trash } from 'ionicons/icons';
@@ -23,6 +19,7 @@ import { Storage } from '@ionic/storage-angular';
 import { CrisisPlan } from '../../models/crisis-plan.model';
 import { ItemReorderEventDetail } from '@ionic/angular';
 import { CustomTextPopupComponent } from '../popups/custom-text-popup/custom-text-popup.component';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
   selector: 'app-crisis-plan-list',
@@ -35,10 +32,6 @@ import { CustomTextPopupComponent } from '../popups/custom-text-popup/custom-tex
     IonList,
     IonItem,
     IonLabel,
-    IonButton,
-    IonInput,
-    IonIcon,
-    IonTextarea,
     IonTitle,
     IonToolbar,
     IonContent,
@@ -46,6 +39,7 @@ import { CustomTextPopupComponent } from '../popups/custom-text-popup/custom-tex
     IonReorderGroup,
     IonReorder,
     CustomTextPopupComponent,
+    ButtonComponent, // 👈 use custom button
   ],
 })
 export class CrisisPlanListComponent implements OnInit {
@@ -53,14 +47,12 @@ export class CrisisPlanListComponent implements OnInit {
 
   crisisPlans: CrisisPlan[] = [];
 
-  // Track editing state
   private editingPlan: CrisisPlan | null = null;
   private editingStepIndex: number | null = null;
 
   stepPopupHeading = 'Add Step';
   stepPopupSaveLabel = 'Add';
 
-  // Popup references
   @ViewChild('addPlanPopup') addPlanPopup!: CustomTextPopupComponent;
   @ViewChild('editPlanPopup') editPlanPopup!: CustomTextPopupComponent;
   @ViewChild('stepPopup') stepPopup!: CustomTextPopupComponent;
@@ -83,7 +75,6 @@ export class CrisisPlanListComponent implements OnInit {
     await this.storage.set(this.STORAGE_KEY, this.crisisPlans);
   }
 
-  // Add Plan
   openAddPlan() {
     this.addPlanPopup.open();
   }
@@ -100,7 +91,6 @@ export class CrisisPlanListComponent implements OnInit {
     }
   }
 
-  // Edit Plan
   openEditPlan(plan: CrisisPlan) {
     this.editingPlan = plan;
     this.editPlanPopup.open(plan.title);
@@ -114,7 +104,6 @@ export class CrisisPlanListComponent implements OnInit {
     this.editingPlan = null;
   }
 
-  // Add Step
   openAddStep(plan: CrisisPlan) {
     this.editingPlan = plan;
     this.editingStepIndex = null;
@@ -123,7 +112,6 @@ export class CrisisPlanListComponent implements OnInit {
     this.stepPopup.open();
   }
 
-  // Edit Step
   openEditStep(plan: CrisisPlan, index: number) {
     this.editingPlan = plan;
     this.editingStepIndex = index;
@@ -135,10 +123,8 @@ export class CrisisPlanListComponent implements OnInit {
   async handleStepSave(stepText: string) {
     if (this.editingPlan && stepText.trim()) {
       if (this.editingStepIndex === null) {
-        // Add new step
         this.editingPlan.steps.push(stepText.trim());
       } else {
-        // Edit existing step
         this.editingPlan.steps[this.editingStepIndex] = stepText.trim();
       }
       await this.savePlans();
@@ -147,7 +133,6 @@ export class CrisisPlanListComponent implements OnInit {
     this.editingStepIndex = null;
   }
 
-  // Delete Plan
   async deletePlan(plan: CrisisPlan) {
     const alert = await this.alertCtrl.create({
       header: 'Confirm Delete',
@@ -166,7 +151,7 @@ export class CrisisPlanListComponent implements OnInit {
     });
     await alert.present();
   }
-  // Delete Step
+
   async deleteStep(plan: CrisisPlan, index: number) {
     const alert = await this.alertCtrl.create({
       header: 'Delete Step?',
@@ -186,19 +171,17 @@ export class CrisisPlanListComponent implements OnInit {
     await alert.present();
   }
 
-  // Reorder Steps
-async reorderSteps(event: CustomEvent<ItemReorderEventDetail>, plan: CrisisPlan) {
-  const from = event.detail.from;
-  const to = event.detail.to;
+  async reorderSteps(
+    event: CustomEvent<ItemReorderEventDetail>,
+    plan: CrisisPlan
+  ) {
+    const from = event.detail.from;
+    const to = event.detail.to;
 
-  // Move the step in the array
-  const movedItem = plan.steps.splice(from, 1)[0];
-  plan.steps.splice(to, 0, movedItem);
+    const movedItem = plan.steps.splice(from, 1)[0];
+    plan.steps.splice(to, 0, movedItem);
 
-  // Complete the reorder
-  event.detail.complete();
-
-  // Save updated order
-  await this.savePlans();
-}
+    event.detail.complete();
+    await this.savePlans();
+  }
 }

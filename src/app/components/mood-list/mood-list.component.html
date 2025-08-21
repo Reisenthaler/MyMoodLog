@@ -4,36 +4,44 @@
       <h2>{{ item.name }}</h2>
     </ion-label>
 
-        <!-- Toggle active/inactive -->
-    <ion-button
-      [color]="item.active ? 'success' : 'medium'"
-      (click)="toggleItem(item)"
-    >
-      {{ item.active ? 'Active' : 'Inactive' }}
-    </ion-button>
-    
+    <!-- Toggle active/inactive -->
+    <app-button
+      [label]="item.active ? 'Active' : 'Inactive'"
+      [color]="item.active ? 'green' : 'default'"
+      size="small"
+      (clicked)="toggleItem(item)"
+    ></app-button>
+
     <!-- Edit button -->
-    <ion-button fill="clear" color="primary" (click)="editItem(item)">
-      <ion-icon name="create"></ion-icon>
-      Edit
-    </ion-button>
+    <app-button
+      size="iconWithText"
+      color="default"
+      icon="create"
+      label="Edit"
+      (clicked)="editItem(item)"
+    ></app-button>
 
     <!-- Delete button -->
-    <ion-button
-      fill="clear"
-      color="danger"
-      (click)="removeItem(item)"
+    <app-button
       *ngIf="!item.isDefault"
-    >
-      <ion-icon name="trash"></ion-icon>
-    </ion-button>
+      size="icon"
+      color="red"
+      icon="trash"
+      (clicked)="removeItem(item)"
+    ></app-button>
   </ion-item>
 </ion-list>
 
-<!-- Add Item Button -->
-<ion-button expand="block" color="primary" (click)="openAddPopup()">
-  Befindlichkeit hinzufügen
-</ion-button>
+
+  <app-button
+    size="wide"
+    color="green"
+    icon="add"
+    label="Befindlichkeit hinzufügen"
+    (clicked)="openAddPopup()"
+    style="width: 100%; margin-left: 10%;  position: absolute;  bottom: 10px;"
+  ></app-button>
+
 
 <!-- Reusable Popup -->
 <app-custom-text-popup

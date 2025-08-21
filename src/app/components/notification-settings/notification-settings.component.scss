@@ -1,0 +1,20 @@
+ion-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.scrollable-list {
+  flex: 1; /* take up available space */
+  overflow-y: auto; /* make it scrollable */
+}
+
+.save-button-container {
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  background: var(--ion-background-color, #fff); /* keep background solid */
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+}

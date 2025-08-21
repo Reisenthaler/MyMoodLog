@@ -5,13 +5,9 @@
 </ion-header>
 
 <ion-content>
-  <!-- ✅ Button at the top -->
-  <ion-item lines="none">
-    <ion-button expand="block" color="success" (click)="openAddPlan()">
-      <ion-icon slot="start" name="add"></ion-icon>
-      New Crisis Plan
-    </ion-button>
-  </ion-item>
+
+
+  
 
   <!-- ✅ List of plans -->
   <ion-list>
@@ -29,22 +25,19 @@
             <ion-label>{{ step }}</ion-label>
 
             <!-- Edit/Delete buttons -->
-            <ion-button
-              fill="clear"
-              size="small"
-              color="primary"
-              (click)="openEditStep(plan, i)"
-            >
-              <ion-icon name="create"></ion-icon>
-            </ion-button>
-            <ion-button
-              fill="clear"
-              size="small"
-              color="danger"
-              (click)="deleteStep(plan, i)"
-            >
-              <ion-icon name="trash"></ion-icon>
-            </ion-button>
+            <app-button
+              size="icon"
+              color="default"
+              icon="create"
+              (clicked)="openEditStep(plan, i)"
+            ></app-button>
+
+            <app-button
+              size="icon"
+              color="red"
+              icon="trash"
+              (clicked)="deleteStep(plan, i)"
+            ></app-button>
 
             <!-- Drag handle -->
             <ion-reorder slot="end"></ion-reorder>
@@ -53,24 +46,43 @@
 
         <!-- Plan-level actions -->
         <div class="plan-actions">
-          <ion-button fill="outline" color="primary" (click)="openEditPlan(plan)">
-            <ion-icon slot="start" name="create"></ion-icon>
-            Edit Plan
-          </ion-button>
-          <ion-button fill="outline" color="danger" (click)="deletePlan(plan)">
-            <ion-icon slot="start" name="trash"></ion-icon>
-            Delete Plan
-          </ion-button>
-          <ion-button color="success" (click)="openAddStep(plan)">
-            <ion-icon slot="start" name="add"></ion-icon>
-            Add Step
-          </ion-button>
+          <app-button
+            size="iconWithText"
+            color="default"
+            icon="create"
+            label="Edit Plan"
+            (clicked)="openEditPlan(plan)"
+          ></app-button>
+
+          <app-button
+            size="iconWithText"
+            color="red"
+            icon="trash"
+            label="Delete Plan"
+            (clicked)="deletePlan(plan)"
+          ></app-button>
+
+          <app-button
+            size="iconWithText"
+            color="green"
+            icon="add"
+            label="Add Step"
+            (clicked)="openAddStep(plan)"
+          ></app-button>
         </div>
       </ion-label>
     </ion-item>
   </ion-list>
 </ion-content>
 
+    <app-button
+      size="wide"
+      color="green"
+      icon="add"
+      label="New Crisis Plan"
+      (clicked)="openAddPlan()"
+      style="width: 100%; margin-left: 10%;"
+    ></app-button>
 <!-- Add Plan Popup -->
 <app-custom-text-popup
   #addPlanPopup

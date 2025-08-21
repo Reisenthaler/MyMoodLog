@@ -3,6 +3,12 @@ ion-item {
   justify-content: space-between;
   align-items: center;
 }
-ion-button {
-  margin-top: 12px;
+
+app-button {
+  margin-left: 8px;
+}
+.add-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }

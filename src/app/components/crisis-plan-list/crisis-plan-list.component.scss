@@ -1,0 +1,15 @@
+.add-plan-container {
+  display: flex;
+  justify-content: center;
+  margin: 16px 0;
+}
+
+.plan-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 10px;
+}
+
+app-button {
+  margin-left: 6px;
+}

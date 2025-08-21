@@ -1,4 +1,4 @@
-<ion-list>
+<ion-list class="scrollable-list">
   <ion-item *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]">
     <ion-label>Level {{ i }}</ion-label>
     <ion-select [(ngModel)]="item.scalePlans[i]">
@@ -10,5 +10,21 @@
   </ion-item>
 </ion-list>
 
-<ion-button expand="block" color="success" (click)="save()">Save</ion-button>
-<ion-button expand="block" color="medium" (click)="cancel()">Cancel</ion-button>
+<!-- ✅ Replaced with custom buttons -->
+<div class="button-container">
+  <app-button
+    size="medium"
+    color="green"
+    icon="save"
+    label="Save"
+    (clicked)="save()"
+  ></app-button>
+
+  <app-button
+    size="medium"
+    color="red"
+    icon="close"
+    label="Cancel"
+    (clicked)="cancel()"
+  ></app-button>
+</div>

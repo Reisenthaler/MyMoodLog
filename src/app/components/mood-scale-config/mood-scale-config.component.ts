@@ -7,11 +7,13 @@ import {
   IonLabel,
   IonSelect,
   IonSelectOption,
-  IonButton,
   ModalController,
 } from '@ionic/angular/standalone';
 import { MoodItem } from '../../models/mood-item.model';
 import { CrisisPlan } from '../../models/crisis-plan.model';
+import { ButtonComponent } from '../button/button.component';
+import { addIcons } from 'ionicons';
+import { save, close } from 'ionicons/icons';
 
 @Component({
   selector: 'app-mood-scale-config',
@@ -26,14 +28,16 @@ import { CrisisPlan } from '../../models/crisis-plan.model';
     IonLabel,
     IonSelect,
     IonSelectOption,
-    IonButton,
+    ButtonComponent, // 👈 use custom button
   ],
 })
 export class MoodScaleConfigComponent {
   @Input() item!: MoodItem;
   @Input() crisisPlans: CrisisPlan[] = [];
 
-  constructor(private modalCtrl: ModalController) {}
+  constructor(private modalCtrl: ModalController) {
+    addIcons({ save, close }); // register icons
+  }
 
   save() {
     this.modalCtrl.dismiss(this.item);

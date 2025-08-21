@@ -1,28 +1,39 @@
-<ion-list>
-  <!-- Select number of notifications per day -->
-  <ion-item>
-    <ion-label>Notifications per day</ion-label>
-    <ion-select
-      [(ngModel)]="notificationsPerDay"
-      (ionChange)="updateTimes()"
-    >
-      <ion-select-option *ngFor="let n of [1,2,3,4,5]" [value]="n">
-        {{ n }}
-      </ion-select-option>
-    </ion-select>
-  </ion-item>
+<ion-content>
+  <!-- Scrollable list -->
+  <ion-list class="scrollable-list">
+    <!-- Select number of notifications per day -->
+    <ion-item>
+      <ion-label>Notifications per day</ion-label>
+      <ion-select
+        [(ngModel)]="notificationsPerDay"
+        (ionChange)="updateTimes()"
+      >
+        <ion-select-option *ngFor="let n of [1, 2, 3, 4, 5]" [value]="n">
+          {{ n }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
 
-  <!-- Select times -->
-  <ion-item *ngFor="let t of times; let i = index">
-    <ion-label>Notification {{ i + 1 }}</ion-label>
-    <ion-datetime
-      presentation="time"
-      [(ngModel)]="times[i]"
-      hour-cycle="h23"
-    ></ion-datetime>
-  </ion-item>
-</ion-list>
+    <!-- Select times -->
+    <ion-item *ngFor="let t of times; let i = index">
+      <ion-label>Notification {{ i + 1 }}</ion-label>
+      <ion-datetime
+        presentation="time"
+        [(ngModel)]="times[i]"
+        hour-cycle="h23"
+      ></ion-datetime>
+    </ion-item>
+  </ion-list>
 
-<ion-button expand="block" color="success" (click)="saveSettings()">
-  Save & Schedule Notifications
-</ion-button>
+  <!-- Fixed button at bottom -->
+  <div class="save-button-container">
+    <app-button
+      size="wide"
+      color="green"
+      icon="save"
+      label="Save & Schedule Notifications"
+      (clicked)="saveSettings()"
+      style="width: 100%; margin-left: 10%;"
+    ></app-button>
+  </div>
+</ion-content>
