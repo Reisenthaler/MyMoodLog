@@ -3,9 +3,9 @@
     <!-- Heading -->
     <h2
       data-testid="add-info-popup-title"
-      class="heading"
-    >
-Befindlichkeit hinzufügen   </h2>
+      class="heading">
+        {{ heading }}   
+    </h2>
 
     <!-- Input -->
     <input
@@ -24,7 +24,7 @@ Befindlichkeit hinzufügen   </h2>
       <app-button
         size="small"
         color="red"
-        [label]="'schließen'"
+        [label]="cancelLabel"
         (clicked)="close()"
         style="flex: 1;">
       </app-button>
@@ -32,7 +32,7 @@ Befindlichkeit hinzufügen   </h2>
       <app-button
         size="small"
         color="green"
-        [label]="'speichern'"
+        [label]="saveLabel"
         (clicked)="submit()"
         style="flex: 1;">
       </app-button>
