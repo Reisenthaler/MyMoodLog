@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, Output, ViewChild, ElementRef } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ButtonComponent } from '../../button/button.component';
@@ -13,10 +20,9 @@ import { ButtonComponent } from '../../button/button.component';
 export class CustomTextPopupComponent {
   @Input() heading: string = 'Enter Text';
   @Input() placeholder: string = 'Type here...';
-  @Input() maxLength: number = 45;
   @Input() saveLabel: string = 'Save';
   @Input() cancelLabel: string = 'Cancel';
-
+  @Input() multiline: boolean = false;
   @Output() closed = new EventEmitter<void>();
   @Output() saved = new EventEmitter<string>();
 
@@ -32,7 +38,9 @@ export class CustomTextPopupComponent {
     setTimeout(() => {
       if (this.inputField?.nativeElement) {
         this.inputField.nativeElement.focus();
-        this.inputField.nativeElement.select();
+        if (!this.multiline) {
+          this.inputField.nativeElement.select();
+        }
       }
     }, 50);
   }
@@ -46,7 +54,8 @@ export class CustomTextPopupComponent {
     this.saved.emit(this.userInput.trim());
     this.close();
   }
-    scrollInputIntoView(input: HTMLInputElement) {
+
+  scrollInputIntoView(input: HTMLInputElement | HTMLTextAreaElement) {
     setTimeout(() => {
       input.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }, 500);

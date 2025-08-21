@@ -69,6 +69,22 @@
   }
 }
 
+.custom-input {
+  padding: 12px 14px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  width: 100%;
+  resize: none; /* default: no resize */
+}
+
+textarea.custom-input {
+  resize: vertical; /* allow resizing only for multiline */
+  min-height: 200px; /* give it some height */
+}
+
 /* Animations */
 @keyframes fadeIn {
   from {

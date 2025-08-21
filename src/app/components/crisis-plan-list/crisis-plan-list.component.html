@@ -22,7 +22,7 @@
           (ionItemReorder)="reorderSteps($event, plan)"
         >
           <ion-item *ngFor="let step of plan.steps; let i = index">
-            <ion-label>{{ step }}</ion-label>
+            <ion-label style="white-space: pre-line;" [innerHTML]="formatUserText(step)"></ion-label>
 
             <!-- Edit/Delete buttons -->
             <app-button
@@ -110,5 +110,6 @@
   [placeholder]="'Enter step'"
   [saveLabel]="stepPopupSaveLabel"
   [cancelLabel]="'Cancel'"
+  [multiline]="true"
   (saved)="handleStepSave($event)"
 ></app-custom-text-popup>
