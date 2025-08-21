@@ -7,13 +7,13 @@
 <ion-content>
   <!-- ✅ Button at the top -->
   <ion-item lines="none">
-    <ion-button expand="block" color="success" (click)="addPlan()">
+    <ion-button expand="block" color="success" (click)="openAddPlan()">
       <ion-icon slot="start" name="add"></ion-icon>
       New Crisis Plan
     </ion-button>
   </ion-item>
 
-  <!-- ✅ List directly under the button -->
+  <!-- ✅ List of plans -->
   <ion-list>
     <ion-item *ngFor="let plan of crisisPlans" lines="none">
       <ion-label class="ion-text-wrap">
@@ -33,7 +33,7 @@
               fill="clear"
               size="small"
               color="primary"
-              (click)="editStep(plan, i)"
+              (click)="openEditStep(plan, i)"
             >
               <ion-icon name="create"></ion-icon>
             </ion-button>
@@ -53,7 +53,7 @@
 
         <!-- Plan-level actions -->
         <div class="plan-actions">
-          <ion-button fill="outline" color="primary" (click)="editPlan(plan)">
+          <ion-button fill="outline" color="primary" (click)="openEditPlan(plan)">
             <ion-icon slot="start" name="create"></ion-icon>
             Edit Plan
           </ion-button>
@@ -61,7 +61,7 @@
             <ion-icon slot="start" name="trash"></ion-icon>
             Delete Plan
           </ion-button>
-          <ion-button color="success" (click)="addStep(plan)">
+          <ion-button color="success" (click)="openAddStep(plan)">
             <ion-icon slot="start" name="add"></ion-icon>
             Add Step
           </ion-button>
@@ -70,3 +70,33 @@
     </ion-item>
   </ion-list>
 </ion-content>
+
+<!-- Add Plan Popup -->
+<app-custom-text-popup
+  #addPlanPopup
+  [heading]="'New Crisis Plan'"
+  [placeholder]="'Enter crisis plan title'"
+  [saveLabel]="'Create'"
+  [cancelLabel]="'Cancel'"
+  (saved)="handleAddPlan($event)"
+></app-custom-text-popup>
+
+<!-- Edit Plan Popup -->
+<app-custom-text-popup
+  #editPlanPopup
+  [heading]="'Edit Plan Title'"
+  [placeholder]="'Enter new title'"
+  [saveLabel]="'Save'"
+  [cancelLabel]="'Cancel'"
+  (saved)="handleEditPlan($event)"
+></app-custom-text-popup>
+
+<!-- Add/Edit Step Popup -->
+<app-custom-text-popup
+  #stepPopup
+  [heading]="stepPopupHeading"
+  [placeholder]="'Enter step'"
+  [saveLabel]="stepPopupSaveLabel"
+  [cancelLabel]="'Cancel'"
+  (saved)="handleStepSave($event)"
+></app-custom-text-popup>

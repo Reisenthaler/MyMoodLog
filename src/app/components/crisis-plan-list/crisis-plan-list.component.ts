@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -15,13 +15,14 @@ import {
   IonToolbar,
   IonContent,
   IonHeader,
-  AlertController,
+    AlertController,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { add, create, trash } from 'ionicons/icons';
-import { IonicStorageModule, Storage } from '@ionic/storage-angular';
+import { Storage } from '@ionic/storage-angular';
 import { CrisisPlan } from '../../models/crisis-plan.model';
 import { ItemReorderEventDetail } from '@ionic/angular';
+import { CustomTextPopupComponent } from '../popups/custom-text-popup/custom-text-popup.component';
 
 @Component({
   selector: 'app-crisis-plan-list',
@@ -44,13 +45,25 @@ import { ItemReorderEventDetail } from '@ionic/angular';
     IonHeader,
     IonReorderGroup,
     IonReorder,
+    CustomTextPopupComponent,
   ],
 })
 export class CrisisPlanListComponent implements OnInit {
   private STORAGE_KEY = 'crisis_plans';
 
   crisisPlans: CrisisPlan[] = [];
-  newTitle: string = '';
+
+  // Track editing state
+  private editingPlan: CrisisPlan | null = null;
+  private editingStepIndex: number | null = null;
+
+  stepPopupHeading = 'Add Step';
+  stepPopupSaveLabel = 'Add';
+
+  // Popup references
+  @ViewChild('addPlanPopup') addPlanPopup!: CustomTextPopupComponent;
+  @ViewChild('editPlanPopup') editPlanPopup!: CustomTextPopupComponent;
+  @ViewChild('stepPopup') stepPopup!: CustomTextPopupComponent;
 
   constructor(private storage: Storage, private alertCtrl: AlertController) {
     addIcons({ add, create, trash });
@@ -70,58 +83,71 @@ export class CrisisPlanListComponent implements OnInit {
     await this.storage.set(this.STORAGE_KEY, this.crisisPlans);
   }
 
-  async addPlan() {
-    const alert = await this.alertCtrl.create({
-      header: 'New Crisis Plan',
-      inputs: [
-        {
-          name: 'title',
-          type: 'text',
-          placeholder: 'Enter crisis plan title',
-        },
-      ],
-      buttons: [
-        { text: 'Cancel', role: 'cancel' },
-        {
-          text: 'Create',
-          handler: async (data) => {
-            if (data.title && data.title.trim()) {
-              const newPlan: CrisisPlan = {
-                id: Date.now(),
-                title: data.title.trim(),
-                steps: [],
-              };
-              this.crisisPlans.push(newPlan);
-              await this.savePlans();
-            }
-          },
-        },
-      ],
-    });
-
-    await alert.present();
+  // Add Plan
+  openAddPlan() {
+    this.addPlanPopup.open();
   }
 
-  async editPlan(plan: CrisisPlan) {
-    const alert = await this.alertCtrl.create({
-      header: 'Edit Title',
-      inputs: [{ name: 'title', type: 'text', value: plan.title }],
-      buttons: [
-        { text: 'Cancel', role: 'cancel' },
-        {
-          text: 'Save',
-          handler: async (data) => {
-            if (data.title.trim()) {
-              plan.title = data.title.trim();
-              await this.savePlans();
-            }
-          },
-        },
-      ],
-    });
-    await alert.present();
+  async handleAddPlan(title: string) {
+    if (title.trim()) {
+      const newPlan: CrisisPlan = {
+        id: Date.now(),
+        title: title.trim(),
+        steps: [],
+      };
+      this.crisisPlans.push(newPlan);
+      await this.savePlans();
+    }
   }
 
+  // Edit Plan
+  openEditPlan(plan: CrisisPlan) {
+    this.editingPlan = plan;
+    this.editPlanPopup.open(plan.title);
+  }
+
+  async handleEditPlan(title: string) {
+    if (this.editingPlan && title.trim()) {
+      this.editingPlan.title = title.trim();
+      await this.savePlans();
+    }
+    this.editingPlan = null;
+  }
+
+  // Add Step
+  openAddStep(plan: CrisisPlan) {
+    this.editingPlan = plan;
+    this.editingStepIndex = null;
+    this.stepPopupHeading = 'Add Step';
+    this.stepPopupSaveLabel = 'Add';
+    this.stepPopup.open();
+  }
+
+  // Edit Step
+  openEditStep(plan: CrisisPlan, index: number) {
+    this.editingPlan = plan;
+    this.editingStepIndex = index;
+    this.stepPopupHeading = 'Edit Step';
+    this.stepPopupSaveLabel = 'Save';
+    this.stepPopup.open(plan.steps[index]);
+  }
+
+  async handleStepSave(stepText: string) {
+    if (this.editingPlan && stepText.trim()) {
+      if (this.editingStepIndex === null) {
+        // Add new step
+        this.editingPlan.steps.push(stepText.trim());
+      } else {
+        // Edit existing step
+        this.editingPlan.steps[this.editingStepIndex] = stepText.trim();
+      }
+      await this.savePlans();
+    }
+    this.editingPlan = null;
+    this.editingStepIndex = null;
+  }
+
+  // Delete Plan
   async deletePlan(plan: CrisisPlan) {
     const alert = await this.alertCtrl.create({
       header: 'Confirm Delete',
@@ -140,47 +166,7 @@ export class CrisisPlanListComponent implements OnInit {
     });
     await alert.present();
   }
-
-  async addStep(plan: CrisisPlan) {
-    const alert = await this.alertCtrl.create({
-      header: 'Add Step',
-      inputs: [{ name: 'step', type: 'textarea', placeholder: 'Enter step' }],
-      buttons: [
-        { text: 'Cancel', role: 'cancel' },
-        {
-          text: 'Add',
-          handler: async (data) => {
-            if (data.step.trim()) {
-              plan.steps.push(data.step.trim());
-              await this.savePlans();
-            }
-          },
-        },
-      ],
-    });
-    await alert.present();
-  }
-
-  async editStep(plan: CrisisPlan, index: number) {
-    const alert = await this.alertCtrl.create({
-      header: 'Edit Step',
-      inputs: [{ name: 'step', type: 'textarea', value: plan.steps[index] }],
-      buttons: [
-        { text: 'Cancel', role: 'cancel' },
-        {
-          text: 'Save',
-          handler: async (data) => {
-            if (data.step.trim()) {
-              plan.steps[index] = data.step.trim();
-              await this.savePlans();
-            }
-          },
-        },
-      ],
-    });
-    await alert.present();
-  }
-
+  // Delete Step
   async deleteStep(plan: CrisisPlan, index: number) {
     const alert = await this.alertCtrl.create({
       header: 'Delete Step?',
@@ -200,6 +186,7 @@ export class CrisisPlanListComponent implements OnInit {
     await alert.present();
   }
 
+  // Reorder Steps
 async reorderSteps(event: CustomEvent<ItemReorderEventDetail>, plan: CrisisPlan) {
   const from = event.detail.from;
   const to = event.detail.to;
