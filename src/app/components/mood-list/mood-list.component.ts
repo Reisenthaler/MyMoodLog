@@ -15,15 +15,18 @@ import { CrisisPlan } from '../../models/crisis-plan.model';
 import { MoodScaleConfigComponent } from '../mood-scale-config/mood-scale-config.component';
 import { addIcons } from 'ionicons';
 import { trash, create } from 'ionicons/icons';
+import { ViewChild } from '@angular/core';
+import { CustomTextPopupComponent } from '../popups/custom-text-popup/custom-text-popup.component';
 
 @Component({
   selector: 'app-mood-list',
   templateUrl: './mood-list.component.html',
   styleUrls: ['./mood-list.component.scss'],
   standalone: true,
-  imports: [CommonModule, IonList, IonItem, IonLabel, IonButton, IonIcon],
+  imports: [CommonModule, IonList, IonItem, IonLabel, IonButton, IonIcon, CustomTextPopupComponent],
 })
 export class MoodListComponent implements OnInit {
+  @ViewChild('addPopup') addPopup!: CustomTextPopupComponent;
   private STORAGE_KEY = 'mood_items';
   items: MoodItem[] = [];
   crisisPlans: CrisisPlan[] = [];
@@ -151,5 +154,24 @@ export class MoodListComponent implements OnInit {
     });
 
     await alert.present();
+  }
+
+  openAddPopup() {
+    this.addPopup.open();
+  }
+
+  async handleAddItem(name: string) {
+    if (!name) return;
+
+    const newItem: MoodItem = {
+      id: Date.now(),
+      name,
+      active: false,
+      isDefault: false,
+      scalePlans: {},
+    };
+
+    this.items.push(newItem);
+    await this.saveItems();
   }
 }

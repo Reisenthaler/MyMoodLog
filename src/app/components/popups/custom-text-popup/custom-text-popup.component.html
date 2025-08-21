@@ -1,0 +1,41 @@
+<div class="popup" *ngIf="isOpen">
+  <div class="popup-content">
+    <!-- Heading -->
+    <h2
+      data-testid="add-info-popup-title"
+      class="heading"
+    >
+Befindlichkeit hinzufügen   </h2>
+
+    <!-- Input -->
+    <input
+      #inputElement
+      data-testid="add-info-popup-input"
+      type="text"
+      maxlength="45"
+      pattern="[a-zA-Z0-9]*"
+      [(ngModel)]="userInput"
+      class="custom-input"
+      (focus)="scrollInputIntoView(inputElement)"
+    />
+
+    <!-- Buttons -->
+    <div class="button-container">
+      <app-button
+        size="small"
+        color="red"
+        [label]="'schließen'"
+        (clicked)="close()"
+        style="flex: 1;">
+      </app-button>
+
+      <app-button
+        size="small"
+        color="green"
+        [label]="'speichern'"
+        (clicked)="submit()"
+        style="flex: 1;">
+      </app-button>
+    </div>
+  </div>
+</div>

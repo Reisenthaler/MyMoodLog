@@ -1,0 +1,86 @@
+@import "src/theme/colors.scss";
+
+/* WIDE button (like .order-button) */
+.wide {
+  border: none;
+  padding: 15px 30px;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: Default-custom-font, serif;
+  font-size: 20px;
+}
+
+/* MEDIUM button (like .button) */
+.medium {
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: Default-custom-font, serif;
+  font-size: 1.5rem;
+  padding: 1rem 2rem;
+}
+
+.small {
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: Default-custom-font, serif;
+  font-size: 1.1rem; // slightly bigger font
+  padding: 0.7rem 1.3rem; // slightly bigger
+  width: 100%; // Ensure button fills flex parent
+}
+
+/* Disabled state (optional) */
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+/* Color: DEFAULT */
+.default {
+  background-color: $defaultButtonBackground;
+  color: $defaultButtonText;
+}
+
+/* Color: WHITE */
+.white {
+  background-color: white;
+  color: $whiteButtonText;
+}
+
+/* Color: BLACK */
+.black {
+  background-color: black;
+  color: white;
+}
+
+/* Color: GREEN */
+.green {
+  background-color: #4caf50;
+  color: white;
+}
+
+/* Color: RED */
+.red {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Color: Orange */
+.orange {
+  background-color: #ff9800;
+  color: white;
+}
+
+/* Disabled State */
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
