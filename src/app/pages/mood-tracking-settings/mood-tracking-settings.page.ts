@@ -1,48 +1,52 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, viewChild, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   IonList,
   IonItem,
   IonLabel,
+  IonContent,
   ModalController,
   AlertController,
+  IonHeader, 
+  IonTitle, 
+  IonToolbar,
 } from '@ionic/angular/standalone';
 import { Storage } from '@ionic/storage-angular';
-import { MoodItem } from '../../models/mood-item.model';
-import { CrisisPlan } from '../../models/crisis-plan.model';
-import { MoodScaleConfigComponent } from '../mood-scale-config/mood-scale-config.component';
-import { addIcons } from 'ionicons';
-import { trash, create, add } from 'ionicons/icons';
-import { CustomTextPopupComponent } from '../popups/custom-text-popup/custom-text-popup.component';
-import { ButtonComponent } from '../button/button.component';
-
+import { FormsModule } from '@angular/forms';
+import { ButtonComponent } from 'src/app/components/button/button.component';
+import { MoodItem } from 'src/app/models/mood-item.model';
+import { CustomTextPopupComponent } from 'src/app/components/popups/custom-text-popup/custom-text-popup.component';
+import { MoodScaleConfigComponent } from 'src/app/components/mood-scale-config/mood-scale-config.component';
+import { CrisisPlan } from 'src/app/models/crisis-plan.model';
 @Component({
-  selector: 'app-mood-list',
-  templateUrl: './mood-list.component.html',
-  styleUrls: ['./mood-list.component.scss'],
+  selector: 'app-mood-tracking-settings',
+  templateUrl: './mood-tracking-settings.page.html',
+  styleUrls: ['./mood-tracking-settings.page.scss'],
   standalone: true,
   imports: [
     CommonModule,
+    IonTitle,
+    IonHeader,
+    IonToolbar,
     IonList,
     IonItem,
     IonLabel,
-    ButtonComponent, // 👈 use custom button
+    IonContent,
+    ButtonComponent, 
     CustomTextPopupComponent,
-  ],
-})
-export class MoodListComponent implements OnInit {
+  ],})
+export class MoodTrackingSettingsPage implements OnInit {
   @ViewChild('addPopup') addPopup!: CustomTextPopupComponent;
   private STORAGE_KEY = 'mood_items';
-  items: MoodItem[] = [];
+  moodItems: MoodItem[] = [];
   crisisPlans: CrisisPlan[] = [];
 
-  constructor(
-    private storage: Storage,
-    private alertCtrl: AlertController,
-    private modalCtrl: ModalController
-  ) {
-    addIcons({ trash, create, add });
-  }
+   constructor(
+     private storage: Storage,
+     private alertCtrl: AlertController,
+     private modalCtrl: ModalController
+   ) {
+   }
 
   async ngOnInit() {
     await this.storage.create();
@@ -53,12 +57,12 @@ export class MoodListComponent implements OnInit {
   async loadItems() {
     const saved = (await this.storage.get(this.STORAGE_KEY)) as MoodItem[];
     if (saved) {
-      this.items = saved.map((item) => ({
+      this.moodItems = saved.map((item) => ({
         ...item,
         scalePlans: item.scalePlans || {},
       }));
     } else {
-      this.items = [
+      this.moodItems = [
         {
           id: 1,
           name: 'Suicidal Thoughts',
@@ -97,7 +101,7 @@ export class MoodListComponent implements OnInit {
   }
 
   async saveItems() {
-    await this.storage.set(this.STORAGE_KEY, this.items);
+    await this.storage.set(this.STORAGE_KEY, this.moodItems);
   }
 
   toggleItem(item: MoodItem) {
@@ -118,9 +122,9 @@ export class MoodListComponent implements OnInit {
     const { data } = await modal.onWillDismiss();
 
     if (data) {
-      const index = this.items.findIndex((i) => i.id === item.id);
+      const index = this.moodItems.findIndex((i) => i.id === item.id);
       if (index > -1) {
-        this.items[index] = data;
+        this.moodItems[index] = data;
         await this.saveItems();
       }
     }
@@ -138,7 +142,7 @@ export class MoodListComponent implements OnInit {
           text: 'Löschen',
           role: 'destructive',
           handler: async () => {
-            this.items = this.items.filter((i) => i.id !== item.id);
+            this.moodItems = this.moodItems.filter((i) => i.id !== item.id);
             await this.saveItems();
           },
         },
@@ -163,7 +167,7 @@ export class MoodListComponent implements OnInit {
       scalePlans: {},
     };
 
-    this.items.push(newItem);
+    this.moodItems.push(newItem);
     await this.saveItems();
   }
 }

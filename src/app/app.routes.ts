@@ -11,13 +11,6 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'mood-list',
-    loadComponent: () =>
-      import('./components/mood-list/mood-list.component').then(
-        (m) => m.MoodListComponent
-      ),
-  },
-  {
     path: 'crisis-plan-list',
     loadComponent: () =>
       import('./components/crisis-plan-list/crisis-plan-list.component').then(
@@ -49,5 +42,9 @@ export const routes: Routes = [
       import('./pages/crisis-plan-result/crisis-plan-result.page').then(
         (m) => m.CrisisPlanResultPage
       ),
+  },
+  {
+    path: 'mood-tracking-settings',
+    loadComponent: () => import('./pages/mood-tracking-settings/mood-tracking-settings.page').then( m => m.MoodTrackingSettingsPage)
   },
 ];
