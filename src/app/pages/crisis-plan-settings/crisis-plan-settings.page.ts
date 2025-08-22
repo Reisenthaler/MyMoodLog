@@ -1,6 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit, viewChild, ViewChild } from '@angular/core';
 import {
   IonList,
   IonItem,
@@ -13,37 +11,38 @@ import {
   IonHeader,
   AlertController,
 } from '@ionic/angular/standalone';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { addIcons } from 'ionicons';
 import { add, create, trash } from 'ionicons/icons';
 import { Storage } from '@ionic/storage-angular';
 import { CrisisPlan } from '../../models/crisis-plan.model';
 import { ItemReorderEventDetail } from '@ionic/angular';
-import { CustomTextPopupComponent } from '../popups/custom-text-popup/custom-text-popup.component';
-import { ButtonComponent } from '../button/button.component';
+import { CustomTextPopupComponent } from 'src/app/components/popups/custom-text-popup/custom-text-popup.component';
+import { ButtonComponent } from 'src/app/components/button/button.component';
 
 @Component({
-  selector: 'app-crisis-plan-list',
-  templateUrl: './crisis-plan-list.component.html',
-  styleUrls: ['./crisis-plan-list.component.scss'],
+  selector: 'app-crisis-plan-settings',
+  templateUrl: './crisis-plan-settings.page.html',
+  styleUrls: ['./crisis-plan-settings.page.scss'],
   standalone: true,
   imports: [
-    CommonModule,
-    FormsModule,
-    IonList,
-    IonItem,
-    IonLabel,
-    IonTitle,
-    IonToolbar,
-    IonContent,
-    IonHeader,
-    IonReorderGroup,
+    IonContent, 
+    IonHeader, 
+    IonTitle, 
+    IonToolbar, 
+    IonList, 
+    IonItem, 
+    IonLabel, 
     IonReorder,
-    CustomTextPopupComponent,
-    ButtonComponent, // 👈 use custom button
-  ],
-})
-export class CrisisPlanListComponent implements OnInit {
-  private STORAGE_KEY = 'crisis_plans';
+    IonReorderGroup, 
+    CommonModule, 
+    FormsModule, 
+    ButtonComponent, 
+    CustomTextPopupComponent
+  ] })
+export class CrisisPlanSettingsPage implements OnInit {
+private STORAGE_KEY = 'crisis_plans';
 
   crisisPlans: CrisisPlan[] = [];
 

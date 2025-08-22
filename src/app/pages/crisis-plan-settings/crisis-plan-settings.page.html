@@ -1,20 +1,23 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Crisis Plans</ion-title>
+    <ion-title>crisis-plan-settings</ion-title>
   </ion-toolbar>
 </ion-header>
 
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">crisis-plan-settings</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
 <ion-content>
-
-
-  
-
   <!-- ✅ List of plans -->
   <ion-list>
     <ion-item *ngFor="let plan of crisisPlans" lines="none">
       <ion-label class="ion-text-wrap">
         <!-- Plan title -->
-        <h2>{{ plan.title }}</h2>
+        <h2>Title: {{ plan.title }}</h2>
 
         <!-- Reorderable steps -->
         <ion-reorder-group
@@ -81,8 +84,9 @@
       icon="add"
       label="New Crisis Plan"
       (clicked)="openAddPlan()"
-      style="width: 100%; margin-left: 10%;"
+      style="width: 100%; margin-left: 10%; position: absolute; bottom: 10px;"
     ></app-button>
+
 <!-- Add Plan Popup -->
 <app-custom-text-popup
   #addPlanPopup
@@ -113,3 +117,4 @@
   [multiline]="true"
   (saved)="handleStepSave($event)"
 ></app-custom-text-popup>
+</ion-content>
