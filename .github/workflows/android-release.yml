@@ -19,7 +19,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20.19.0
-          
+
       # 3. Install dependencies
       - name: Install dependencies
         run: npm install
@@ -37,7 +37,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: "temurin"
-          java-version: "17"
+          java-version: "21"
 
       # 7. Decode release keystore
       - name: Decode Keystore
