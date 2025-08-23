@@ -39,6 +39,8 @@ button {
   width: auto;
   height: auto;
   font-size: 1.4rem;
+
+  background-color: transparent !important;  //Force transparent background 
 }
 
 /* Icon + Text */
@@ -85,6 +87,37 @@ button {
 .orange {
   background-color: #ff9800;
   color: white;
+}
+
+/* 👇 Special case: icon-only buttons */
+.icon.default {
+  background-color: transparent !important;
+  color: $defaultButtonBackground; // icon takes background color
+}
+
+.icon.white {
+  background-color: transparent !important;
+  color: $whiteButtonText;
+}
+
+.icon.black {
+  background-color: transparent !important;
+  color: black;
+}
+
+.icon.green {
+  background-color: transparent !important;
+  color: #4caf50;
+}
+
+.icon.red {
+  background-color: transparent !important;
+  color: #f44336;
+}
+
+.icon.orange {
+  background-color: transparent !important;
+  color: #ff9800;
 }
 
 /* Disabled */
