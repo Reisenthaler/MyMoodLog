@@ -17,6 +17,7 @@ import { Storage } from '@ionic/storage-angular';
 import { MoodItem } from '../../models/mood-item.model';
 import { CrisisPlan } from '../../models/crisis-plan.model';
 import { Router } from '@angular/router';
+import { MoodLogEntry } from 'src/app/models/mood-log-entry.model';
 
 @Component({
   selector: 'app-mood-log',
@@ -82,7 +83,7 @@ export class MoodLogPage implements OnInit {
     const pendingNotifId = await this.storage.get('pending_notification');
 
     // Build log entry
-    const logEntry = {
+    const logEntry: MoodLogEntry = {
       id: Date.now(), // unique ID
       date: new Date().toISOString(),
       notificationId: pendingNotifId,

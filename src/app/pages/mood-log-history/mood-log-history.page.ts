@@ -11,6 +11,7 @@ import {
 } from '@ionic/angular/standalone';
 import { Storage } from '@ionic/storage-angular';
 import { MoodItem } from 'src/app/models/mood-item.model';
+import { MoodLogEntry } from 'src/app/models/mood-log-entry.model';
 
 @Component({
   selector: 'app-mood-log-history',
@@ -29,7 +30,7 @@ import { MoodItem } from 'src/app/models/mood-item.model';
   ],
 })
 export class MoodLogHistoryPage implements OnInit {
-  history: any[] = [];
+  history: MoodLogEntry[] = [];
   moodItems: MoodItem[] = [];
 
   constructor(private storage: Storage) {}
