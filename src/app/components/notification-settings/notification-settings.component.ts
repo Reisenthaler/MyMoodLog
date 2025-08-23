@@ -9,6 +9,7 @@ import {
   IonSelectOption,
   IonDatetime,
   IonContent,
+  ToastController,
 } from '@ionic/angular/standalone';
 import { Storage } from '@ionic/storage-angular';
 import {
@@ -43,7 +44,7 @@ export class NotificationSettingsComponent implements OnInit {
   notificationsPerDay: number = 1;
   times: string[] = ['09:00']; // default one time
 
-  constructor(private storage: Storage) {
+  constructor(private storage: Storage, private toastCtrl: ToastController) {
     addIcons({ save }); // 👈 register save icon
   }
 
@@ -70,6 +71,7 @@ export class NotificationSettingsComponent implements OnInit {
   }
 
   async scheduleNotifications() {
+  try {
     const perm = await LocalNotifications.requestPermissions();
     if (perm.display !== 'granted') {
       console.warn('Notification permission not granted');
@@ -106,7 +108,14 @@ export class NotificationSettingsComponent implements OnInit {
     );
 
     await LocalNotifications.schedule({ notifications });
-    console.log('Scheduled notifications:', notifications);
+
+
+      // Optional success toast
+      this.showToast('Notification scheduled successfully', 'success');
+    } catch (err) {
+      console.error('Error scheduling notification:', err);
+      this.showToast('Failed to schedule notification', 'danger');
+    }
   }
 
   updateTimes() {
@@ -117,5 +126,15 @@ export class NotificationSettingsComponent implements OnInit {
         this.times.push('09:00');
       }
     }
+  }
+
+  async showToast(toastMessage: string, color: 'primary' | 'success' | 'warning' | 'danger' | 'dark' = 'dark') {
+    const toast = await this.toastCtrl.create({
+      message: toastMessage,
+      duration: 3000, // auto dismiss after 5s
+      position: 'bottom', // 'top' | 'middle' | 'bottom'
+      color: color, // use the parameter
+    });
+    await toast.present();
   }
 }
