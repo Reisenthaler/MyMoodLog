@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonList, IonItem, IonLabel, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/angular/standalone';
+import { IonList, IonItem, IonLabel, IonHeader, IonToolbar, IonTitle, IonContent, Platform } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { CrisisPlan } from '../../models/crisis-plan.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-crisis-plan-result',
@@ -11,18 +12,32 @@ import { CrisisPlan } from '../../models/crisis-plan.model';
   standalone: true,
   imports: [CommonModule, IonList, IonItem, IonLabel, IonHeader, IonToolbar, IonTitle, IonContent],
 })
-export class CrisisPlanResultPage implements OnInit {
+export class CrisisPlanResultPage implements OnInit, OnDestroy {
   plans: CrisisPlan[] = [];
+  private backButtonSub?: Subscription;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private platform: Platform) {
     const nav = this.router.getCurrentNavigation();
     if (nav?.extras.state && nav.extras.state['plans']) {
       this.plans = nav.extras.state['plans'];
     }
   }
+
+  ngOnInit() {
+    // 👇 Override Android hardware back button
+    this.backButtonSub = this.platform.backButton.subscribeWithPriority(
+      9999, // high priority to override default
+      () => {
+        this.router.navigateByUrl('/home');
+      }
+    );
+  }
   
-  ngOnInit() {}
-  
+  ngOnDestroy() {
+    // Clean up subscription when leaving page
+    this.backButtonSub?.unsubscribe();
+  }
+
   formatUserText(text: string): string 
   {
     if (!text) return '';
