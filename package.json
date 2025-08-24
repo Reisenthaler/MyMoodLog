@@ -33,7 +33,9 @@
     "@ngx-translate/core": "^17.0.0",
     "@ngx-translate/http-loader": "^17.0.0",
     "cordova-sqlite-storage": "^7.0.0",
+    "echarts": "^6.0.0",
     "ionicons": "^7.0.0",
+    "ngx-echarts": "^20.0.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"

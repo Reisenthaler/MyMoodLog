@@ -23,6 +23,30 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { importProvidersFrom } from '@angular/core';
 import { Observable } from 'rxjs';
 
+// Import ngx-echarts provider
+import { provideEchartsCore } from 'ngx-echarts';
+
+// Import ECharts core and required parts
+import * as echarts from 'echarts/core';
+import { LineChart } from 'echarts/charts';
+import {
+  TitleComponent,
+  TooltipComponent,
+  GridComponent,
+  LegendComponent,
+} from 'echarts/components';
+import { CanvasRenderer } from 'echarts/renderers';
+
+// ✅ Register everything
+echarts.use([
+  LineChart,
+  TitleComponent,
+  TooltipComponent,
+  GridComponent,
+  LegendComponent,
+  CanvasRenderer,
+]);
+
 // ✅ Custom loader implementation
 export class CustomTranslateLoader implements TranslateLoader {
   constructor(private http: HttpClient) {}
@@ -57,5 +81,7 @@ bootstrapApplication(AppComponent, {
         },
       })
     ),
-  ],
+    
+    provideEchartsCore({ echarts }),
+    ],
 });

@@ -8,11 +8,15 @@ import {
   IonToolbar,
   IonTitle,
   IonContent,
+  IonSegment,
+  IonSegmentButton,
 } from '@ionic/angular/standalone';
 import { Storage } from '@ionic/storage-angular';
 import { MoodItem } from 'src/app/models/mood-item.model';
 import { MoodLogEntry } from 'src/app/models/mood-log-entry.model';
 import { TranslateModule } from '@ngx-translate/core';
+import { MoodLogGraphComponent } from 'src/app/components/mood-log-graph/mood-log-graph.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-mood-log-history',
@@ -21,6 +25,7 @@ import { TranslateModule } from '@ngx-translate/core';
   standalone: true,
   imports: [
     CommonModule,
+    FormsModule,
     IonList,
     IonItem,
     IonLabel,
@@ -28,12 +33,18 @@ import { TranslateModule } from '@ngx-translate/core';
     IonToolbar,
     IonTitle,
     IonContent,
-    TranslateModule
+    IonSegment,
+    IonSegmentButton,
+    TranslateModule,
+    MoodLogGraphComponent,
   ],
 })
 export class MoodLogHistoryPage implements OnInit {
   history: MoodLogEntry[] = [];
+  filteredHistory: MoodLogEntry[] = [];
   moodItems: MoodItem[] = [];
+
+  selectedRange: '7' | '30' | 'all' = '7'; // default
 
   constructor(private storage: Storage) {}
 
@@ -41,8 +52,7 @@ export class MoodLogHistoryPage implements OnInit {
     await this.storage.create();
 
     // Load mood logs
-    this.history =
-      (await this.storage.get('mood_log_history')) || [];
+    this.history = (await this.storage.get('mood_log_history')) || [];
 
     // Sort newest first
     this.history.sort(
@@ -51,13 +61,31 @@ export class MoodLogHistoryPage implements OnInit {
 
     // Load mood items (names)
     this.moodItems = (await this.storage.get('mood_items')) || [];
+
+    // Apply initial filter
+    this.filterHistory();
+  }
+
+  filterHistory() {
+    if (this.selectedRange === 'all') {
+      this.filteredHistory = this.history;
+      return;
+    }
+
+    const days = parseInt(this.selectedRange, 10);
+    const cutoff = new Date();
+    cutoff.setDate(cutoff.getDate() - days);
+
+    this.filteredHistory = this.history.filter(
+      (entry) => new Date(entry.date).getTime() >= cutoff.getTime()
+    );
   }
 
   getMoodName(key: string | number | unknown): string {
     const strKey = String(key);
 
     const mood = this.moodItems.find((m) => m.id.toString() === strKey);
-
+    
     return mood ? mood.name : strKey;
   }
 }

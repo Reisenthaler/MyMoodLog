@@ -19,7 +19,12 @@
     "NOTIFICATION": "Benachrichtigung",
     "MANUAL": "Manuell",
     "INTENSITY": "Intensität",
-    "NO_LOGS": "Noch keine Stimmungseinträge."
+    "NO_LOGS": "Noch keine Stimmungseinträge.",
+    "FILTER": {
+      "LAST_7": "7 Tage",
+      "LAST_30": "30 Tage",
+      "ALL": "Immer"
+    }
   },
   "MOOD_TRACKING_SETTINGS": {
     "PAGE_TITLE": "Befindlichkeits-Einstellungen",
