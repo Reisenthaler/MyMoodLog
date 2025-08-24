@@ -39,6 +39,12 @@
             {{ 'MOOD_LOG_HISTORY.INTENSITY' | translate }} {{ entry.value }}
           </li>
         </ul>
+
+       <!-- Show comment if it exists -->
+        <p *ngIf="log.comment" class="comment">
+          <strong>{{ 'MOOD_LOG_HISTORY.COMMENT' | translate }}:</strong>
+          {{ log.comment }}
+        </p>
       </ion-label>
     </ion-item>
   </ion-list>

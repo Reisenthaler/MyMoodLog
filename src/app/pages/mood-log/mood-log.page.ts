@@ -11,6 +11,7 @@ import {
   IonToolbar,
   IonTitle,
   IonContent,
+  IonTextarea
 } from '@ionic/angular/standalone';
 import { Storage } from '@ionic/storage-angular';
 import { MoodItem } from '../../models/mood-item.model';
@@ -38,13 +39,15 @@ import { ButtonComponent } from 'src/app/components/button/button.component';
     IonSelect,
     IonSelectOption,
     TranslateModule,
-    ButtonComponent
+    ButtonComponent,
+    IonTextarea
   ],
 })
 export class MoodLogPage implements OnInit {
   moodItems: MoodItem[] = [];
   crisisPlans: CrisisPlan[] = [];
   selections: { [id: number]: number } = {};
+  comment: string = '';
 
   constructor(private storage: Storage, private router: Router) {}
 
@@ -90,6 +93,7 @@ export class MoodLogPage implements OnInit {
       date: new Date().toISOString(),
       notificationId: pendingNotifId,
       selections: this.selections,
+      comment: this.comment || undefined,
     };
 
     // Save to history
@@ -111,11 +115,14 @@ export class MoodLogPage implements OnInit {
     // Clear pending flag
     await this.storage.set('pending_mood_log', false);
 
+    // Reset comment after save
+    this.comment = '';
+
     // Navigate
     if (triggeredPlans.length > 0) {
       this.router.navigateByUrl('/crisis-plan-result', { state: { plans: triggeredPlans } });
     } else {
       this.router.navigateByUrl('/home');
     }
-  } 
+  }
 }

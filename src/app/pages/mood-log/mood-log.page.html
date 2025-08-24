@@ -22,6 +22,18 @@
     </ion-item>
   </ion-list>
 
+  <!-- Comment field -->
+  <ion-item>
+    <ion-label position="stacked">
+      {{ 'MOOD_LOG.COMMENT_LABEL' | translate }}
+    </ion-label>
+    <ion-textarea
+      [(ngModel)]="comment"
+      [placeholder]="'MOOD_LOG.COMMENT_PLACEHOLDER' | translate"
+      autoGrow="true"
+    ></ion-textarea>
+  </ion-item>
+
   <app-button
     size="wide"
     color="green"

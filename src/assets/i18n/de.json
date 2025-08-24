@@ -12,14 +12,17 @@
   "MOOD_LOG": {
     "TITLE": "Stimmungstagebuch",
     "SELECT_INTENSITY": "Intensität auswählen",
-    "SAVE_BUTTON": "Speichern"
+    "SAVE_BUTTON": "Speichern",
+    "COMMENT_LABEL": "Kommentar",
+    "COMMENT_PLACEHOLDER": "Schreibe deine Gedanken hier..."
   },
     "MOOD_LOG_HISTORY": {
     "PAGE_TITLE": "Stimmungsverlauf",
     "NOTIFICATION": "Benachrichtigung",
     "MANUAL": "Manuell",
     "INTENSITY": "Intensität",
-    "NO_LOGS": "Noch keine Stimmungseinträge.",
+    "NO_LOGS": "Noch keine Stimmungseinträge.",    
+    "COMMENT": "Kommentar",
     "FILTER": {
       "LAST_7": "7 Tage",
       "LAST_30": "30 Tage",
