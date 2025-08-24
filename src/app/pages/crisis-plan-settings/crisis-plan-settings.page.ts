@@ -20,6 +20,8 @@ import { CrisisPlan } from '../../models/crisis-plan.model';
 import { ItemReorderEventDetail } from '@ionic/angular';
 import { CustomTextPopupComponent } from 'src/app/components/popups/custom-text-popup/custom-text-popup.component';
 import { ButtonComponent } from 'src/app/components/button/button.component';
+import { TranslateModule } from '@ngx-translate/core'; 
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-crisis-plan-settings',
@@ -39,7 +41,8 @@ import { ButtonComponent } from 'src/app/components/button/button.component';
     CommonModule, 
     FormsModule, 
     ButtonComponent, 
-    CustomTextPopupComponent
+    CustomTextPopupComponent,
+    TranslateModule
   ] })
 export class CrisisPlanSettingsPage implements OnInit {
 private STORAGE_KEY = 'crisis_plans';
@@ -56,7 +59,7 @@ private STORAGE_KEY = 'crisis_plans';
   @ViewChild('editPlanPopup') editPlanPopup!: CustomTextPopupComponent;
   @ViewChild('stepPopup') stepPopup!: CustomTextPopupComponent;
 
-  constructor(private storage: Storage, private alertCtrl: AlertController) {
+  constructor(private storage: Storage, private alertCtrl: AlertController, private translateService: TranslateService) {
     addIcons({ add, create, trash });
   }
 
@@ -106,16 +109,16 @@ private STORAGE_KEY = 'crisis_plans';
   openAddStep(plan: CrisisPlan) {
     this.editingPlan = plan;
     this.editingStepIndex = null;
-    this.stepPopupHeading = 'Add Step';
-    this.stepPopupSaveLabel = 'Add';
+    this.stepPopupHeading = this.translateService.instant('CRISIS_PLAN_SETTINGS.POPUP.ADD_STEP_HEADING');
+    this.stepPopupSaveLabel = this.translateService.instant('CRISIS_PLAN_SETTINGS.POPUP.ADD');
     this.stepPopup.open();
   }
 
   openEditStep(plan: CrisisPlan, index: number) {
     this.editingPlan = plan;
     this.editingStepIndex = index;
-    this.stepPopupHeading = 'Edit Step';
-    this.stepPopupSaveLabel = 'Save';
+    this.stepPopupHeading = this.translateService.instant('CRISIS_PLAN_SETTINGS.POPUP.EDIT_STEP_HEADING');
+    this.stepPopupSaveLabel = this.translateService.instant('CRISIS_PLAN_SETTINGS.POPUP.SAVE');
     this.stepPopup.open(plan.steps[index]);
   }
 
@@ -134,12 +137,12 @@ private STORAGE_KEY = 'crisis_plans';
 
   async deletePlan(plan: CrisisPlan) {
     const alert = await this.alertCtrl.create({
-      header: 'Confirm Delete',
-      message: `Do you really want to delete the crisis plan <b>${plan.title}</b>?`,
+      header: this.translateService.instant('CRISIS_PLAN_SETTINGS.ALERT.CONFIRM_DELETE_TITLE'),
+      message: this.translateService.instant('CRISIS_PLAN_SETTINGS.ALERT.CONFIRM_DELETE_MESSAGE', { title: plan.title }),
       buttons: [
-        { text: 'Cancel', role: 'cancel' },
+        { text: this.translateService.instant('CRISIS_PLAN_SETTINGS.ALERT.CANCEL'), role: 'cancel' },
         {
-          text: 'Delete',
+          text: this.translateService.instant('CRISIS_PLAN_SETTINGS.ALERT.DELETE'),
           role: 'destructive',
           handler: async () => {
             this.crisisPlans = this.crisisPlans.filter((p) => p.id !== plan.id);
@@ -153,12 +156,12 @@ private STORAGE_KEY = 'crisis_plans';
 
   async deleteStep(plan: CrisisPlan, index: number) {
     const alert = await this.alertCtrl.create({
-      header: 'Delete Step?',
-      message: `Do you really want to delete this step?`,
+      header: this.translateService.instant('CRISIS_PLAN_SETTINGS.ALERT.DELETE_STEP_TITLE'),
+      message: this.translateService.instant('CRISIS_PLAN_SETTINGS.ALERT.DELETE_STEP_MESSAGE'),
       buttons: [
-        { text: 'Cancel', role: 'cancel' },
+        { text: this.translateService.instant('CRISIS_PLAN_SETTINGS.ALERT.CANCEL'), role: 'cancel' },
         {
-          text: 'Delete',
+          text: this.translateService.instant('CRISIS_PLAN_SETTINGS.ALERT.DELETE'),
           role: 'destructive',
           handler: async () => {
             plan.steps.splice(index, 1);

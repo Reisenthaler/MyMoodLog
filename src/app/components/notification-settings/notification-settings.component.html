@@ -3,7 +3,7 @@
   <ion-list class="scrollable-list">
     <!-- Select number of notifications per day -->
     <ion-item>
-      <ion-label>Notifications per day</ion-label>
+      <ion-label>{{ 'NOTIFICATION_SETTINGS.NOTIFICATIONS_PER_DAY' | translate }}</ion-label>
       <ion-select
         [(ngModel)]="notificationsPerDay"
         (ionChange)="updateTimes()"
@@ -16,7 +16,9 @@
 
     <!-- Select times -->
     <ion-item *ngFor="let t of times; let i = index">
-      <ion-label>Notification {{ i + 1 }}</ion-label>
+      <ion-label>
+        {{ 'COMMON.NOTIFICATION' | translate }} {{ i + 1 }}
+      </ion-label>
       <ion-datetime
         presentation="time"
         [(ngModel)]="times[i]"
@@ -31,7 +33,7 @@
       size="wide"
       color="green"
       icon="save"
-      label="Save & Schedule Notifications"
+      [label]="'NOTIFICATION_SETTINGS.SAVE_AND_SCHEDULE' | translate"
       (clicked)="saveSettings()"
       style="width: 100%; margin-left: 10%;"
     ></app-button>

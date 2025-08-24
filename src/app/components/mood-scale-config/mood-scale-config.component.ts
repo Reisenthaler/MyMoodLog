@@ -14,6 +14,7 @@ import { CrisisPlan } from '../../models/crisis-plan.model';
 import { ButtonComponent } from '../button/button.component';
 import { addIcons } from 'ionicons';
 import { save, close } from 'ionicons/icons';
+import { TranslateModule } from '@ngx-translate/core'; 
 
 @Component({
   selector: 'app-mood-scale-config',
@@ -29,6 +30,7 @@ import { save, close } from 'ionicons/icons';
     IonSelect,
     IonSelectOption,
     ButtonComponent, // 👈 use custom button
+    TranslateModule
   ],
 })
 export class MoodScaleConfigComponent {

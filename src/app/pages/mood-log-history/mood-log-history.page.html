@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Mood Log History</ion-title>
+    <ion-title>{{ 'MOOD_LOG_HISTORY.PAGE_TITLE' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -9,10 +9,14 @@
     <ion-item *ngFor="let log of history">
       <ion-label>
         <h2>{{ log.date | date: 'short' }}</h2>
-        <p>Notification: {{ log.notificationId || 'Manual' }}</p>
+        <p>
+          {{ 'MOOD_LOG_HISTORY.NOTIFICATION' | translate }}:
+          {{ log.notificationId || ('MOOD_LOG_HISTORY.MANUAL' | translate) }}
+        </p>
         <ul>
           <li *ngFor="let entry of (log.selections | keyvalue)">
-            {{ getMoodName(entry.key) }} → Intensity {{ entry.value }}
+            {{ getMoodName(entry.key) }} →
+            {{ 'MOOD_LOG_HISTORY.INTENSITY' | translate }} {{ entry.value }}
           </li>
         </ul>
       </ion-label>
@@ -20,6 +24,6 @@
   </ion-list>
 
   <ng-template #noLogs>
-    <p>No mood logs yet.</p>
+    <p>{{ 'MOOD_LOG_HISTORY.NO_LOGS' | translate }}</p>
   </ng-template>
 </ion-content>

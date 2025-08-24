@@ -1,8 +1,10 @@
 <ion-list class="scrollable-list">
   <ion-item *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]">
-    <ion-label>Level {{ i }}</ion-label>
+    <ion-label>{{ 'MOOD_SCALE.LEVEL' | translate:{ i: i } }}</ion-label>
     <ion-select [(ngModel)]="item.scalePlans[i]">
-      <ion-select-option [value]="null">None</ion-select-option>
+      <ion-select-option [value]="null">
+        {{ 'MOOD_SCALE.NONE' | translate }}
+      </ion-select-option>
       <ion-select-option *ngFor="let plan of crisisPlans" [value]="plan.id">
         {{ plan.title }}
       </ion-select-option>
@@ -16,7 +18,7 @@
     size="medium"
     color="green"
     icon="save"
-    label="Save"
+    [label]="'MOOD_SCALE.SAVE' | translate"
     (clicked)="save()"
   ></app-button>
 
@@ -24,7 +26,7 @@
     size="medium"
     color="red"
     icon="close"
-    label="Cancel"
+    [label]="'MOOD_SCALE.CANCEL' | translate"
     (clicked)="cancel()"
   ></app-button>
 </div>

@@ -19,6 +19,8 @@ import {
 import { ButtonComponent } from '../button/button.component'; // 👈 import custom button
 import { addIcons } from 'ionicons';
 import { save } from 'ionicons/icons';
+import { TranslateModule } from '@ngx-translate/core'; 
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-notification-settings',
@@ -36,6 +38,7 @@ import { save } from 'ionicons/icons';
     IonDatetime,
     ButtonComponent, 
     IonContent,
+    TranslateModule
   ],
 })
 export class NotificationSettingsComponent implements OnInit {
@@ -44,7 +47,7 @@ export class NotificationSettingsComponent implements OnInit {
   notificationsPerDay: number = 1;
   times: string[] = ['09:00']; // default one time
 
-  constructor(private storage: Storage, private toastCtrl: ToastController) {
+  constructor(private storage: Storage, private toastCtrl: ToastController, private translateService: TranslateService) {
     addIcons({ save }); // 👈 register save icon
   }
 
@@ -111,10 +114,10 @@ export class NotificationSettingsComponent implements OnInit {
 
 
       // Optional success toast
-      this.showToast('Notification scheduled successfully', 'success');
+      this.showToast(this.translateService.instant('NOTIFICATION_SETTINGS.TOAST_SAVE_SUCCESS'), 'success');
     } catch (err) {
       console.error('Error scheduling notification:', err);
-      this.showToast('Failed to schedule notification', 'danger');
+      this.showToast(this.translateService.instant('NOTIFICATION_SETTINGS.TOAST_SAVE_ERROR'), 'danger');
     }
   }
 

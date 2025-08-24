@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Crisis Plans</ion-title>
+    <ion-title>{{ 'CRISIS_PLAN_RESULTS.PAGE_TITLE' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -10,13 +10,17 @@
       <ion-label>
         <h2>{{ plan.title }}</h2>
         <ul>
-          <li *ngFor="let step of plan.steps"  style="white-space: pre-line;" [innerHTML]="formatUserText(step)"></li>
+          <li
+            *ngFor="let step of plan.steps"
+            style="white-space: pre-line;"
+            [innerHTML]="formatUserText(step)"
+          ></li>
         </ul>
       </ion-label>
     </ion-item>
   </ion-list>
 
   <ng-template #noPlans>
-    <p>No crisis plans triggered.</p>
+    <p>{{ 'CRISIS_PLAN_RESULTS.NO_PLANS' | translate }}</p>
   </ng-template>
 </ion-content>

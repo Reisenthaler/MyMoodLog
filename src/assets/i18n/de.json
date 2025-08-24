@@ -1,0 +1,94 @@
+{
+  "COMMON": {
+    "NOTIFICATION": "Benachrichtigung"
+  },
+  "HOME": {
+    "PAGE_TITLE": "Mein Stimmungstagebuch",
+    "MOOD_TRACKING_SETTINGS": "Befindlichkeits-Einstellungen",
+    "CRISIS_PLAN_SETTINGS": "Krisenplan-Einstellungen",
+    "NOTIFICATION_SETTINGS": "Benachrichtigungseinstellungen",
+    "MOOD_LOG_HISTORY": "Stimmungsverlauf"
+  },
+  "MOOD_LOG": {
+    "TITLE": "Stimmungstagebuch",
+    "SELECT_INTENSITY": "Intensität auswählen",
+    "SAVE_BUTTON": "Speichern"
+  },
+    "MOOD_LOG_HISTORY": {
+    "PAGE_TITLE": "Stimmungsverlauf",
+    "NOTIFICATION": "Benachrichtigung",
+    "MANUAL": "Manuell",
+    "INTENSITY": "Intensität",
+    "NO_LOGS": "Noch keine Stimmungseinträge."
+  },
+  "MOOD_TRACKING_SETTINGS": {
+    "PAGE_TITLE": "Befindlichkeits-Einstellungen",
+    "ACTIVE": "Aktiv",
+    "INACTIVE": "Inaktiv",
+    "EDIT": "Bearbeiten",
+    "ADD_BUTTON": "Befindlichkeit hinzufügen",
+    "POPUP": {
+      "HEADING": "Neue Befindlichkeit",
+      "PLACEHOLDER": "Name eingeben",
+      "SAVE": "Hinzufügen",
+      "CANCEL": "Abbrechen"
+    },
+    "DEFAULT_ITEMS": {
+      "SUICIDAL_THOUGHTS": "Suizidgedanken",
+      "TENSION": "Anspannung",
+      "DRIVE": "Antrieb",
+      "RACING_THOUGHTS": "Gedankenrasen"
+    },
+    "ALERT": {
+      "CONFIRM_DELETE_TITLE": "Löschen bestätigen",
+      "CONFIRM_DELETE_MESSAGE": "Möchten Sie \"{{name}}\" wirklich löschen?",
+      "CANCEL": "Abbrechen",
+      "DELETE": "Löschen"
+    }
+  },
+  "MOOD_SCALE": {
+    "LEVEL": "Stufe {{i}}",
+    "NONE": "Keine",
+    "SAVE": "Speichern",
+    "CANCEL": "Abbrechen"
+  },
+  "NOTIFICATION_SETTINGS": {
+    "NOTIFICATIONS_PER_DAY": "Benachrichtigungen pro Tag",
+    "SAVE_AND_SCHEDULE": "Speichern & Benachrichtigungen planen",
+    "TOAST_SAVE_SUCCESS": "Benachrichtigung erfolgreich geplant",
+    "TOAST_SAVE_ERROR": "Fehler beim Planen der Benachrichtigung"
+  },
+  "CRISIS_PLAN_SETTINGS": {
+    "PAGE_TITLE": "Krisenplan-Einstellungen",
+    "TITLE_LABEL": "Titel:",
+    "EDIT_PLAN": "Plan bearbeiten",
+    "DELETE_PLAN": "Plan löschen",
+    "ADD_STEP": "Schritt hinzufügen",
+    "NEW_PLAN": "Neuer Krisenplan",
+    "POPUP": {
+      "NEW_PLAN_HEADING": "Neuer Krisenplan",
+      "NEW_PLAN_PLACEHOLDER": "Krisenplantitel eingeben",
+      "EDIT_PLAN_HEADING": "Plantitel bearbeiten",
+      "EDIT_PLAN_PLACEHOLDER": "Neuen Titel eingeben",
+      "STEP_PLACEHOLDER": "Schritt eingeben",
+      "ADD_STEP_HEADING": "Schritt hinzufügen",
+      "EDIT_STEP_HEADING": "Schritt bearbeiten",
+      "ADD": "Hinzufügen",
+      "SAVE": "Speichern",
+      "CANCEL": "Abbrechen",
+      "CREATE": "Erstellen"
+    },
+    "ALERT": {
+      "CONFIRM_DELETE_TITLE": "Löschen bestätigen",
+      "CONFIRM_DELETE_MESSAGE": "Möchten Sie den Krisenplan <b>{{title}}</b> wirklich löschen?",
+      "DELETE_STEP_TITLE": "Schritt löschen?",
+      "DELETE_STEP_MESSAGE": "Möchten Sie diesen Schritt wirklich löschen?",
+      "CANCEL": "Abbrechen",
+      "DELETE": "Löschen"
+    }
+  },
+    "CRISIS_PLAN_RESULTS": {
+    "PAGE_TITLE": "Krisenpläne",
+    "NO_PLANS": "Keine Krisenpläne ausgelöst."
+  }
+}

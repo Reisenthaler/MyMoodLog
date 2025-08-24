@@ -9,6 +9,7 @@ import {
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
 import { StatusBar, Style } from '@capacitor/status-bar';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -17,9 +18,16 @@ import { StatusBar, Style } from '@capacitor/status-bar';
   imports: [IonApp, IonRouterOutlet],
 })
 export class AppComponent implements OnInit {
-  constructor(private router: Router, private storage: Storage) {
+  constructor(private router: Router, private storage: Storage, private translateService: TranslateService) {
     this.initStatusBar();
     this.initNotificationListeners();
+
+    // Setup translations
+    this.translateService.addLangs(['de']);
+    this.translateService.setDefaultLang('de');
+    this.translateService.use('de');
+    // const browserLang = this.translateService.getBrowserLang() ?? 'en';
+  //  this.translateService.use(browserLang.match(/en|de/) ? browserLang : 'en');
   }
 
   async ngOnInit() {

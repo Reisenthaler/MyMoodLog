@@ -1,120 +1,123 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>crisis-plan-settings</ion-title>
+    <ion-title>{{ 'CRISIS_PLAN_SETTINGS.PAGE_TITLE' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">crisis-plan-settings</ion-title>
+      <ion-title size="large">{{ 'CRISIS_PLAN_SETTINGS.PAGE_TITLE' | translate }}</ion-title>
     </ion-toolbar>
   </ion-header>
 
-<ion-content>
-  <!-- ✅ List of plans -->
-  <ion-list>
-    <ion-item *ngFor="let plan of crisisPlans" lines="none">
-      <ion-label class="ion-text-wrap">
-        <!-- Plan title -->
-        <h2>Title: {{ plan.title }}</h2>
+  <ion-content>
+    <!-- ✅ List of plans -->
+    <ion-list>
+      <ion-item *ngFor="let plan of crisisPlans" lines="none">
+        <ion-label class="ion-text-wrap">
+          <!-- Plan title -->
+          <h2>{{ 'CRISIS_PLAN_SETTINGS.TITLE_LABEL' | translate }} {{ plan.title }}</h2>
 
-        <!-- Reorderable steps -->
-        <ion-reorder-group
-          [disabled]="false"
-          (ionItemReorder)="reorderSteps($event, plan)"
-        >
-          <ion-item *ngFor="let step of plan.steps; let i = index">
-            <ion-label style="white-space: pre-line;" [innerHTML]="formatUserText(step)"></ion-label>
+          <!-- Reorderable steps -->
+          <ion-reorder-group
+            [disabled]="false"
+            (ionItemReorder)="reorderSteps($event, plan)"
+          >
+            <ion-item *ngFor="let step of plan.steps; let i = index">
+              <ion-label
+                style="white-space: pre-line;"
+                [innerHTML]="formatUserText(step)"
+              ></ion-label>
 
-            <!-- Edit/Delete buttons -->
+              <!-- Edit/Delete buttons -->
+              <app-button
+                size="icon"
+                color="default"
+                icon="create"
+                (clicked)="openEditStep(plan, i)"
+              ></app-button>
+
+              <app-button
+                size="icon"
+                color="red"
+                icon="trash"
+                (clicked)="deleteStep(plan, i)"
+              ></app-button>
+
+              <!-- Drag handle -->
+              <ion-reorder slot="end"></ion-reorder>
+            </ion-item>
+          </ion-reorder-group>
+
+          <!-- Plan-level actions -->
+          <div class="plan-actions">
             <app-button
-              size="icon"
+              size="iconWithText"
               color="default"
               icon="create"
-              (clicked)="openEditStep(plan, i)"
+              [label]="'CRISIS_PLAN_SETTINGS.EDIT_PLAN' | translate"
+              (clicked)="openEditPlan(plan)"
             ></app-button>
 
             <app-button
-              size="icon"
+              size="iconWithText"
               color="red"
               icon="trash"
-              (clicked)="deleteStep(plan, i)"
+              [label]="'CRISIS_PLAN_SETTINGS.DELETE_PLAN' | translate"
+              (clicked)="deletePlan(plan)"
             ></app-button>
 
-            <!-- Drag handle -->
-            <ion-reorder slot="end"></ion-reorder>
-          </ion-item>
-        </ion-reorder-group>
+            <app-button
+              size="iconWithText"
+              color="green"
+              icon="add"
+              [label]="'CRISIS_PLAN_SETTINGS.ADD_STEP' | translate"
+              (clicked)="openAddStep(plan)"
+            ></app-button>
+          </div>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
 
-        <!-- Plan-level actions -->
-        <div class="plan-actions">
-          <app-button
-            size="iconWithText"
-            color="default"
-            icon="create"
-            label="Edit Plan"
-            (clicked)="openEditPlan(plan)"
-          ></app-button>
+  <app-button
+    size="wide"
+    color="green"
+    icon="add"
+    [label]="'CRISIS_PLAN_SETTINGS.NEW_PLAN' | translate"
+    (clicked)="openAddPlan()"
+    style="width: 100%; margin-left: 10%; position: absolute; bottom: 10px;"
+  ></app-button>
 
-          <app-button
-            size="iconWithText"
-            color="red"
-            icon="trash"
-            label="Delete Plan"
-            (clicked)="deletePlan(plan)"
-          ></app-button>
+  <!-- Add Plan Popup -->
+  <app-custom-text-popup
+    #addPlanPopup
+    [heading]="'CRISIS_PLAN_SETTINGS.POPUP.NEW_PLAN_HEADING' | translate"
+    [placeholder]="'CRISIS_PLAN_SETTINGS.POPUP.NEW_PLAN_PLACEHOLDER' | translate"
+    [saveLabel]="'CRISIS_PLAN_SETTINGS.POPUP.CREATE' | translate"
+    [cancelLabel]="'CRISIS_PLAN_SETTINGS.POPUP.CANCEL' | translate"
+    (saved)="handleAddPlan($event)"
+  ></app-custom-text-popup>
 
-          <app-button
-            size="iconWithText"
-            color="green"
-            icon="add"
-            label="Add Step"
-            (clicked)="openAddStep(plan)"
-          ></app-button>
-        </div>
-      </ion-label>
-    </ion-item>
-  </ion-list>
-</ion-content>
+  <!-- Edit Plan Popup -->
+  <app-custom-text-popup
+    #editPlanPopup
+    [heading]="'CRISIS_PLAN_SETTINGS.POPUP.EDIT_PLAN_HEADING' | translate"
+    [placeholder]="'CRISIS_PLAN_SETTINGS.POPUP.EDIT_PLAN_PLACEHOLDER' | translate"
+    [saveLabel]="'CRISIS_PLAN_SETTINGS.POPUP.SAVE' | translate"
+    [cancelLabel]="'CRISIS_PLAN_SETTINGS.POPUP.CANCEL' | translate"
+    (saved)="handleEditPlan($event)"
+  ></app-custom-text-popup>
 
-    <app-button
-      size="wide"
-      color="green"
-      icon="add"
-      label="New Crisis Plan"
-      (clicked)="openAddPlan()"
-      style="width: 100%; margin-left: 10%; position: absolute; bottom: 10px;"
-    ></app-button>
-
-<!-- Add Plan Popup -->
-<app-custom-text-popup
-  #addPlanPopup
-  [heading]="'New Crisis Plan'"
-  [placeholder]="'Enter crisis plan title'"
-  [saveLabel]="'Create'"
-  [cancelLabel]="'Cancel'"
-  (saved)="handleAddPlan($event)"
-></app-custom-text-popup>
-
-<!-- Edit Plan Popup -->
-<app-custom-text-popup
-  #editPlanPopup
-  [heading]="'Edit Plan Title'"
-  [placeholder]="'Enter new title'"
-  [saveLabel]="'Save'"
-  [cancelLabel]="'Cancel'"
-  (saved)="handleEditPlan($event)"
-></app-custom-text-popup>
-
-<!-- Add/Edit Step Popup -->
-<app-custom-text-popup
-  #stepPopup
-  [heading]="stepPopupHeading"
-  [placeholder]="'Enter step'"
-  [saveLabel]="stepPopupSaveLabel"
-  [cancelLabel]="'Cancel'"
-  [multiline]="true"
-  (saved)="handleStepSave($event)"
-></app-custom-text-popup>
+  <!-- Add/Edit Step Popup -->
+  <app-custom-text-popup
+    #stepPopup
+    [heading]="stepPopupHeading"
+    [placeholder]="'CRISIS_PLAN_SETTINGS.POPUP.STEP_PLACEHOLDER' | translate"
+    [saveLabel]="stepPopupSaveLabel"
+    [cancelLabel]="'CRISIS_PLAN_SETTINGS.POPUP.CANCEL' | translate"
+    [multiline]="true"
+    (saved)="handleStepSave($event)"
+  ></app-custom-text-popup>
 </ion-content>

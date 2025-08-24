@@ -18,6 +18,7 @@ import { MoodItem } from '../../models/mood-item.model';
 import { CrisisPlan } from '../../models/crisis-plan.model';
 import { Router } from '@angular/router';
 import { MoodLogEntry } from 'src/app/models/mood-log-entry.model';
+import { TranslateModule } from '@ngx-translate/core'; 
 
 @Component({
   selector: 'app-mood-log',
@@ -37,6 +38,7 @@ import { MoodLogEntry } from 'src/app/models/mood-log-entry.model';
     IonSelect,
     IonSelectOption,
     IonButton,
+    TranslateModule,
   ],
 })
 export class MoodLogPage implements OnInit {

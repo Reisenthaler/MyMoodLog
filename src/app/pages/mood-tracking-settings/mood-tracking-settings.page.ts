@@ -18,6 +18,9 @@ import { MoodItem } from 'src/app/models/mood-item.model';
 import { CustomTextPopupComponent } from 'src/app/components/popups/custom-text-popup/custom-text-popup.component';
 import { MoodScaleConfigComponent } from 'src/app/components/mood-scale-config/mood-scale-config.component';
 import { CrisisPlan } from 'src/app/models/crisis-plan.model';
+import { TranslateModule } from '@ngx-translate/core'; 
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
   selector: 'app-mood-tracking-settings',
   templateUrl: './mood-tracking-settings.page.html',
@@ -34,6 +37,7 @@ import { CrisisPlan } from 'src/app/models/crisis-plan.model';
     IonContent,
     ButtonComponent, 
     CustomTextPopupComponent,
+    TranslateModule
   ],})
 export class MoodTrackingSettingsPage implements OnInit {
   @ViewChild('addPopup') addPopup!: CustomTextPopupComponent;
@@ -44,7 +48,8 @@ export class MoodTrackingSettingsPage implements OnInit {
    constructor(
      private storage: Storage,
      private alertCtrl: AlertController,
-     private modalCtrl: ModalController
+     private modalCtrl: ModalController,
+     private translateService: TranslateService
    ) {
    }
 
@@ -65,28 +70,28 @@ export class MoodTrackingSettingsPage implements OnInit {
       this.moodItems = [
         {
           id: 1,
-          name: 'Suicidal Thoughts',
+          name: this.translateService.instant('MOOD_TRACKING_SETTINGS.DEFAULT_ITEMS.SUICIDAL_THOUGHTS'),
           active: false,
           isDefault: true,
           scalePlans: {},
         },
         {
           id: 2,
-          name: 'Tension',
+          name: this.translateService.instant('MOOD_TRACKING_SETTINGS.DEFAULT_ITEMS.TENSION'),
           active: false,
           isDefault: true,
           scalePlans: {},
         },
         {
           id: 3,
-          name: 'Drive',
+          name: this.translateService.instant('MOOD_TRACKING_SETTINGS.DEFAULT_ITEMS.DRIVE'),
           active: false,
           isDefault: true,
           scalePlans: {},
         },
         {
           id: 4,
-          name: 'Racing Thoughts',
+          name: this.translateService.instant('MOOD_TRACKING_SETTINGS.DEFAULT_ITEMS.RACING_THOUGHTS'),
           active: false,
           isDefault: true,
           scalePlans: {},
@@ -134,12 +139,12 @@ export class MoodTrackingSettingsPage implements OnInit {
     if (item.isDefault) return;
 
     const alert = await this.alertCtrl.create({
-      header: 'Löschen bestätigen',
-      message: `Möchten Sie "${item.name}" wirklich löschen?`,
+      header: this.translateService.instant('MOOD_TRACKING_SETTINGS.ALERT.CONFIRM_DELETE_TITLE'),
+      message: this.translateService.instant('MOOD_TRACKING_SETTINGS.ALERT.CONFIRM_DELETE_MESSAGE', { name: item.name }),
       buttons: [
-        { text: 'Abbrechen', role: 'cancel' },
+        { text: this.translateService.instant('MOOD_TRACKING_SETTINGS.ALERT.CANCEL'), role: 'cancel' },
         {
-          text: 'Löschen',
+          text: this.translateService.instant('MOOD_TRACKING_SETTINGS.ALERT.DELETE'),
           role: 'destructive',
           handler: async () => {
             this.moodItems = this.moodItems.filter((i) => i.id !== item.id);

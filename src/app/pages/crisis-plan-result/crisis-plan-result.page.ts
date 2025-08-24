@@ -4,13 +4,14 @@ import { IonList, IonItem, IonLabel, IonHeader, IonToolbar, IonTitle, IonContent
 import { Router } from '@angular/router';
 import { CrisisPlan } from '../../models/crisis-plan.model';
 import { Subscription } from 'rxjs';
+import { TranslateModule } from '@ngx-translate/core'; 
 
 @Component({
   selector: 'app-crisis-plan-result',
   templateUrl: './crisis-plan-result.page.html',
   styleUrls: ['./crisis-plan-result.page.scss'],
   standalone: true,
-  imports: [CommonModule, IonList, IonItem, IonLabel, IonHeader, IonToolbar, IonTitle, IonContent],
+  imports: [CommonModule, IonList, IonItem, IonLabel, IonHeader, IonToolbar, IonTitle, IonContent, TranslateModule],
 })
 export class CrisisPlanResultPage implements OnInit, OnDestroy {
   plans: CrisisPlan[] = [];

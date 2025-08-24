@@ -12,6 +12,7 @@ import {
 import { Storage } from '@ionic/storage-angular';
 import { MoodItem } from 'src/app/models/mood-item.model';
 import { MoodLogEntry } from 'src/app/models/mood-log-entry.model';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-mood-log-history',
@@ -27,6 +28,7 @@ import { MoodLogEntry } from 'src/app/models/mood-log-entry.model';
     IonToolbar,
     IonTitle,
     IonContent,
+    TranslateModule
   ],
 })
 export class MoodLogHistoryPage implements OnInit {
