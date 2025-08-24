@@ -1,0 +1,6 @@
+.plan-actions {
+  display: flex;
+  flex-wrap: wrap;   /* allow wrapping to next line */
+  gap: 8px;          /* spacing between buttons */
+  margin-top: 8px;   /* space above the button row */
+}
