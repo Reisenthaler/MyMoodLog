@@ -22,7 +22,12 @@
     </ion-item>
   </ion-list>
 
-  <ion-button expand="block" color="success" (click)="save()">
-    {{ 'MOOD_LOG.SAVE_BUTTON' | translate }}
-  </ion-button>
+  <app-button
+    size="wide"
+    color="green"
+    icon="save"
+    [label]="'MOOD_LOG.SAVE_BUTTON' | translate"
+    (clicked)="save()"
+    style="margin-bottom: 16px; margin-left: 10%;"
+  ></app-button>
 </ion-content>

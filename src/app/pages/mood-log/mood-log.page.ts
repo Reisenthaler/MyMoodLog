@@ -7,7 +7,6 @@ import {
   IonLabel,
   IonSelect,
   IonSelectOption,
-  IonButton,
   IonHeader,
   IonToolbar,
   IonTitle,
@@ -19,6 +18,7 @@ import { CrisisPlan } from '../../models/crisis-plan.model';
 import { Router } from '@angular/router';
 import { MoodLogEntry } from 'src/app/models/mood-log-entry.model';
 import { TranslateModule } from '@ngx-translate/core'; 
+import { ButtonComponent } from 'src/app/components/button/button.component';
 
 @Component({
   selector: 'app-mood-log',
@@ -37,8 +37,8 @@ import { TranslateModule } from '@ngx-translate/core';
     IonLabel,
     IonSelect,
     IonSelectOption,
-    IonButton,
     TranslateModule,
+    ButtonComponent
   ],
 })
 export class MoodLogPage implements OnInit {
