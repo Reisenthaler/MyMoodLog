@@ -4,17 +4,20 @@ ion-content {
   height: 100%;
 }
 
+.with-bottom-padding {
+  --padding-bottom: 120px; /* adjust to be >= button height + margin */
+}
+
 .scrollable-list {
   flex: 1; /* take up available space */
   overflow-y: auto; /* make it scrollable */
 }
 
 .save-button-container {
-  padding-bottom: 20px;
-  display: flex;
-  justify-content: center;
-  background: var(--ion-background-color, #fff); /* keep background solid */
-  position: sticky;
-  bottom: 0;
-  z-index: 10;
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%; /* or 100% if you want full width */
+  z-index: 1000; /* make sure it stays above content */
 }

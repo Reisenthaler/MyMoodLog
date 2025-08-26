@@ -1,4 +1,4 @@
-<ion-content>
+<ion-content class="with-bottom-padding">
   <!-- Scrollable list -->
   <ion-list class="scrollable-list">
     <!-- Select number of notifications per day -->
@@ -27,7 +27,9 @@
     </ion-item>
   </ion-list>
 
-  <!-- Fixed button at bottom -->
+</ion-content> 
+
+<!-- Fixed button at bottom -->
   <div class="save-button-container">
     <app-button
       size="wide"
@@ -35,7 +37,6 @@
       icon="save"
       [label]="'NOTIFICATION_SETTINGS.SAVE_AND_SCHEDULE' | translate"
       (clicked)="saveSettings()"
-      style="width: 100%; margin-left: 10%;"
+      style="width: 80%; margin-left: 10%;"
     ></app-button>
   </div>
-</ion-content>
