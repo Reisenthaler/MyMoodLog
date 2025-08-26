@@ -7,8 +7,38 @@ ion-item {
 app-button {
   margin-left: 8px;
 }
-.add-button-container {
+
+.with-bottom-padding {
+  --padding-bottom: 80px; /* adjust to be >= button height + margin */
+}
+
+.add-button-fixed {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  z-index: 1000;
+}
+
+.add-button-fixed {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%; /* or 100% if you want full width */
+  z-index: 1000; /* make sure it stays above content */
+}
+
+.button-row {
   display: flex;
-  justify-content: center;
-  margin-top: 20px;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end; /* ✅ keep them right-aligned */
+  align-items: center;
+
+  /* Add padding so wrapped buttons don't stick to the edge */
+  padding-right: 8px; /* adjust as needed */
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
