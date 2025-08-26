@@ -1,14 +1,10 @@
 .button-container {
   display: flex;
-  flex-direction: row; /* row layout */
-  gap: 12px; /* spacing between buttons */
-  margin-top: 20px;
-  width: 100%;
-  margin-left: 10%;
-}
-
-.button-container app-button {
-  flex: 1;        /* each button takes equal space */
-  min-width: 0;   /* prevents overflow */
-  display: flex;  /* ensure the button itself stretches */
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+  padding: 10px;
+  @media (max-width: 330px) {
+    flex-direction: column;
+  }
 }

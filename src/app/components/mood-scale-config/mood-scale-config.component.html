@@ -12,21 +12,21 @@
   </ion-item>
 </ion-list>
 
-<!-- ✅ Replaced with custom buttons -->
-<div class="button-container">
-  <app-button
-    size="medium"
-    color="green"
-    icon="save"
-    [label]="'MOOD_SCALE.SAVE' | translate"
-    (clicked)="save()"
-  ></app-button>
-
-  <app-button
-    size="medium"
-    color="red"
-    icon="close"
-    [label]="'MOOD_SCALE.CANCEL' | translate"
-    (clicked)="cancel()"
-  ></app-button>
+  <div class="button-container"> 
+    <app-button
+      size="small"
+      color="red"
+      icon="close"
+      [label]="'MOOD_SCALE.CANCEL' | translate"
+      (clicked)="cancel()"
+      style="flex: 1"
+    ></app-button>
+    <app-button
+      size="small"
+      color="green"
+      icon="save"
+      [label]="'MOOD_SCALE.SAVE' | translate"
+      (clicked)="save()"
+      style="flex: 1"
+    ></app-button>
 </div>
