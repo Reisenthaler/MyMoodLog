@@ -4,3 +4,11 @@
   color: var(--ion-color-medium);
   white-space: pre-line; /* preserves line breaks in comments */
 }
+
+.no-logs {
+  display: flex;
+  justify-content: center; /* horizontal center */
+  align-items: center;     /* vertical center */
+  height: 100%;            /* take full height of parent */
+  text-align: center;
+}

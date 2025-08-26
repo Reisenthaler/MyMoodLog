@@ -6,7 +6,7 @@
 
 <ion-content class="ion-padding">
   <!-- Filter control -->
-  <ion-segment [(ngModel)]="selectedRange" (ionChange)="filterHistory()" style="padding-bottom: 10px;">
+  <ion-segment *ngIf="filteredHistory.length > 0" [(ngModel)]="selectedRange" (ionChange)="filterHistory()" style="padding-bottom: 10px;">
     <ion-segment-button value="7">
       <ion-label>{{ 'MOOD_LOG_HISTORY.FILTER.LAST_7' | translate }}</ion-label>
     </ion-segment-button>
@@ -20,6 +20,7 @@
 
   <!-- Graph at the top -->
   <app-mood-log-graph
+    *ngIf="filteredHistory.length > 0"
     [history]="filteredHistory"
     [moodItems]="moodItems"
   ></app-mood-log-graph>
@@ -50,6 +51,8 @@
   </ion-list>
 
   <ng-template #noLogs>
-    <p>{{ 'MOOD_LOG_HISTORY.NO_LOGS' | translate }}</p>
+    <div class="no-logs">
+      <p>{{ 'MOOD_LOG_HISTORY.NO_LOGS' | translate }}</p>
+    </div>
   </ng-template>
 </ion-content>
