@@ -64,7 +64,15 @@
     "NOTIFICATIONS_PER_DAY": "Benachrichtigungen pro Tag",
     "SAVE_AND_SCHEDULE": "Speichern & Benachrichtigungen planen",
     "TOAST_SAVE_SUCCESS": "Benachrichtigung erfolgreich geplant",
-    "TOAST_SAVE_ERROR": "Fehler beim Planen der Benachrichtigung"
+    "TOAST_SAVE_ERROR": "Fehler beim Planen der Benachrichtigung",
+    "NOTIFICATION_TITLE": "Stimmungstagebuch Erinnerung",
+    "NOTIFICATION_BODY": "Bitte fülle dein Stimmungstagebuch aus.",
+    "PERMISSION_DENIED": "Notification permission not granted",
+    "AUTOSTART": {
+      "XIAOMI": "Auf Xiaomi-Geräten bitte Autostart aktivieren: Einstellungen → Apps → Berechtigungen → Autostart → Diese App aktivieren",
+      "HUAWEI": "Auf Huawei-Geräten bitte manuellen App-Start erlauben: Einstellungen → Akku → App-Start → Manuell verwalten → Auto-Start + Im Hintergrund ausführen aktivieren",
+      "OPPO_VIVO": "Auf Oppo/Vivo-Geräten bitte Autostart in den Systemeinstellungen für diese App aktivieren."
+    }
   },
   "CRISIS_PLAN_SETTINGS": {
     "PAGE_TITLE": "Krisenplan-Einstellungen",
