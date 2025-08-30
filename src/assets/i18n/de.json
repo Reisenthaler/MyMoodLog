@@ -7,7 +7,8 @@
     "MOOD_TRACKING_SETTINGS": "Befindlichkeits-Einstellungen",
     "CRISIS_PLAN_SETTINGS": "Krisenplan-Einstellungen",
     "NOTIFICATION_SETTINGS": "Benachrichtigungseinstellungen",
-    "MOOD_LOG_HISTORY": "Stimmungsverlauf"
+    "MOOD_LOG_HISTORY": "Stimmungsverlauf",
+    "LEGAL_NOTICE_DISCLAIMER": "Impressung & Haftungsausschluss"
   },
   "MOOD_LOG": {
     "TITLE": "Stimmungstagebuch",
@@ -106,5 +107,14 @@
     "CRISIS_PLAN_RESULTS": {
     "PAGE_TITLE": "Krisenpläne",
     "NO_PLANS": "Keine Krisenpläne ausgelöst."
+  },
+  "LEGAL_NOTICE_DISCLAIMER": {
+    "PAGE_TITLE": "Impressum & Haftungsausschluss",
+    "IMPRESSUM_TITLE": "Impressum",
+    "IMPRESSUM_CONTENT": "Angaben gemäß § 5 TMG:\nMax Mustermann\nMusterstraße 1\n12345 Musterstadt\nDeutschland\n\nKontakt:\nTelefon: +49 (0)123 456789\nE-Mail: info@musterfirma.de",
+    "DISCLAIMER_TITLE": "Haftungsausschluss",
+    "DISCLAIMER_CONTENT": "Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.",
+    "COPYRIGHT_TITLE": "Urheberrecht",
+    "COPYRIGHT_CONTENT": "Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Beiträge Dritter sind als solche gekennzeichnet. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers."
   }
 }

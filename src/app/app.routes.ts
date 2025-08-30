@@ -44,4 +44,8 @@ export const routes: Routes = [
     path: 'crisis-plan-settings',
     loadComponent: () => import('./pages/crisis-plan-settings/crisis-plan-settings.page').then( m => m.CrisisPlanSettingsPage)
   },
+  {
+    path: 'legal-notice-disclaimer',
+    loadComponent: () => import('./pages/legal-notice-disclaimer/legal-notice-disclaimer.page').then( m => m.LegalNoticeDisclaimerPage)
+  },
 ];
