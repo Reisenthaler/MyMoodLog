@@ -28,7 +28,21 @@ export class AppComponent implements OnInit {
     this.translateService.use('de');
     // const browserLang = this.translateService.getBrowserLang() ?? 'en';
   //  this.translateService.use(browserLang.match(/en|de/) ? browserLang : 'en');
+
+    this.initApp();
   }
+
+  async initApp() {
+    await this.storage.create();
+    const onboardingCompleted = await this.storage.get('onboardingCompleted');
+
+    if (onboardingCompleted) {
+      this.router.navigateByUrl('/home', { replaceUrl: true });
+    } else {
+      this.router.navigateByUrl('/onboarding', { replaceUrl: true });
+    }
+  }
+
 
   async ngOnInit() {
     await this.storage.create();

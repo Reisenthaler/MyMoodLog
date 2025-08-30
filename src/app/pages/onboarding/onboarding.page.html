@@ -1,0 +1,19 @@
+<ion-content class="ion-padding">
+  <h2>{{ 'ONBOARDING.WELCOME_HEADING' | translate }}</h2>
+  <p>{{ 'ONBOARDING.WELCOME_TEXT' | translate }}</p>
+
+  <!-- Include the two components -->
+  <app-crisis-plan-info></app-crisis-plan-info>
+  <app-mood-log-info class="with-bottom-padding"></app-mood-log-info>
+
+</ion-content>
+
+<app-button
+  class="add-button-fixed"
+  size="wide"
+  color="green"
+  icon="add"
+  [label]="'ONBOARDING.START_BUTTON' | translate"
+  (clicked)="finishOnboarding()"
+  style="width: 100%; margin-left: 10%; position: absolute; bottom: 10px;"
+></app-button>

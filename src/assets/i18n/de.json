@@ -116,5 +116,28 @@
     "DISCLAIMER_CONTENT": "Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.",
     "COPYRIGHT_TITLE": "Urheberrecht",
     "COPYRIGHT_CONTENT": "Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Beiträge Dritter sind als solche gekennzeichnet. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers."
+  },
+  "ONBOARDING": {
+    "WELCOME_HEADING": "Willkommen im MyMoodLog!",
+    "WELCOME_TEXT": "Hier ein kurzer Überblick über die wichtigsten Funktionen, die dir helfen können:",
+    "START_BUTTON": "Los geht's"
+  },
+  "CRISIS_PLAN_INFO": {
+    "TITLE": "Krisenpläne",
+    "TEXT": "Ein Krisenplan hilft dir, in schwierigen Situationen einen klaren Ablauf zu haben. Du kannst Schritte festlegen, die dir Sicherheit geben, wenn du dich überfordert fühlst.",
+    "POINTS": {
+      "STEP": "Individuelle Schritte für Notfälle",
+      "CONTACTS": "Kontaktpersonen und Hilfsstellen",
+      "ACCESS": "Einfacher Zugriff im Ernstfall"
+    }
+  },
+  "MOOD_LOG_INFO": {
+    "TITLE": "Stimmungstagebuch",
+    "TEXT": "Mit dem Stimmungstagebuch kannst du deine Gefühle und Gedanken regelmäßig festhalten. So erkennst du Muster und Zusammenhänge in deinem Alltag.",
+    "POINTS": {
+      "DAILY": "Tägliche Stimmungseinträge",
+      "COMMENTS": "Kommentare und Gedanken hinzufügen",
+      "HISTORY": "Verlauf und Entwicklung im Blick behalten"
+    }
   }
 }
