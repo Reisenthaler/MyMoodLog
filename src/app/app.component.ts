@@ -1,15 +1,11 @@
-import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 import { Component, OnInit } from '@angular/core';
-import { App } from '@capacitor/app';
-import {
-  LocalNotifications,
-  LocalNotificationSchema,
-  LocalNotificationActionPerformed,
-} from '@capacitor/local-notifications';
 import { Router } from '@angular/router';
+import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 import { Storage } from '@ionic/storage-angular';
 import { StatusBar, Style } from '@capacitor/status-bar';
+import { App } from '@capacitor/app';
 import { TranslateService } from '@ngx-translate/core';
+import { NotificationService } from './services/notification-service'; // 👈 new service
 
 @Component({
   selector: 'app-root',
@@ -18,16 +14,21 @@ import { TranslateService } from '@ngx-translate/core';
   imports: [IonApp, IonRouterOutlet],
 })
 export class AppComponent implements OnInit {
-  constructor(private router: Router, private storage: Storage, private translateService: TranslateService) {
+  constructor(
+    private router: Router,
+    private storage: Storage,
+    private translateService: TranslateService,
+    private notificationService: NotificationService
+  ) {
     this.initStatusBar();
-    this.initNotificationListeners();
 
     // Setup translations
     this.translateService.addLangs(['de']);
     this.translateService.setDefaultLang('de');
     this.translateService.use('de');
+    // If you want auto-detect:
     // const browserLang = this.translateService.getBrowserLang() ?? 'en';
-  //  this.translateService.use(browserLang.match(/en|de/) ? browserLang : 'en');
+    //  this.translateService.use(browserLang.match(/en|de/) ? browserLang : 'en');
 
     this.initApp();
   }
@@ -43,19 +44,21 @@ export class AppComponent implements OnInit {
     }
   }
 
-
   async ngOnInit() {
-    await this.storage.create();
-    // Check on cold start if a mood log is pending
-    await this.checkPendingMoodLog();
+    // Initialize notification handling
+    await this.notificationService.init();
 
     // Also check when app resumes from background
     App.addListener('resume', async () => {
-      await this.checkPendingMoodLog();
+      const pending = await this.storage.get('pending_mood_log');
+      if (pending) {
+        console.log('App resumed with pending mood log → redirecting...');
+        this.router.navigateByUrl('/mood-log');
+      }
     });
   }
 
-  async initStatusBar() {
+  private async initStatusBar() {
     try {
       // Show the status bar
       await StatusBar.show();
@@ -67,63 +70,6 @@ export class AppComponent implements OnInit {
       await StatusBar.setOverlaysWebView({ overlay: false });
     } catch (err) {
       console.warn('StatusBar plugin not available in browser', err);
-    }
-  }
-
-  initNotificationListeners() {
-    // Fired when a notification is delivered (but not tapped yet)
-    LocalNotifications.addListener(
-      'localNotificationReceived',
-      async (notification: LocalNotificationSchema) => {
-        console.log('Notification received:', notification);
-        await this.storage.set('pending_mood_log', true);
-        await this.storage.set(
-          'pending_notification',
-          notification.extra?.notificationId || notification.id
-        );
-      }
-    );
-
-    // Fired when user taps a notification (foreground or background)
-    LocalNotifications.addListener(
-      'localNotificationActionPerformed',
-      async (action: LocalNotificationActionPerformed) => {
-        const notifId =
-          action.notification.extra?.notificationId ||
-          action.notification.id;
-
-        await this.storage.create();
-        const completed =
-          (await this.storage.get('completed_notifications')) || [];
-
-        if (completed.includes(notifId)) {
-          console.log('Notification already completed:', notifId);
-          this.router.navigateByUrl('/home');
-          return;
-        }
-
-        // Mark as pending and redirect
-        await this.storage.set('pending_notification', notifId);
-        await this.storage.set('pending_mood_log', true);
-        this.router.navigateByUrl('/mood-log');
-      }
-    );
-
-    // Fired when app is opened from a notification (cold start via deep link)
-    App.addListener('appUrlOpen', async (event) => {
-      if (event.url.includes('notification')) {
-        console.log('App opened from notification URL:', event.url);
-        await this.storage.set('pending_mood_log', true);
-        this.router.navigateByUrl('/mood-log');
-      }
-    });
-  }
-
-  private async checkPendingMoodLog() {
-    const pending = await this.storage.get('pending_mood_log');
-    if (pending) {
-      console.log('Pending mood log found, redirecting...');
-      this.router.navigateByUrl('/mood-log');
     }
   }
 }
