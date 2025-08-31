@@ -118,20 +118,24 @@ export class MoodTrackingSettingsPage implements OnInit {
     const modal = await this.modalCtrl.create({
       component: MoodScaleConfigComponent,
       componentProps: {
-        item: { ...item },
-        crisisPlans: this.crisisPlans,
+      item: JSON.parse(JSON.stringify(item)), // deep clone
+      crisisPlans: this.crisisPlans,
       },
     });
 
     await modal.present();
-    const { data } = await modal.onWillDismiss();
-
-    if (data) {
+    
+    const { data, role } = await modal.onWillDismiss();
+    
+    if (role === 'save' && data) {
       const index = this.moodItems.findIndex((i) => i.id === item.id);
       if (index > -1) {
         this.moodItems[index] = data;
         await this.saveItems();
       }
+    } else {
+      // Do nothing, user cancelled
+      console.log('Edit cancelled');
     }
   }
 

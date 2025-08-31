@@ -1,15 +1,19 @@
 <ion-list class="scrollable-list">
-  <ion-item *ngFor="let i of [0,1,2,3,4,5,6,7,8,9,10]">
-    <ion-label>{{ 'MOOD_SCALE.LEVEL' | translate:{ i: i } }}</ion-label>
-    <ion-select [(ngModel)]="item.scalePlans[i]">
-      <ion-select-option [value]="null">
-        {{ 'MOOD_SCALE.NONE' | translate }}
-      </ion-select-option>
-      <ion-select-option *ngFor="let plan of crisisPlans" [value]="plan.id">
-        {{ plan.title }}
-      </ion-select-option>
-    </ion-select>
-  </ion-item>
+  <ng-container *ngIf="item?.scalePlans">
+    <ion-item *ngFor="let i of [0,1,2,3,4,5,6,7,8,9,10]">
+      <ion-label>{{ 'MOOD_SCALE.LEVEL' | translate:{ i: i } }}</ion-label>
+
+        <!-- Button instead of ion-select -->
+      <ion-button
+        expand="block"
+        fill="outline"
+        (click)="openPlanMenu(i)"
+        [ngClass]="{ 'none-selected': item.scalePlans[i] == null }"
+      >
+      {{ getPlanTitle(item.scalePlans[i]) }}
+    </ion-button>
+    </ion-item>
+  </ng-container>
 </ion-list>
 
   <div class="button-container"> 

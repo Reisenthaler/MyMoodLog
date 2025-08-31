@@ -8,3 +8,8 @@
     flex-direction: column;
   }
 }
+
+.none-selected {
+  --color: #888;        /* text color */
+  --border-color: #888; /* outline border color */
+}

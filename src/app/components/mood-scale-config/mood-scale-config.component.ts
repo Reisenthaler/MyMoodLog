@@ -7,14 +7,15 @@ import {
   IonLabel,
   IonSelect,
   IonSelectOption,
+  IonButton,
   ModalController,
+  IonSegmentButton
 } from '@ionic/angular/standalone';
 import { MoodItem } from '../../models/mood-item.model';
 import { CrisisPlan } from '../../models/crisis-plan.model';
 import { ButtonComponent } from '../button/button.component';
-import { addIcons } from 'ionicons';
-import { save, close } from 'ionicons/icons';
 import { TranslateModule } from '@ngx-translate/core'; 
+import { ActionSheetController } from '@ionic/angular';
 
 @Component({
   selector: 'app-mood-scale-config',
@@ -29,6 +30,8 @@ import { TranslateModule } from '@ngx-translate/core';
     IonLabel,
     IonSelect,
     IonSelectOption,
+    IonSegmentButton,
+    IonButton,
     ButtonComponent, // 👈 use custom button
     TranslateModule
   ],
@@ -37,15 +40,47 @@ export class MoodScaleConfigComponent {
   @Input() item!: MoodItem;
   @Input() crisisPlans: CrisisPlan[] = [];
 
-  constructor(private modalCtrl: ModalController) {
-    addIcons({ save, close }); // register icons
+  constructor(private actionSheetCtrl: ActionSheetController,
+              private modalCtrl: ModalController) {}
+
+  async openPlanMenu(level: number) {
+    const buttons: any[] = this.crisisPlans.map((plan) => ({
+      text: plan.title,
+      handler: () => {
+        this.item.scalePlans[level] = plan.id;
+      },
+    }));
+
+    // "None" option with grey style
+    buttons.unshift({
+      text: 'None',
+      cssClass: 'action-sheet-none', // custom class
+      handler: () => {
+        this.item.scalePlans[level] = null;
+      },
+    } as any); // cast to any to bypass TS error
+
+    const actionSheet = await this.actionSheetCtrl.create({
+      header: `Select plan for level ${level}`,
+      buttons,
+    });
+
+    await actionSheet.present();
   }
 
-  save() {
-    this.modalCtrl.dismiss(this.item);
+  getPlanTitle(planId: number | null): string {
+    if (planId == null) {
+      return 'None';
+    }
+    const plan = this.crisisPlans.find((p) => p.id === planId);
+    return plan ? plan.title : 'None';
   }
 
   cancel() {
-    this.modalCtrl.dismiss(null);
+    this.modalCtrl.dismiss(null, 'cancel'); // dismiss without data
+  }
+
+  save() {
+    this.modalCtrl.dismiss(this.item, 'save'); // return data
   }
 }
