@@ -63,6 +63,33 @@ export class MoodLogGraphComponent implements OnChanges {
 this.chartOptions = {
   tooltip: {
     trigger: 'axis',
+    formatter: (params: any) => {
+      const date = new Date(sortedHistory[params[0].dataIndex].date);
+
+      // Format: YYYY-MM-DD HH:mm (24h, no seconds)
+      const formattedDate = date.toLocaleString(undefined, {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false, // ✅ 24h format
+      });
+
+      let content = `<b>${formattedDate}</b><br/>`;
+      params.forEach((p: any) => {
+        if (p.data !== null && p.data !== undefined) {
+          content += `
+            <span style="display:inline-block;margin-right:5px;
+              border-radius:10px;width:10px;height:10px;
+              background-color:${p.color};"></span>
+            ${p.seriesName}: <b>${p.data}</b><br/>
+          `;
+        }
+      });
+
+      return content;
+    },
   },
   legend: {
     type: 'plain',
@@ -79,10 +106,10 @@ this.chartOptions = {
     width: '90%',
   },
   grid: {
-    left: '1%',   // ✅ reduce left margin
-    right: '1%',  // ✅ reduce right margin
-    bottom: '15%', // ✅ keep space for legend
-    top: '5%',    // ✅ small top margin
+    left: '1%',
+    right: '1%',
+    bottom: '15%',
+    top: '5%',
     containLabel: true,
   },
   xAxis: {
