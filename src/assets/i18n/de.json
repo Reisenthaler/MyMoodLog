@@ -8,7 +8,8 @@
     "CRISIS_PLAN_SETTINGS": "Krisenplan-Einstellungen",
     "NOTIFICATION_SETTINGS": "Benachrichtigungseinstellungen",
     "MOOD_LOG_HISTORY": "Stimmungsverlauf",
-    "LEGAL_NOTICE_DISCLAIMER": "Impressung & Haftungsausschluss"
+    "LEGAL_NOTICE_DISCLAIMER": "Impressung & Haftungsausschluss",
+    "ONBOARDING": "So funktioniert die App"
   },
   "MOOD_LOG": {
     "TITLE": "Stimmungstagebuch",
