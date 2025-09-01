@@ -1,0 +1,25 @@
+ion-card {
+  margin: 12px 0;
+  border-radius: 16px; 
+  overflow: hidden; // ensures content respects the rounded corners
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); // soft shadow
+}
+
+ion-item {
+  --padding-start: 16px;
+  --inner-padding-end: 16px;
+  --min-height: 64px;
+  --border-radius: 12px; 
+  margin: 6px 0; // spacing between items
+  --background: var(--ion-color-light); // subtle background
+}
+
+ion-label h2 {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+ion-label p {
+  font-size: 0.9rem;
+  color: var(--ion-color-medium);
+}

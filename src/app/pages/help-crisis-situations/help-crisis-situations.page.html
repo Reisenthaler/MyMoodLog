@@ -1,0 +1,77 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="danger">
+    <ion-title>{{ 'HELP_CRISIS_SITUATIONS.TITLE' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-header collapse="condense">
+    <ion-toolbar color="danger">
+      <ion-title size="large">
+        {{ 'HELP_CRISIS_SITUATIONS.TITLE' | translate }}
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card>
+    <ion-card-content>
+      <p>{{ 'HELP_CRISIS_SITUATIONS.INTRO' | translate }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list>
+    <ion-item
+      button
+      detail="false"
+      [href]="'tel:' + ('HELP_CRISIS_SITUATIONS.HOTLINES.TELEFONSEELSORGE.NUMBER' | translate)"
+    >
+      <ion-icon name="call" slot="start" color="danger"></ion-icon>
+      <ion-label>
+        <h2>{{ 'HELP_CRISIS_SITUATIONS.HOTLINES.TELEFONSEELSORGE.NAME' | translate }}</h2>
+        <p>{{ 'HELP_CRISIS_SITUATIONS.HOTLINES.TELEFONSEELSORGE.DESC' | translate }}</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item
+      button
+      detail="false"
+      [href]="'tel:' + ('HELP_CRISIS_SITUATIONS.HOTLINES.RATAUFDRATH.NUMBER' | translate)"
+    >
+      <ion-icon name="call" slot="start" color="danger"></ion-icon>
+      <ion-label>
+        <h2>{{ 'HELP_CRISIS_SITUATIONS.HOTLINES.RATAUFDRATH.NAME' | translate }}</h2>
+        <p>{{ 'HELP_CRISIS_SITUATIONS.HOTLINES.RATAUFDRATH.DESC' | translate }}</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item
+      button
+      detail="false"
+      [href]="'tel:' + ('HELP_CRISIS_SITUATIONS.HOTLINES.FRAUENHELPLINE.NUMBER' | translate)"
+    >
+      <ion-icon name="call" slot="start" color="danger"></ion-icon>
+      <ion-label>
+        <h2>{{ 'HELP_CRISIS_SITUATIONS.HOTLINES.FRAUENHELPLINE.NAME' | translate }}</h2>
+        <p>{{ 'HELP_CRISIS_SITUATIONS.HOTLINES.FRAUENHELPLINE.DESC' | translate }}</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item
+      button
+      detail="false"
+      [href]="'tel:' + ('HELP_CRISIS_SITUATIONS.HOTLINES.MAENNERNOTRUF.NUMBER' | translate)"
+    >
+      <ion-icon name="call" slot="start" color="danger"></ion-icon>
+      <ion-label>
+        <h2>{{ 'HELP_CRISIS_SITUATIONS.HOTLINES.MAENNERNOTRUF.NAME' | translate }}</h2>
+        <p>{{ 'HELP_CRISIS_SITUATIONS.HOTLINES.MAENNERNOTRUF.DESC' | translate }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-card>
+    <ion-card-content>
+      <p>{{ 'HELP_CRISIS_SITUATIONS.OUTRO' | translate }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

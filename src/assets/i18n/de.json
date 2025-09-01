@@ -9,7 +9,8 @@
     "NOTIFICATION_SETTINGS": "Benachrichtigungseinstellungen",
     "MOOD_LOG_HISTORY": "Stimmungsverlauf",
     "LEGAL_NOTICE_DISCLAIMER": "Impressung & Haftungsausschluss",
-    "ONBOARDING": "So funktioniert die App"
+    "ONBOARDING": "So funktioniert die App",
+    "HELP_CRISIS_SITUATIONS": "Hilfe in akuten krisen"
   },
   "MOOD_LOG": {
     "TITLE": "Stimmungstagebuch",
@@ -139,6 +140,33 @@
       "DAILY": "Tägliche Stimmungseinträge",
       "COMMENTS": "Kommentare und Gedanken hinzufügen",
       "HISTORY": "Verlauf und Entwicklung im Blick behalten"
+    }
+  },
+  "HELP_CRISIS_SITUATIONS": {
+    "TITLE": "🆘 Hilfe in Krisen",
+    "INTRO": "MyMoodLog unterstützt bei Selbstreflexion und Selbsthilfe, ersetzt jedoch keine professionelle Beratung. Wenn du dich in einer akuten psychischen Krise befindest, wende dich bitte an qualifizierte Fachpersonen oder folgende kostenlose und vertrauliche Hilfsangebote in Österreich:",
+    "OUTRO": "Diese Angebote sind für dich da – jederzeit, anonym und kostenfrei.",
+    "HOTLINES": {
+      "TELEFONSEELSORGE": {
+        "NAME": "Telefonseelsorge – 142",
+        "DESC": "Rund um die Uhr erreichbar, anonym und kostenlos",
+        "NUMBER": "142"
+      },
+      "RATAUFDRATH": {
+        "NAME": "Rat auf Draht – 147",
+        "DESC": "Für Kinder, Jugendliche und Bezugspersonen, 24/7",
+        "NUMBER": "147"
+      },
+      "FRAUENHELPLINE": {
+        "NAME": "Frauenhelpline gegen Gewalt – 0800 222 555",
+        "DESC": "Rund um die Uhr, anonym, mehrsprachig",
+        "NUMBER": "0800222555"
+      },
+      "MAENNERNOTRUF": {
+        "NAME": "Männernotruf Österreich – 0800 246 247",
+        "DESC": "Hilfe für Männer in Krisen- und Gewaltsituationen, 24/7",
+        "NUMBER": "0800246247"
+      }
     }
   }
 }

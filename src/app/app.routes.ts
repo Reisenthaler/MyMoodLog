@@ -52,4 +52,8 @@ export const routes: Routes = [
     path: 'onboarding',
     loadComponent: () => import('./pages/onboarding/onboarding.page').then( m => m.OnboardingPage)
   },
+  {
+    path: 'help-crisis-situations',
+    loadComponent: () => import('./pages/help-crisis-situations/help-crisis-situations.page').then( m => m.HelpCrisisSituationsPage)
+  },
 ];
