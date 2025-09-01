@@ -60,25 +60,19 @@ export class MoodLogPage implements OnInit {
 
   async save() {
     const triggeredPlans: CrisisPlan[] = [];
+    const addedPlanIds = new Set<number>();
 
     for (const item of this.moodItems) {
-      let intensity = this.selections[item.id];
+      const intensity = this.selections[item.id];
 
-      if (intensity && item.scalePlans) {
-        let planId: number | null = null;
+      if (intensity != null && item.scalePlans) {
+        const planId = item.scalePlans[intensity] ?? null;
 
-        // Try current intensity, then lower levels until we find a plan
-        for (let level = intensity; level >= 0; level--) {
-          if (item.scalePlans[level]) {
-            planId = item.scalePlans[level];
-            break; // stop at the first lower level with a plan
-          }
-        }
-
-        if (planId) {
+        if (planId && !addedPlanIds.has(planId)) {
           const plan = this.crisisPlans.find((p) => p.id === planId);
           if (plan) {
             triggeredPlans.push(plan);
+            addedPlanIds.add(planId); // to prevent duplicates
           }
         }
       }
