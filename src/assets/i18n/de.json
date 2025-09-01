@@ -1,6 +1,7 @@
 {
   "COMMON": {
-    "NOTIFICATION": "Benachrichtigung"
+    "NOTIFICATION": "Benachrichtigung",
+    "CLOSE": "schließen"
   },
   "HOME": {
     "PAGE_TITLE": "Mein Stimmungstagebuch",

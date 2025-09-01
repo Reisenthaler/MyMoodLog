@@ -6,14 +6,23 @@
 
 <ion-content class="ion-padding">
   <ion-list>
+    <!-- Crisis Plan Settings -->
     <ion-item button detail (click)="goTo('crisis-plan-settings')">
       <ion-label>{{ 'HOME.CRISIS_PLAN_SETTINGS' | translate }}</ion-label>
-    </ion-item>    
-    
-    <ion-item button detail (click)="goTo('mood-tracking-settings')">
-      <ion-label>{{ 'HOME.MOOD_TRACKING_SETTINGS' | translate }}</ion-label>
+      <ion-button fill="clear" slot="end" (click)="openCrisisPlanInfo($event)">
+        <ion-icon name="information-circle-outline"></ion-icon>
+      </ion-button>
     </ion-item>
 
+    <!-- Mood Tracking Settings -->
+    <ion-item button detail (click)="goTo('mood-tracking-settings')">
+      <ion-label>{{ 'HOME.MOOD_TRACKING_SETTINGS' | translate }}</ion-label>
+      <ion-button fill="clear" slot="end" (click)="openMoodLogInfo($event)">
+        <ion-icon name="information-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+    <!-- Other items unchanged -->
     <ion-item button detail (click)="goTo('notification-settings')">
       <ion-label>{{ 'HOME.NOTIFICATION_SETTINGS' | translate }}</ion-label>
     </ion-item>
@@ -29,9 +38,29 @@
     <ion-item button detail (click)="goTo('onboarding')">
       <ion-label>{{ 'HOME.ONBOARDING' | translate }}</ion-label>
     </ion-item>
-      
+
     <ion-item button detail (click)="goTo('help-crisis-situations')">
       <ion-label>{{ 'HOME.HELP_CRISIS_SITUATIONS' | translate }}</ion-label>
     </ion-item>
   </ion-list>
+
+  <!-- Overlay Crisis Plan Info -->
+  <div *ngIf="showCrisisPlanInfo" class="overlay" (click)="closeInfo()">
+    <div class="overlay-content" (click)="$event.stopPropagation()">
+      <app-crisis-plan-info></app-crisis-plan-info>
+      <ion-button expand="block" (click)="closeInfo()" class="close-btn">
+        {{ 'COMMON.CLOSE' | translate }}
+      </ion-button>
+    </div>
+  </div>
+
+  <!-- Overlay Mood Log Info -->
+  <div *ngIf="showMoodLogInfo" class="overlay" (click)="closeInfo()">
+    <div class="overlay-content" (click)="$event.stopPropagation()">
+      <app-mood-log-info></app-mood-log-info>
+      <ion-button expand="block" (click)="closeInfo()" class="close-btn">
+        {{ 'COMMON.CLOSE' | translate }}
+      </ion-button>
+    </div>
+  </div>
 </ion-content>
