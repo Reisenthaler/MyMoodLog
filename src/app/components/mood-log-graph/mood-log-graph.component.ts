@@ -46,6 +46,10 @@ export class MoodLogGraphComponent implements OnChanges {
         (entry) => entry.selections[mood.id] ?? null
       );
 
+      // Check if this mood has at least one non-null value
+      const hasValues = data.some((v) => v !== null && v !== undefined);
+      if (!hasValues) return null;
+
       return {
         name: mood.name,
         type: 'line',
