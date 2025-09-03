@@ -62,7 +62,9 @@
     "LEVEL": "Stufe {{i}}",
     "NONE": "Keine",
     "SAVE": "Speichern",
-    "CANCEL": "Abbrechen"
+    "CANCEL": "Abbrechen",
+    "NOTE": "info",
+    "NOTE_PLACEHOLDER": "info hinzufügen..."
   },
   "NOTIFICATION_SETTINGS": {
     "NOTIFICATIONS_PER_DAY": "Benachrichtigungen pro Tag",

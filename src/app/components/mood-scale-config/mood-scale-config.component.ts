@@ -9,7 +9,9 @@ import {
   IonSelectOption,
   IonButton,
   ModalController,
-  IonSegmentButton
+  IonSegmentButton,
+  IonTextarea,
+  IonContent
 } from '@ionic/angular/standalone';
 import { MoodItem } from '../../models/mood-item.model';
 import { CrisisPlan } from '../../models/crisis-plan.model';
@@ -32,6 +34,8 @@ import { ActionSheetController } from '@ionic/angular';
     IonSelectOption,
     IonSegmentButton,
     IonButton,
+    IonTextarea,
+    IonContent,
     ButtonComponent, // 👈 use custom button
     TranslateModule
   ],

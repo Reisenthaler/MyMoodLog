@@ -1,36 +1,51 @@
-<ion-list class="scrollable-list">
-  <ng-container *ngIf="item?.scalePlans">
-    <ion-item *ngFor="let i of [0,1,2,3,4,5,6,7,8,9,10]">
-      <ion-label>{{ 'MOOD_SCALE.LEVEL' | translate:{ i: i } }}</ion-label>
+<ion-content class="ion-padding">
+  <ion-list class="scrollable-list">
+    <ng-container *ngIf="item?.scalePlans">
+      <ion-item *ngFor="let i of [0,1,2,3,4,5,6,7,8,9,10]">
+        <ion-label>{{ 'MOOD_SCALE.LEVEL' | translate:{ i: i } }}</ion-label>
 
         <!-- Button instead of ion-select -->
-      <ion-button
-        expand="block"
-        fill="outline"
-        (click)="openPlanMenu(i)"
-        [ngClass]="{ 'none-selected': item.scalePlans[i] == null }"
-      >
-      {{ getPlanTitle(item.scalePlans[i]) }}
-    </ion-button>
-    </ion-item>
-  </ng-container>
-</ion-list>
+        <ion-button
+          expand="block"
+          fill="outline"
+          (click)="openPlanMenu(i)"
+          [ngClass]="{ 'none-selected': item.scalePlans[i] == null }"
+        >
+          {{ getPlanTitle(item.scalePlans[i]) }}
+        </ion-button>
+      </ion-item>
+    </ng-container>
+  </ion-list>
 
-  <div class="button-container"> 
-    <app-button
-      size="small"
-      color="red"
-      icon="close"
-      [label]="'MOOD_SCALE.CANCEL' | translate"
-      (clicked)="cancel()"
-      style="flex: 1"
-    ></app-button>
-    <app-button
-      size="small"
-      color="green"
-      icon="save"
-      [label]="'MOOD_SCALE.SAVE' | translate"
-      (clicked)="save()"
-      style="flex: 1"
-    ></app-button>
+  <!-- comment field -->
+  <ion-item>
+    <ion-label position="stacked">
+      {{ 'MOOD_SCALE.NOTE' | translate }}
+    </ion-label>
+    <ion-textarea
+      [(ngModel)]="item.note"
+      autoGrow="true"
+      placeholder="{{ 'MOOD_SCALE.NOTE_PLACEHOLDER' | translate }}"
+    ></ion-textarea>
+  </ion-item>
+</ion-content>
+
+<!-- Fixed button bar -->
+<div class="button-container">
+  <app-button
+    size="small"
+    color="red"
+    icon="close"
+    [label]="'MOOD_SCALE.CANCEL' | translate"
+    (clicked)="cancel()"
+    style="flex: 1"
+  ></app-button>
+  <app-button
+    size="small"
+    color="green"
+    icon="save"
+    [label]="'MOOD_SCALE.SAVE' | translate"
+    (clicked)="save()"
+    style="flex: 1"
+  ></app-button>
 </div>
