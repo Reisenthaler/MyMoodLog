@@ -5,10 +5,10 @@
   },
   "HOME": {
     "PAGE_TITLE": "Mein Stimmungstagebuch",
-    "MOOD_TRACKING_SETTINGS": "Befindlichkeits-Einstellungen",
-    "CRISIS_PLAN_SETTINGS": "Krisenplan-Einstellungen",
-    "NOTIFICATION_SETTINGS": "Benachrichtigungseinstellungen",
-    "MOOD_LOG_HISTORY": "Stimmungsverlauf",
+    "MOOD_TRACKING_SETTINGS": "Meine Befindlichkeitsparameter",
+    "CRISIS_PLAN_SETTINGS": "Meine Krisenpläne",
+    "NOTIFICATION_SETTINGS": "Meine Erinnerungen",
+    "MOOD_LOG_HISTORY": "Verlauf & Rückblick",
     "LEGAL_NOTICE_DISCLAIMER": "Impressum & Haftungsausschluss",
     "ONBOARDING": "So funktioniert die App",
     "HELP_CRISIS_SITUATIONS": "Hilfe in akuten krisen"
@@ -21,7 +21,7 @@
     "COMMENT_PLACEHOLDER": "Schreibe deine Gedanken hier..."
   },
     "MOOD_LOG_HISTORY": {
-    "PAGE_TITLE": "Stimmungsverlauf",
+    "PAGE_TITLE": "Verlauf & Rückblick",
     "NOTIFICATION": "Benachrichtigung",
     "MANUAL": "Manuell",
     "INTENSITY": "Intensität",
@@ -34,7 +34,7 @@
     }
   },
   "MOOD_TRACKING_SETTINGS": {
-    "PAGE_TITLE": "Befindlichkeits-Einstellungen",
+    "PAGE_TITLE": "Meine Befindlichkeitsparameter",
     "ACTIVE": "Aktiv",
     "INACTIVE": "Inaktiv",
     "EDIT": "Krisenplan Zuweisen",
@@ -71,7 +71,7 @@
     "SAVE_AND_SCHEDULE": "Speichern & Benachrichtigungen planen",
     "TOAST_SAVE_SUCCESS": "Benachrichtigung erfolgreich geplant",
     "TOAST_SAVE_ERROR": "Fehler beim Planen der Benachrichtigung",
-    "NOTIFICATION_TITLE": "Stimmungstagebuch Erinnerung",
+    "NOTIFICATION_TITLE": "Meine Erinnerungen",
     "NOTIFICATION_BODY": "Bitte fülle dein Stimmungstagebuch aus.",
     "PERMISSION_DENIED": "Notification permission not granted",
     "AUTOSTART": {
@@ -81,7 +81,7 @@
     }
   },
   "CRISIS_PLAN_SETTINGS": {
-    "PAGE_TITLE": "Krisenplan-Einstellungen",
+    "PAGE_TITLE": "Meine Krisenpläne",
     "TITLE_LABEL": "Titel:",
     "EDIT_PLAN": "Plan bearbeiten",
     "DELETE_PLAN": "Plan löschen",
