@@ -145,6 +145,10 @@
       "HISTORY": "Verlauf und Entwicklung im Blick behalten"
     }
   },
+  "NOTIFICATION_INFO": {
+    "TITLE": "Erinnerungen",
+    "TEXT": "Die App erinnert dich täglich an das Einschätzen deiner Befindlichkeit. Du kannst bis zu fünf Zeitpunkte auswählen an denen dich die App auffordern soll. Wichtig ist, dass die App auf deinem Smartphone die Erlaubnis hat Benachrichtigungen zu senden."
+  },
   "HELP_CRISIS_SITUATIONS": {
     "TITLE": "🆘 Hilfe in Krisen",
     "INTRO": "MyMoodLog unterstützt bei Selbstreflexion und Selbsthilfe, ersetzt jedoch keine professionelle Beratung. Wenn du dich in einer akuten psychischen Krise befindest, wende dich bitte an qualifizierte Fachpersonen oder folgende kostenlose und vertrauliche Hilfsangebote in Österreich:",
