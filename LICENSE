@@ -1,24 +1,42 @@
-This is free and unencumbered software released into the public domain.
+MyMoodLog License
+=================
 
-Anyone is free to copy, modify, publish, use, compile, sell, or
-distribute this software, either in source code form or as a compiled
-binary, for any purpose, commercial or non-commercial, and by any
-means.
+Copyright (c) 2025 Tobias Reisenthaler
 
-In jurisdictions that recognize copyright laws, the author or authors
-of this software dedicate any and all copyright interest in the
-software to the public domain. We make this dedication for the benefit
-of the public at large and to the detriment of our heirs and
-successors. We intend this dedication to be an overt act of
-relinquishment in perpetuity of all present and future rights to this
-software under copyright law.
+All rights reserved.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
-OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
+1. Copyright & Ownership
+   All contents of this repository, including but not limited to source code,
+   graphics, designs, the MyMoodLog logo, and the MyMoodLog app icon, are
+   protected by copyright law. Unless otherwise stated, all rights remain with
+   the creator and operator of the MyMoodLog app.
 
-For more information, please refer to <https://unlicense.org>
+2. Permitted Use
+   - You may use this repository and its contents for personal, non-commercial
+     purposes only.
+   - You may view, download, and run the code for private use.
+
+3. Restrictions
+   - Commercial use, redistribution, sublicensing, or modification of the
+     contents (including source code, graphics, logo, and app icon) is strictly
+     prohibited without prior written permission from the copyright holder.
+   - The MyMoodLog logo and app icon may only be used within the context of the
+     official MyMoodLog app. Any separate licensing or third-party use is
+     excluded.
+
+4. Contributions
+   If you submit code or other contributions to this repository, you agree that
+   the copyright holder may use, modify, and distribute your contribution as
+   part of the project. You retain copyright to your contribution.
+
+5. Disclaimer
+   This software is provided "as is", without warranty of any kind, express or
+   implied, including but not limited to the warranties of merchantability,
+   fitness for a particular purpose, and noninfringement. In no event shall the
+   authors or copyright holders be liable for any claim, damages, or other
+   liability, whether in an action of contract, tort, or otherwise, arising
+   from, out of, or in connection with the software or the use or other dealings
+   in the software.
+
+For licensing inquiries, please contact:
+Tobias Reisenthaler
