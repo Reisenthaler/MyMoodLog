@@ -11,7 +11,8 @@
     "MOOD_LOG_HISTORY": "Verlauf & Rückblick",
     "LEGAL_NOTICE_DISCLAIMER": "Impressum & Haftungsausschluss",
     "ONBOARDING": "So funktioniert die App",
-    "HELP_CRISIS_SITUATIONS": "Hilfe in akuten krisen"
+    "HELP_CRISIS_SITUATIONS": "Hilfe in akuten krisen",
+    "LOG_CURRENT_MOOD": "Neuer Stimmungstagebucheintrag"
   },
   "MOOD_LOG": {
     "TITLE": "Stimmungstagebuch",
