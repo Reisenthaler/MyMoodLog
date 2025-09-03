@@ -16,6 +16,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { CrisisPlanInfoComponent } from '../components/crisis-plan-info/crisis-plan-info.component';
 import { MoodLogInfoComponent } from '../components/mood-log-info/mood-log-info.component';
 import { NotificationInfoComponent } from '../components/notification-info/notification-info.component';
+import { MoodLogHistoryInfoComponent } from '../components/mood-log-history-info/mood-log-history-info.component';
 import { ButtonComponent } from 'src/app/components/button/button.component';
 import { addIcons } from 'ionicons';
 import { informationCircleOutline } from 'ionicons/icons';
@@ -43,6 +44,7 @@ addIcons({
     CrisisPlanInfoComponent,
     MoodLogInfoComponent,
     NotificationInfoComponent,
+    MoodLogHistoryInfoComponent,
     ButtonComponent,
   ],
 })
@@ -50,6 +52,7 @@ export class HomePage {
   showCrisisPlanInfo = false;
   showMoodLogInfo = false;
   showNotificationInfo = false;
+  showMoodLogHistoryInfo = false;
 
   constructor(private router: Router) {}
 
@@ -72,9 +75,15 @@ export class HomePage {
     this.showNotificationInfo = true;
   }
 
+  openMoodLogHistoryInfo(event: Event) {
+    event.stopPropagation();
+    this.showMoodLogHistoryInfo = true;
+  }
+
   closeInfo() {
     this.showCrisisPlanInfo = false;
     this.showMoodLogInfo = false;
     this.showNotificationInfo = false;
+    this.showMoodLogHistoryInfo = false;
   }
 }

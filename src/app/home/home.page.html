@@ -32,6 +32,9 @@
 
     <ion-item button detail (click)="goTo('mood-log-history')">
       <ion-label>{{ 'HOME.MOOD_LOG_HISTORY' | translate }}</ion-label>
+      <ion-button fill="clear" slot="end" (click)="openMoodLogHistoryInfo($event)">
+        <ion-icon name="information-circle-outline"></ion-icon>
+      </ion-button>
     </ion-item>
 
     <ion-item button detail (click)="goTo('legal-notice-disclaimer')">
@@ -71,6 +74,16 @@
   <div *ngIf="showNotificationInfo" class="overlay" (click)="closeInfo()">
     <div class="overlay-content" (click)="$event.stopPropagation()">
       <app-notification-info></app-notification-info>
+      <ion-button expand="block" (click)="closeInfo()" class="close-btn">
+        {{ 'COMMON.CLOSE' | translate }}
+      </ion-button>
+    </div>
+  </div>
+
+  <!-- Overlay Mood Log History Info -->
+  <div *ngIf="showMoodLogHistoryInfo" class="overlay" (click)="closeInfo()">
+    <div class="overlay-content" (click)="$event.stopPropagation()">
+      <app-mood-log-history-info></app-mood-log-history-info>
       <ion-button expand="block" (click)="closeInfo()" class="close-btn">
         {{ 'COMMON.CLOSE' | translate }}
       </ion-button>

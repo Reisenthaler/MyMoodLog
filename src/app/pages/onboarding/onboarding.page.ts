@@ -5,6 +5,7 @@ import { IonContent } from '@ionic/angular/standalone';
 import { MoodLogInfoComponent } from 'src/app/components/mood-log-info/mood-log-info.component';
 import { CrisisPlanInfoComponent } from 'src/app/components/crisis-plan-info/crisis-plan-info.component';
 import { NotificationInfoComponent } from 'src/app/components/notification-info/notification-info.component';
+import { MoodLogHistoryInfoComponent } from 'src/app/components/mood-log-history-info/mood-log-history-info.component';
 import { TranslateModule } from '@ngx-translate/core'; 
 import { ButtonComponent } from 'src/app/components/button/button.component';
 
@@ -17,6 +18,7 @@ import { ButtonComponent } from 'src/app/components/button/button.component';
     MoodLogInfoComponent,
     CrisisPlanInfoComponent,
     NotificationInfoComponent,
+    MoodLogHistoryInfoComponent,
     TranslateModule,
     ButtonComponent
   ]
