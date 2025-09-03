@@ -129,21 +129,11 @@
   },
   "CRISIS_PLAN_INFO": {
     "TITLE": "Krisenpläne",
-    "TEXT": "Ein Krisenplan hilft dir, in schwierigen Situationen einen klaren Ablauf zu haben. Du kannst Schritte festlegen, die dir Sicherheit geben, wenn du dich überfordert fühlst.",
-    "POINTS": {
-      "STEP": "Individuelle Schritte für Notfälle",
-      "CONTACTS": "Kontaktpersonen und Hilfsstellen",
-      "ACCESS": "Einfacher Zugriff im Ernstfall"
-    }
+    "TEXT": "Im Bereich Krisenpläne können individuelle Hilfs-Pläne erstellt werden. Diese sollen dir helfen in schwierigen Zeiten geeignete Maßnahmen zu ergreifen und/oder Unterstützung zu erhalten.  Die Pläne sollten in einem entspannten Zustand aufgrund von persönlichen Erfahrungen erstellt werden. Es können mehrere Pläne für verschiedene Situationen erstellt werden. \n\nDie verschiedenen Krisenpläne können den einzelnen Skalenwerten deiner gewählten Befindlichkeiten zugeordnet werden. Erreichst du diesen Skalenwert bei deiner Befindlichkeitsabfrage, wird dir der dazugehörige Krisenplan automatisch angezeigt."
   },
   "MOOD_LOG_INFO": {
-    "TITLE": "Stimmungstagebuch",
-    "TEXT": "Mit dem Stimmungstagebuch kannst du deine Gefühle und Gedanken regelmäßig festhalten. So erkennst du Muster und Zusammenhänge in deinem Alltag.",
-    "POINTS": {
-      "DAILY": "Tägliche Stimmungseinträge",
-      "COMMENTS": "Kommentare und Gedanken hinzufügen",
-      "HISTORY": "Verlauf und Entwicklung im Blick behalten"
-    }
+    "TITLE": "Befindlichkeitstagebuch",
+    "TEXT": "Du kannst individuelle Befindlichkeiten definieren, welche du auf einer Skala von 0 – 10 regelmäßig eingeschätzt und dokumentierst. Du kannst von der APP vorgeschlagene Befindlichkeiten übernehmen oder definierst eigene (z.B. Schmerz, Anspannung, Leid, Angst, Übelkeit).\n\n Die App erinnert dich an das Einschätzen deiner Befindlichkeit. Im Notizbereich kannst du zusätzlich Gedanken, Auslöser, Highlights oder Ähnliches vermerken."
   },
   "NOTIFICATION_INFO": {
     "TITLE": "Erinnerungen",
