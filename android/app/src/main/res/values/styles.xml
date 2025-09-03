@@ -12,6 +12,10 @@
     <item name="windowActionBar">false</item>
     <item name="windowNoTitle">true</item>
     <item name="android:background">@null</item>
+
+    <!-- Important for bottom overlap -->
+    <item name="android:windowTranslucentNavigation">false</item>
+    <item name="android:navigationBarColor">@android:color/black</item>
   </style>
 
   <!-- Launch theme -->
