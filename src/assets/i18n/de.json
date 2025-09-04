@@ -9,7 +9,7 @@
     "CRISIS_PLAN_SETTINGS": "Meine Krisenpläne",
     "NOTIFICATION_SETTINGS": "Meine Erinnerungen",
     "MOOD_LOG_HISTORY": "Verlauf & Rückblick",
-    "LEGAL_NOTICE_DISCLAIMER": "Impressum & Haftungsausschluss",
+    "LEGAL_NOTICE_DISCLAIMER": "Urheberrecht & Haftungsausschluss",
     "ONBOARDING": "So funktioniert die App",
     "HELP_CRISIS_SITUATIONS": "Hilfe in akuten krisen",
     "LOG_CURRENT_MOOD": "Neuer Stimmungstagebucheintrag"
@@ -115,13 +115,11 @@
     "NO_PLANS": "Keine Krisenpläne ausgelöst."
   },
   "LEGAL_NOTICE_DISCLAIMER": {
-    "PAGE_TITLE": "Impressum & Haftungsausschluss",
-    "IMPRESSUM_TITLE": "Impressum",
-    "IMPRESSUM_CONTENT": "Angaben gemäß § 5 TMG:\nMax Mustermann\nMusterstraße 1\n12345 Musterstadt\nDeutschland\n\nKontakt:\nTelefon: +49 (0)123 456789\nE-Mail: info@musterfirma.de",
+    "PAGE_TITLE": "Urheberrecht & Haftungsausschluss",
     "DISCLAIMER_TITLE": "Haftungsausschluss",
-    "DISCLAIMER_CONTENT": "Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.",
-    "COPYRIGHT_TITLE": "Urheberrecht",
-    "COPYRIGHT_CONTENT": "Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Beiträge Dritter sind als solche gekennzeichnet. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers."
+    "DISCLAIMER_CONTENT": "Die App MyMoodLog bietet Unterstützung zur Selbstreflexion und Selbsthilfe. Sie dient der persönlichen Dokumentation emotionaler Zustände und fördert das Bewusstsein für das eigene Wohlbefinden.\n\nMyMoodLog stellt keine medizinische, psychologische oder psychotherapeutische Beratung dar und ersetzt keine professionelle Behandlung. Bei akuten psychischen Belastungen oder Krisen wenden Sie sich bitte an qualifizierte Fachpersonen oder entsprechende Hilfsangebote.",
+    "COPYRIGHT_TITLE": "Urheberrecht & Lizenz",
+    "COPYRIGHT_CONTENT": "Die Inhalte, Grafiken und Designs der App MyMoodLog, einschließlich des Logos und App-Icons, wurden individuell erstellt und unterliegen dem Urheberrecht. Sofern nicht anders angegeben, liegen alle Rechte bei der Betreiberin der App.\n\nDie Nutzung der App und ihrer Inhalte ist ausschließlich für persönliche Zwecke gestattet. Eine kommerzielle Nutzung, Weitergabe oder Veränderung der Inhalte ist nur mit ausdrücklicher schriftlicher Genehmigung erlaubt.\n\nDas Logo und App-Icon von MyMoodLog dürfen im Rahmen der App-Nutzung verwendet werden. Eine separate Lizenzierung für Dritte ist ausgeschlossen."
   },
   "ONBOARDING": {
     "WELCOME_HEADING": "Willkommen bei MyMoodLog",
