@@ -17,7 +17,6 @@ import { CrisisPlanInfoComponent } from '../components/crisis-plan-info/crisis-p
 import { MoodLogInfoComponent } from '../components/mood-log-info/mood-log-info.component';
 import { NotificationInfoComponent } from '../components/notification-info/notification-info.component';
 import { MoodLogHistoryInfoComponent } from '../components/mood-log-history-info/mood-log-history-info.component';
-import { ButtonComponent } from 'src/app/components/button/button.component';
 import { addIcons } from 'ionicons';
 import { informationCircleOutline } from 'ionicons/icons';
 addIcons({
@@ -45,7 +44,6 @@ addIcons({
     MoodLogInfoComponent,
     NotificationInfoComponent,
     MoodLogHistoryInfoComponent,
-    ButtonComponent,
   ],
 })
 export class HomePage {

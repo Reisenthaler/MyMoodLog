@@ -5,11 +5,8 @@ import {
   IonList,
   IonItem,
   IonLabel,
-  IonSelect,
-  IonSelectOption,
   IonButton,
   ModalController,
-  IonSegmentButton,
   IonTextarea,
   IonContent
 } from '@ionic/angular/standalone';
@@ -30,9 +27,6 @@ import { ActionSheetController } from '@ionic/angular';
     IonList,
     IonItem,
     IonLabel,
-    IonSelect,
-    IonSelectOption,
-    IonSegmentButton,
     IonButton,
     IonTextarea,
     IonContent,

@@ -10,7 +10,6 @@ import {
   IonCard, 
   IonCardContent, 
   IonCardHeader, 
-  IonCardSubtitle, 
   IonCardTitle 
 } from '@ionic/angular/standalone';
 import { TranslateModule } from '@ngx-translate/core'; 
@@ -29,7 +28,6 @@ import { TranslateModule } from '@ngx-translate/core';
     IonCard, 
     IonCardContent, 
     IonCardHeader, 
-    IonCardSubtitle,
     IonCardTitle, 
     CommonModule, 
     FormsModule, 
