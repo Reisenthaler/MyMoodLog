@@ -8,7 +8,7 @@
         [(ngModel)]="notificationsPerDay"
         (ionChange)="updateTimes()"
       >
-        <ion-select-option *ngFor="let n of [1, 2, 3, 4, 5]" [value]="n">
+        <ion-select-option *ngFor="let n of [0,1, 2, 3, 4, 5]" [value]="n">
           {{ n }}
         </ion-select-option>
       </ion-select>
