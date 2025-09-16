@@ -47,6 +47,10 @@
           {{ log.comment }}
         </p>
       </ion-label>
+      
+      <ion-button color="danger" fill="clear" slot="end" aria-label="Delete" (click)="confirmDelete(log)">
+        <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+      </ion-button>
     </ion-item>
   </ion-list>
 

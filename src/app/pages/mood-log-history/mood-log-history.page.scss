@@ -12,3 +12,14 @@
   height: 100%;            /* take full height of parent */
   text-align: center;
 }
+
+ion-button[color="danger"] {
+  --background: red;
+  --color: white;
+}
+
+ion-button[color="danger"] ion-icon {
+  font-size: 2rem; /* Increase as needed */
+  width: 2rem;
+  height: 2rem;
+}

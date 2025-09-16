@@ -61,6 +61,14 @@ export function HttpLoaderFactory(http: HttpClient) {
   return new CustomTranslateLoader(http);
 }
 
+import { addIcons } from 'ionicons';
+import { trashOutline } from 'ionicons/icons';
+
+// Register the icon(s)
+addIcons({
+  'trash-outline': trashOutline,
+});
+
 bootstrapApplication(AppComponent, {
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

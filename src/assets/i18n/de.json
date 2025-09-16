@@ -32,7 +32,13 @@
       "LAST_7": "7 Tage",
       "LAST_30": "30 Tage",
       "ALL": "Immer"
-    }
+    },
+    "CONFIRM_DELETE": {
+      "HEADER": "Löschen bestätigen",
+      "MESSAGE": "Möchten Sie diesen Stimmungseintrag wirklich löschen?",
+      "CANCEL": "Abbrechen",
+      "DELETE": "Löschen"
+  }
   },
   "MOOD_TRACKING_SETTINGS": {
     "PAGE_TITLE": "Meine Befindlichkeitsparameter",

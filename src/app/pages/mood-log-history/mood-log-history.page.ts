@@ -10,13 +10,16 @@ import {
   IonContent,
   IonSegment,
   IonSegmentButton,
+  IonButton,
+  IonIcon
 } from '@ionic/angular/standalone';
 import { Storage } from '@ionic/storage-angular';
 import { MoodItem } from 'src/app/models/mood-item.model';
 import { MoodLogEntry } from 'src/app/models/mood-log-entry.model';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { MoodLogGraphComponent } from 'src/app/components/mood-log-graph/mood-log-graph.component';
 import { FormsModule } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-mood-log-history',
@@ -35,6 +38,8 @@ import { FormsModule } from '@angular/forms';
     IonContent,
     IonSegment,
     IonSegmentButton,
+    IonButton,
+    IonIcon,
     TranslateModule,
     MoodLogGraphComponent,
   ],
@@ -46,7 +51,11 @@ export class MoodLogHistoryPage implements OnInit {
 
   selectedRange: '7' | '30' | 'all' = '7'; // default
 
-  constructor(private storage: Storage) {}
+  constructor(
+    private storage: Storage,
+    private alertController: AlertController,
+    private translate: TranslateService
+  ) {}
 
   async ngOnInit() {
     await this.storage.create();
@@ -87,5 +96,35 @@ export class MoodLogHistoryPage implements OnInit {
     const mood = this.moodItems.find((m) => m.id.toString() === strKey);
     
     return mood ? mood.name : strKey;
+  }
+  async confirmDelete(log: MoodLogEntry) {
+    const alert = await this.alertController.create({
+      header: this.translate.instant('MOOD_LOG_HISTORY.CONFIRM_DELETE.HEADER'),
+      message: this.translate.instant('MOOD_LOG_HISTORY.CONFIRM_DELETE.MESSAGE'),
+      buttons: [
+        {
+          text: this.translate.instant('MOOD_LOG_HISTORY.CONFIRM_DELETE.CANCEL'),
+          role: 'cancel',
+        },
+        {
+          text: this.translate.instant('MOOD_LOG_HISTORY.CONFIRM_DELETE.DELETE'),
+          role: 'destructive',
+          handler: () => {
+            this.deleteLog(log);
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+  }
+
+  async deleteLog(log: MoodLogEntry) {
+    // Remove from history
+    this.history = this.history.filter(entry => entry !== log);
+    // Save updated history
+    await this.storage.set('mood_log_history', this.history);
+    // Re-apply filter
+    this.filterHistory();
   }
 }
