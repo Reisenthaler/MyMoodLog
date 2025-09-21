@@ -59,13 +59,16 @@
     (saved)="handleAddItem($event)"
   ></app-custom-text-popup>
 </ion-content> 
- <!-- Add button -->
-  <app-button
-    class="add-button-fixed"
-    size="wide"
-    color="green"
-    icon="add"
-    [label]="'MOOD_TRACKING_SETTINGS.ADD_BUTTON' | translate"
-    (clicked)="openAddPopup()"
-    style="width: 100%; margin-left: 10%; position: absolute; bottom: 10px;"
-  ></app-button>
+
+  <ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <app-button
+      size="wide"
+      color="green"
+      icon="save"
+      [label]="'MOOD_TRACKING_SETTINGS.ADD_BUTTON' | translate"
+      (clicked)="openAddPopup()"
+      class="footer-button"
+    ></app-button>
+  </ion-toolbar>
+</ion-footer>

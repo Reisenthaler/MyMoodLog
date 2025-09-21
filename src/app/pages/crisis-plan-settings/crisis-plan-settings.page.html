@@ -81,15 +81,6 @@
     </ion-list>
   </ion-content>
 
-  <app-button
-    size="wide"
-    color="green"
-    icon="add"
-    [label]="'CRISIS_PLAN_SETTINGS.NEW_PLAN' | translate"
-    (clicked)="openAddPlan()"
-    style="width: 100%; margin-left: 10%; position: absolute; bottom: 10px;"
-  ></app-button>
-
   <!-- Add Plan Popup -->
   <app-custom-text-popup
     #addPlanPopup
@@ -120,4 +111,17 @@
     [multiline]="true"
     (saved)="handleStepSave($event)"
   ></app-custom-text-popup>
-</ion-content>
+</ion-content>  
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <app-button
+      size="wide"
+      color="green"
+      icon="add"
+      [label]="'CRISIS_PLAN_SETTINGS.NEW_PLAN' | translate"
+      (clicked)="openAddPlan()"
+      class="footer-button"
+    ></app-button>
+  </ion-toolbar>
+</ion-footer>

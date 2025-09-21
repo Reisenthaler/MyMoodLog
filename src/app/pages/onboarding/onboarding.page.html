@@ -9,12 +9,15 @@
   <app-mood-log-history-info class="with-bottom-padding"></app-mood-log-history-info> 
 </ion-content>
 
-<app-button
-  class="add-button-fixed"
-  size="wide"
-  color="green"
-  icon="add"
-  [label]="'ONBOARDING.START_BUTTON' | translate"
-  (clicked)="finishOnboarding()"
-  style="width: 100%; margin-left: 10%; position: absolute; bottom: 10px;"
-></app-button>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <app-button
+      size="wide"
+      color="green"
+      icon="add"
+      [label]="'ONBOARDING.START_BUTTON' | translate"
+      (clicked)="finishOnboarding()"
+      style="width: 100%; margin-left: 10%;"
+    ></app-button>
+  </ion-toolbar>
+</ion-footer>

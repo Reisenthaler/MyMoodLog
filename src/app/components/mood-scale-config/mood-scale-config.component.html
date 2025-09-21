@@ -30,22 +30,28 @@
   </ion-item>
 </ion-content>
 
-<!-- Fixed button bar -->
-<div class="button-container">
-  <app-button
-    size="small"
-    color="red"
-    icon="close"
-    [label]="'MOOD_SCALE.CANCEL' | translate"
-    (clicked)="cancel()"
-    style="flex: 1"
-  ></app-button>
-  <app-button
-    size="small"
-    color="green"
-    icon="save"
-    [label]="'MOOD_SCALE.SAVE' | translate"
-    (clicked)="save()"
-    style="flex: 1"
-  ></app-button>
-</div>
+
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+ <!-- Fixed button bar -->
+    <div class="button-container">
+      <app-button
+        size="small"
+        color="red"
+        icon="close"
+        [label]="'MOOD_SCALE.CANCEL' | translate"
+        (clicked)="cancel()"
+        style="flex: 1"
+      ></app-button>
+      <app-button
+        size="small"
+        color="green"
+        icon="save"
+        [label]="'MOOD_SCALE.SAVE' | translate"
+        (clicked)="save()"
+        style="flex: 1"
+      ></app-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

@@ -6,3 +6,6 @@
   display: block; /* ensures spacing works */
   margin-bottom: 100px;
 }
+.ion-no-border {
+  --border-width: 0;
+}

@@ -4,13 +4,12 @@ ion-content {
   height: 100%;
 }
 
-.with-bottom-padding {
-  --padding-bottom: 120px; /* adjust to be >= button height + margin */
-}
 
 .scrollable-list {
   flex: 1; /* take up available space */
-  overflow-y: auto; /* make it scrollable */
+  overflow-y: auto; /* make it scrollable */ 
+  --padding-bottom: 120px; /* adjust to be >= button height + margin */
+
 }
 
 .save-button-container {
@@ -20,4 +19,16 @@ ion-content {
   transform: translateX(-50%);
   width: 90%; /* or 100% if you want full width */
   z-index: 1000; /* make sure it stays above content */
+}
+
+.footer-button {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  margin-left: 10%;
+
+  /* Respect safe areas (Android/iOS) */
+  // padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
 }

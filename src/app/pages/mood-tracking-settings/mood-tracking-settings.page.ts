@@ -8,6 +8,7 @@ import {
   ModalController,
   AlertController,
   IonHeader, 
+  IonFooter,
   IonTitle, 
   IonToolbar,
 } from '@ionic/angular/standalone';
@@ -30,6 +31,7 @@ import { TranslateService } from '@ngx-translate/core';
     CommonModule,
     IonTitle,
     IonHeader,
+    IonFooter,
     IonToolbar,
     IonList,
     IonItem,

@@ -1,8 +1,7 @@
-<ion-content class="with-bottom-padding">
-  <!-- Scrollable list -->
-  <ion-list class="scrollable-list">
-    <!-- Select number of notifications per day -->
-    <ion-item>
+<ion-content >
+  
+   <!-- Select number of notifications per day -->
+    <ion-item style="margin-top: 40px;">
       <ion-label>{{ 'NOTIFICATION_SETTINGS.NOTIFICATIONS_PER_DAY' | translate }}</ion-label>
       <ion-select
         [(ngModel)]="notificationsPerDay"
@@ -13,6 +12,10 @@
         </ion-select-option>
       </ion-select>
     </ion-item>
+  
+    <!-- Scrollable list -->
+  <ion-list class="scrollable-list">
+    
 
     <!-- Select times -->
     <ion-item *ngFor="let t of times; let i = index">
@@ -30,13 +33,15 @@
 </ion-content> 
 
 <!-- Fixed button at bottom -->
-  <div class="save-button-container">
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
     <app-button
       size="wide"
       color="green"
-      icon="save"
+      icon="add"
       [label]="'NOTIFICATION_SETTINGS.SAVE_AND_SCHEDULE' | translate"
       (clicked)="saveSettings()"
-      style="width: 80%; margin-left: 10%;"
+      class="footer-button"
     ></app-button>
-  </div>
+  </ion-toolbar>
+</ion-footer>

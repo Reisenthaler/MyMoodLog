@@ -33,13 +33,17 @@
       autoGrow="true"
     ></ion-textarea>
   </ion-item>
-
-  <app-button
-    size="wide"
-    color="green"
-    icon="save"
-    [label]="'MOOD_LOG.SAVE_BUTTON' | translate"
-    (clicked)="save()"
-    style="margin-bottom: 16px; margin-left: 10%;"
-  ></app-button>
 </ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <app-button
+      size="wide"
+      color="green"
+      icon="save"
+      [label]="'MOOD_LOG.SAVE_BUTTON' | translate"
+      (clicked)="save()"
+      class="footer-button"
+    ></app-button>
+  </ion-toolbar>
+</ion-footer>

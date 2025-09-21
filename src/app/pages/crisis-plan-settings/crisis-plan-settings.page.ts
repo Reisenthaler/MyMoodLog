@@ -9,6 +9,7 @@ import {
   IonToolbar,
   IonContent,
   IonHeader,
+  IonFooter,
   AlertController,
 } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
@@ -31,6 +32,7 @@ import { TranslateService } from '@ngx-translate/core';
   imports: [
     IonContent, 
     IonHeader, 
+    IonFooter,
     IonTitle, 
     IonToolbar, 
     IonList, 

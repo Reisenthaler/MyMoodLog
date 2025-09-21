@@ -14,3 +14,7 @@ ion-text {
     white-space: pre-line;
 
 }
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}

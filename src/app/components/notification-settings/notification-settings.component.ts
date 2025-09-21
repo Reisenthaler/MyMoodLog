@@ -9,6 +9,8 @@ import {
   IonSelectOption,
   IonDatetime,
   IonContent,
+  IonToolbar,
+  IonFooter,
   ToastController,
 } from '@ionic/angular/standalone';
 import { Storage } from '@ionic/storage-angular';
@@ -39,6 +41,8 @@ import { Device } from '@capacitor/device';
     IonDatetime,
     ButtonComponent,
     IonContent,
+    IonFooter,
+    IonToolbar,
     TranslateModule,
   ],
 })
