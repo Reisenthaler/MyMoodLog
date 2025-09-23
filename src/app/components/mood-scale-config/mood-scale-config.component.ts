@@ -11,6 +11,8 @@ import {
   IonContent,
   IonFooter,
   IonToolbar,
+  IonTitle,
+  IonHeader
 } from '@ionic/angular/standalone';
 import { MoodItem } from '../../models/mood-item.model';
 import { CrisisPlan } from '../../models/crisis-plan.model';
@@ -34,6 +36,8 @@ import { ActionSheetController } from '@ionic/angular';
     IonContent,
     IonFooter,
     IonToolbar,
+    IonTitle,
+    IonHeader,
     ButtonComponent, // 👈 use custom button
     TranslateModule
   ],

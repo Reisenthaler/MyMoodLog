@@ -1,3 +1,11 @@
+ <ion-header translucent="true">
+  <ion-toolbar>
+    <ion-title>
+      {{ item?.name }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content class="ion-padding">
   <ion-list class="scrollable-list">
     <ng-container *ngIf="item?.scalePlans">
