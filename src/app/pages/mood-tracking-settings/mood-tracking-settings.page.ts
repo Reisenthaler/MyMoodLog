@@ -11,6 +11,7 @@ import {
   IonFooter,
   IonTitle, 
   IonToolbar,
+  ToastController,
 } from '@ionic/angular/standalone';
 import { Storage } from '@ionic/storage-angular';
 import { FormsModule } from '@angular/forms';
@@ -21,6 +22,7 @@ import { MoodScaleConfigComponent } from 'src/app/components/mood-scale-config/m
 import { CrisisPlan } from 'src/app/models/crisis-plan.model';
 import { TranslateModule } from '@ngx-translate/core'; 
 import { TranslateService } from '@ngx-translate/core';
+import { LoggerService } from 'src/app/services/logger.service';
 
 @Component({
   selector: 'app-mood-tracking-settings',
@@ -46,14 +48,16 @@ export class MoodTrackingSettingsPage implements OnInit {
   private STORAGE_KEY = 'mood_items';
   moodItems: MoodItem[] = [];
   crisisPlans: CrisisPlan[] = [];
+  private logger = this.loggerService.createLogger('MoodTrackingSettings');
 
-   constructor(
-     private storage: Storage,
-     private alertCtrl: AlertController,
-     private modalCtrl: ModalController,
-     private translateService: TranslateService
-   ) {
-   }
+  constructor(
+    private storage: Storage,
+    private alertCtrl: AlertController,
+    private modalCtrl: ModalController,
+    private translateService: TranslateService,
+    private toastCtrl: ToastController,
+    private loggerService: LoggerService // Inject LoggerService
+  ) {}
 
   async ngOnInit() {
     await this.storage.create();
@@ -120,24 +124,41 @@ export class MoodTrackingSettingsPage implements OnInit {
     const modal = await this.modalCtrl.create({
       component: MoodScaleConfigComponent,
       componentProps: {
-      item: JSON.parse(JSON.stringify(item)), // deep clone
-      crisisPlans: this.crisisPlans,
+        item: JSON.parse(JSON.stringify(item)), // deep clone
+        crisisPlans: this.crisisPlans,
       },
     });
 
     await modal.present();
-    
+
     const { data, role } = await modal.onWillDismiss();
-    
+
     if (role === 'save' && data) {
       const index = this.moodItems.findIndex((i) => i.id === item.id);
       if (index > -1) {
         this.moodItems[index] = data;
-        await this.saveItems();
+        try {
+          await this.saveItems();
+          await this.logger.info('Mood item edited successfully', data);
+          const toast = await this.toastCtrl.create({
+            message: this.translateService.instant('MOOD_TRACKING_SETTINGS.ALERT.EDIT_SUCCESS'),
+            duration: 2000,
+            color: 'success',
+          });
+          await toast.present();
+        } catch (error) {
+          await this.logger.error('Failed to edit mood item', error, data);
+          const toast = await this.toastCtrl.create({
+            message: this.translateService.instant('MOOD_TRACKING_SETTINGS.ALERT.EDIT_ERROR') || 'Fehler beim Speichern!',
+            duration: 2000,
+            color: 'danger',
+          });
+          await toast.present();
+        }
       }
     } else {
       // Do nothing, user cancelled
-      console.log('Edit cancelled');
+      await this.logger.info('Edit cancelled', item);
     }
   }
 
@@ -154,7 +175,24 @@ export class MoodTrackingSettingsPage implements OnInit {
           role: 'destructive',
           handler: async () => {
             this.moodItems = this.moodItems.filter((i) => i.id !== item.id);
-            await this.saveItems();
+            try {
+              await this.saveItems();
+              await this.logger.info('Mood item deleted successfully', item);
+              const toast = await this.toastCtrl.create({
+                message: this.translateService.instant('MOOD_TRACKING_SETTINGS.ALERT.DELETE_SUCCESS'),
+                duration: 2000,
+                color: 'success',
+              });
+              await toast.present();
+            } catch (error) {
+              await this.logger.error('Failed to delete mood item', error, item);
+              const toast = await this.toastCtrl.create({
+                message: this.translateService.instant('MOOD_TRACKING_SETTINGS.ALERT.DELETE_ERROR') || 'Fehler beim Löschen!',
+                duration: 2000,
+                color: 'danger',
+              });
+              await toast.present();
+            }
           },
         },
       ],

@@ -62,7 +62,11 @@
       "CONFIRM_DELETE_TITLE": "Löschen bestätigen",
       "CONFIRM_DELETE_MESSAGE": "Möchten Sie \"{{name}}\" wirklich löschen?",
       "CANCEL": "Abbrechen",
-      "DELETE": "Löschen"
+      "DELETE": "Löschen",
+      "EDIT_SUCCESS": "Speichern erfolgreich",
+      "EDIT_ERROR": "Fehler beim Speichern",
+      "DELETE_SUCCESS": "Löschen erfolgreich",
+      "DELETE_ERROR": "Fehler beim Löschen"
     }
   },
   "MOOD_SCALE": {
