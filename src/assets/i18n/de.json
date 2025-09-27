@@ -19,7 +19,9 @@
     "SELECT_INTENSITY": "Intensität auswählen",
     "SAVE_BUTTON": "Speichern",
     "COMMENT_LABEL": "Kommentar",
-    "COMMENT_PLACEHOLDER": "Schreibe deine Gedanken hier..."
+    "COMMENT_PLACEHOLDER": "Schreibe deine Gedanken hier...",
+    "SAVE_SUCCESS": "Dein Stimmungseintrag wurde gespeichert.",
+    "SAVE_ERROR": "Fehler beim Speichern des Stimmungseintrags!"
   },
     "MOOD_LOG_HISTORY": {
     "PAGE_TITLE": "Verlauf & Rückblick",
@@ -66,7 +68,9 @@
       "EDIT_SUCCESS": "Speichern erfolgreich",
       "EDIT_ERROR": "Fehler beim Speichern",
       "DELETE_SUCCESS": "Löschen erfolgreich",
-      "DELETE_ERROR": "Fehler beim Löschen"
+      "DELETE_ERROR": "Fehler beim Löschen",
+      "ADD_SUCCESS": "Befindlichkeit erfolgreich hinzugefügt",
+      "ADD_ERROR": "Fehler beim Hinzufügen der Befindlichkeit"
     }
   },
   "MOOD_SCALE": {

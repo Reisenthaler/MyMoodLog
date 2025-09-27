@@ -12,15 +12,17 @@ import {
   IonToolbar,
   IonTitle,
   IonContent,
-  IonTextarea
+  IonTextarea,
+  ToastController,
 } from '@ionic/angular/standalone';
 import { Storage } from '@ionic/storage-angular';
 import { MoodItem } from '../../models/mood-item.model';
 import { CrisisPlan } from '../../models/crisis-plan.model';
 import { Router } from '@angular/router';
 import { MoodLogEntry } from 'src/app/models/mood-log-entry.model';
-import { TranslateModule } from '@ngx-translate/core'; 
+import { TranslateModule, TranslateService } from '@ngx-translate/core'; 
 import { ButtonComponent } from 'src/app/components/button/button.component';
+import { LoggerService } from 'src/app/services/logger.service';
 
 @Component({
   selector: 'app-mood-log',
@@ -50,8 +52,14 @@ export class MoodLogPage implements OnInit {
   crisisPlans: CrisisPlan[] = [];
   selections: { [id: number]: number } = {};
   comment: string = '';
+  private logger = new LoggerService().createLogger('MoodLogPage');
 
-  constructor(private storage: Storage, private router: Router) {}
+  constructor(
+    private storage: Storage,
+    private router: Router,
+    private toastCtrl: ToastController,
+    private translateService: TranslateService // Add TranslateService
+  ) {}
 
   async ngOnInit() {
     await this.storage.create();
@@ -61,64 +69,88 @@ export class MoodLogPage implements OnInit {
   }
 
   async save() {
-    const triggeredPlans: CrisisPlan[] = [];
-    const addedPlanIds = new Set<number>();
+    try {
+      const triggeredPlans: CrisisPlan[] = [];
+      const addedPlanIds = new Set<number>();
 
-    for (const item of this.moodItems) {
-      const intensity = this.selections[item.id];
+      for (const item of this.moodItems) {
+        const intensity = this.selections[item.id];
 
-      if (intensity != null && item.scalePlans) {
-        const planId = item.scalePlans[intensity] ?? null;
+        if (intensity != null && item.scalePlans) {
+          const planId = item.scalePlans[intensity] ?? null;
 
-        if (planId && !addedPlanIds.has(planId)) {
-          const plan = this.crisisPlans.find((p) => p.id === planId);
-          if (plan) {
-            triggeredPlans.push(plan);
-            addedPlanIds.add(planId); // to prevent duplicates
+          if (planId && !addedPlanIds.has(planId)) {
+            const plan = this.crisisPlans.find((p) => p.id === planId);
+            if (plan) {
+              triggeredPlans.push(plan);
+              addedPlanIds.add(planId); // to prevent duplicates
+            }
           }
         }
       }
-    }
 
-    // Get pending notification ID
-    const pendingNotifId = await this.storage.get('pending_notification');
+      // Get pending notification ID
+      const pendingNotifId = await this.storage.get('pending_notification');
 
-    // Build log entry
-    const logEntry: MoodLogEntry = {
-      id: Date.now(), // unique ID
-      date: new Date().toISOString(),
-      notificationId: pendingNotifId,
-      selections: this.selections,
-      comment: this.comment || undefined,
-    };
+      // Build log entry
+      const logEntry: MoodLogEntry = {
+        id: Date.now(), // unique ID
+        date: new Date().toISOString(),
+        notificationId: pendingNotifId,
+        selections: this.selections,
+        comment: this.comment || undefined,
+      };
 
-    // Save to history
-    const history = (await this.storage.get('mood_log_history')) || [];
-    history.push(logEntry);
-    await this.storage.set('mood_log_history', history);
+      // Save to history
+      const history = (await this.storage.get('mood_log_history')) || [];
+      history.push(logEntry);
+      await this.storage.set('mood_log_history', history);
 
-    // Mark notification as completed
-    const completed = (await this.storage.get('completed_notifications')) || [];
-    if (pendingNotifId) {
-      completed.push(pendingNotifId);
-      await this.storage.set('completed_notifications', completed);
-      await this.storage.set('pending_notification', null);
-    }
+      // Mark notification as completed
+      const completed = (await this.storage.get('completed_notifications')) || [];
+      if (pendingNotifId) {
+        completed.push(pendingNotifId);
+        await this.storage.set('completed_notifications', completed);
+        await this.storage.set('pending_notification', null);
+      }
 
-    // Also save last log (optional, for quick access)
-    await this.storage.set('last_mood_log', logEntry);
+      // Also save last log (optional, for quick access)
+      await this.storage.set('last_mood_log', logEntry);
 
-    // Clear pending flag
-    await this.storage.set('pending_mood_log', false);
+      // Clear pending flag
+      await this.storage.set('pending_mood_log', false);
 
-    // Reset comment after save
-    this.comment = '';
+      // Reset comment after save
+      this.comment = '';
 
-    // Navigate
-    if (triggeredPlans.length > 0) {
-      this.router.navigateByUrl('/crisis-plan-result', { state: { plans: triggeredPlans } });
-    } else {
-      this.router.navigateByUrl('/home');
+      // Log success
+      await this.logger.info('Mood log entry saved successfully', logEntry);
+
+      // Show success toast with translation
+      const toast = await this.toastCtrl.create({
+        message: this.translateService.instant('MOOD_LOG.SAVE_SUCCESS'),
+        duration: 2000,
+        color: 'success',
+      });
+      toast.present();
+
+      // Navigate
+      if (triggeredPlans.length > 0) {
+        this.router.navigateByUrl('/crisis-plan-result', { state: { plans: triggeredPlans } });
+      } else {
+        this.router.navigateByUrl('/home');
+      }
+    } catch (error) {
+      // Log error
+      await this.logger.error('Fehler beim Speichern des Stimmungseintrags', error);
+
+      // Show error toast with translation
+      const toast = await this.toastCtrl.create({
+        message: this.translateService.instant('MOOD_LOG.SAVE_ERROR'),
+        duration: 2500,
+        color: 'danger',
+      });
+      toast.present();
     }
   }
 }
