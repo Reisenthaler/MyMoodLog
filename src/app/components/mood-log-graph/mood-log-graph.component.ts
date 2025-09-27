@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { TranslateService } from '@ngx-translate/core';
 
 export interface MoodLogEntry {
   id: number; // unique ID (timestamp)
@@ -13,7 +14,10 @@ export interface MoodLogEntry {
 @Component({
   selector: 'app-mood-log-graph',
   standalone: true,
-  imports: [CommonModule, NgxEchartsModule],
+  imports: [
+    CommonModule, 
+    NgxEchartsModule,
+  ],
   templateUrl: './mood-log-graph.component.html',
   styleUrls: ['./mood-log-graph.component.scss'],
 })
@@ -22,6 +26,8 @@ export class MoodLogGraphComponent implements OnChanges {
   @Input() moodItems: { id: number; name: string }[] = [];
 
   chartOptions: any;
+
+  constructor(private translateService: TranslateService) {}
 
   ngOnChanges() {
     if (this.history && this.moodItems) {
@@ -64,71 +70,77 @@ export class MoodLogGraphComponent implements OnChanges {
       };
     });
 
-this.chartOptions = {
-  tooltip: {
-    trigger: 'axis',
-    formatter: (params: any) => {
-      const date = new Date(sortedHistory[params[0].dataIndex].date);
+    this.chartOptions = {
+      tooltip: {
+        trigger: 'axis',
+        formatter: (params: any) => {
+          const entry = sortedHistory[params[0].dataIndex];
+          const date = new Date(entry.date);
 
-      // Format: YYYY-MM-DD HH:mm (24h, no seconds)
-      const formattedDate = date.toLocaleString(undefined, {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: false, // ✅ 24h format
-      });
+          // Format: YYYY-MM-DD HH:mm (24h, no seconds)
+          const formattedDate = date.toLocaleString(undefined, {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false, // 24-hour format
+          });
 
-      let content = `<b>${formattedDate}</b><br/>`;
-      params.forEach((p: any) => {
-        if (p.data !== null && p.data !== undefined) {
-          content += `
+          let content = `<b>${formattedDate}</b><br/>`;
+          params.forEach((p: any) => {
+            if (p.data !== null && p.data !== undefined) {
+              content += `
             <span style="display:inline-block;margin-right:5px;
               border-radius:10px;width:10px;height:10px;
               background-color:${p.color};"></span>
             ${p.seriesName}: <b>${p.data}</b><br/>
           `;
-        }
-      });
+            }
+          });
 
-      return content;
-    },
-  },
-  legend: {
-    type: 'plain',
-    orient: 'horizontal',
-    bottom: 0,
-    left: 'center',
-    align: 'auto',
-    itemWidth: 20,
-    itemHeight: 10,
-    textStyle: {
-      fontSize: 12,
-    },
-    itemGap: 16,
-    width: '90%',
-  },
-  grid: {
-    left: '1%',
-    right: '1%',
-    bottom: '15%',
-    top: '5%',
-    containLabel: true,
-  },
-  xAxis: {
-    type: 'category',
-    boundaryGap: false,
-    data: dates,
-  },
-  yAxis: {
-    type: 'value',
-    min: 0,
-    max: 10,
-    interval: 1,
-    name: 'Intensity',
-  },
-  series,
-};
+          // Add comment if present
+          if (entry.comment) {
+            content += `<div style="white-space:pre-line;word-break:keep-all;max-width:60vw;"><b>${this.translateService.instant('MOOD_LOG_HISTORY.COMMENT')}:</b> ${entry.comment}</div>`;
+          }
+1
+          return content;
+        },
+      },
+      legend: {
+        type: 'plain',
+        orient: 'horizontal',
+        bottom: 0,
+        left: 'center',
+        align: 'auto',
+        itemWidth: 20,
+        itemHeight: 10,
+        textStyle: {
+          fontSize: 12,
+        },
+        itemGap: 16,
+        width: '90%',
+      },
+      grid: {
+        left: '1%',
+        right: '1%',
+        bottom: '15%',
+        top: '5%',
+        containLabel: true,
+      },
+      xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: dates,
+      },
+      yAxis: {
+        type: 'value',
+        min: 0,
+        max: 10,
+        interval: 1,
+        name: 'Intensity',
+      },
+      series,
+    };
   }
 }
