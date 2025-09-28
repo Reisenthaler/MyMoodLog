@@ -23,6 +23,7 @@ import { MoodLogEntry } from 'src/app/models/mood-log-entry.model';
 import { TranslateModule, TranslateService } from '@ngx-translate/core'; 
 import { ButtonComponent } from 'src/app/components/button/button.component';
 import { LoggerService } from 'src/app/services/logger.service';
+import { NotificationService } from 'src/app/services/notification-service';
 
 @Component({
   selector: 'app-mood-log',
@@ -58,7 +59,8 @@ export class MoodLogPage implements OnInit {
     private storage: Storage,
     private router: Router,
     private toastCtrl: ToastController,
-    private translateService: TranslateService // Add TranslateService
+    private translateService: TranslateService,
+    private notificationService: NotificationService
   ) {}
 
   async ngOnInit() {
@@ -106,13 +108,8 @@ export class MoodLogPage implements OnInit {
       history.push(logEntry);
       await this.storage.set('mood_log_history', history);
 
-      // Mark notification as completed
-      const completed = (await this.storage.get('completed_notifications')) || [];
-      if (pendingNotifId) {
-        completed.push(pendingNotifId);
-        await this.storage.set('completed_notifications', completed);
-        await this.storage.set('pending_notification', null);
-      }
+      // Mark all pending notifications as completed
+      await this.notificationService.markCompleted();
 
       // Also save last log (optional, for quick access)
       await this.storage.set('last_mood_log', logEntry);

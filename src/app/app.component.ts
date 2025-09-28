@@ -57,7 +57,7 @@ export class AppComponent implements OnInit {
     App.addListener('resume', async () => {
       this.logger.info('App resumed event fired');
 
-      const pending = await this.storage.get('pending_mood_log');
+      const pending = await this.notificationService.getPendingNotification();
       this.logger.info('Pending mood log value:', pending);
 
       if (pending) {
