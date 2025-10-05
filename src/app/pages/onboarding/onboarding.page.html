@@ -2,11 +2,21 @@
   <h2>{{ 'ONBOARDING.WELCOME_HEADING' | translate }}</h2>
   <p class="welcome-text">{{ 'ONBOARDING.WELCOME_TEXT' | translate }}</p>
 
-  <!-- Include the two components -->
-  <app-crisis-plan-info></app-crisis-plan-info>
-  <app-mood-log-info ></app-mood-log-info>
-  <app-notification-info ></app-notification-info>
-  <app-mood-log-history-info class="with-bottom-padding"></app-mood-log-history-info> 
+  <ul>
+    <li>{{ 'ONBOARDING.WELCOME_LIST_ITEM_1' | translate }}</li>
+    <li>{{ 'ONBOARDING.WELCOME_LIST_ITEM_2' | translate }}</li>
+  </ul>
+
+  <p class="numbered-list-heading">{{ 'ONBOARDING.NUMBERED_LIST_HEADING' | translate }}</p>
+
+  <ol>
+    <li class="numbered-list-item">{{ 'ONBOARDING.NUMBERED_LIST_ITEM_1' | translate }}</li>
+    <li class="numbered-list-item">{{ 'ONBOARDING.NUMBERED_LIST_ITEM_2' | translate }}</li>
+    <li class="numbered-list-item">{{ 'ONBOARDING.NUMBERED_LIST_ITEM_3' | translate }}</li>
+    <li class="numbered-list-item">{{ 'ONBOARDING.NUMBERED_LIST_ITEM_4' | translate }}</li>
+  </ol>
+
+  
 </ion-content>
 
 <ion-footer class="ion-no-border">

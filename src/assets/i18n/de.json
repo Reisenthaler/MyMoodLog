@@ -4,7 +4,7 @@
     "CLOSE": "schließen"
   },
   "HOME": {
-    "PAGE_TITLE": "Mein Stimmungstagebuch",
+    "PAGE_TITLE": "MyMoodLog",
     "MOOD_TRACKING_SETTINGS": "Meine Befindlichkeitsparameter",
     "CRISIS_PLAN_SETTINGS": "Meine Krisenpläne",
     "NOTIFICATION_SETTINGS": "Meine Erinnerungen",
@@ -58,7 +58,7 @@
       "SUICIDAL_THOUGHTS": "Suizidgedanken",
       "TENSION": "Anspannung",
       "DRIVE": "Antrieb",
-      "RACING_THOUGHTS": "Gedankenrasen"
+      "RACING_THOUGHTS": "Gedankenkreisen"
     },
     "ALERT": {
       "CONFIRM_DELETE_TITLE": "Löschen bestätigen",
@@ -131,26 +131,33 @@
   "LEGAL_NOTICE_DISCLAIMER": {
     "PAGE_TITLE": "Urheberrecht & Haftungsausschluss",
     "DISCLAIMER_TITLE": "Haftungsausschluss",
-    "DISCLAIMER_CONTENT": "Die App MyMoodLog bietet Unterstützung zur Selbstreflexion und Selbsthilfe. Sie dient der persönlichen Dokumentation emotionaler Zustände und fördert das Bewusstsein für das eigene Wohlbefinden.\n\nMyMoodLog stellt keine medizinische, psychologische oder psychotherapeutische Beratung dar und ersetzt keine professionelle Behandlung. Bei akuten psychischen Belastungen oder Krisen wenden Sie sich bitte an qualifizierte Fachpersonen oder entsprechende Hilfsangebote.",
-    "COPYRIGHT_TITLE": "Urheberrecht & Lizenz",
-    "COPYRIGHT_CONTENT": "Die Inhalte, Grafiken und Designs der App MyMoodLog, einschließlich des Logos und App-Icons, wurden individuell erstellt und unterliegen dem Urheberrecht. Sofern nicht anders angegeben, liegen alle Rechte bei der Betreiberin der App.\n\nDie Nutzung der App und ihrer Inhalte ist ausschließlich für persönliche Zwecke gestattet. Eine kommerzielle Nutzung, Weitergabe oder Veränderung der Inhalte ist nur mit ausdrücklicher schriftlicher Genehmigung erlaubt.\n\nDas Logo und App-Icon von MyMoodLog dürfen im Rahmen der App-Nutzung verwendet werden. Eine separate Lizenzierung für Dritte ist ausgeschlossen."
+    "DISCLAIMER_CONTENT": "Die App MyMoodLog bietet Unterstützung zur Selbstreflexion und Selbsthilfe. Sie stellt keine medizinische, psychologische oder psychotherapeutische Beratung dar und ersetzt keine professionelle Behandlung. Bei akuten psychischen Belastungen oder Krisen wende dich an qualifizierte Fachpersonen oder entsprechende Hilfsangebote.",
+    "COPYRIGHT_TITLE": "Datenschutz",
+    "COPYRIGHT_CONTENT": "Die App MyMoodLog ist dafür ausgelegt deine personenbezogenen Daten zu schützen. Du kannst die App dauerhaft ohne Registrierung und Angabe von personenbezogenen Daten nutzen. Alle eingegeben Daten werden nur lokal in der App erhoben und gespeichert."
   },
   "ONBOARDING": {
     "WELCOME_HEADING": "Willkommen bei MyMoodLog",
-    "WELCOME_TEXT": "Die App bietet dir Unterstützung zur Selbstreflexion und Selbsthilfe. Sie dient der persönlichen Dokumentation emotionaler und körperlicher Zustände und soll das Bewusstsein für das eigene Wohlbefinden fördern. \n\nHier ein Überblick über die wichtigsten Funktionen:",
-    "START_BUTTON": "Los geht's"
+    "WELCOME_TEXT": "MyMoodLog ist ein Stimmungstagebuch und dient",
+    "START_BUTTON": "Los geht's",
+    "WELCOME_LIST_ITEM_1": "der persönlichen Einschätzung und Dokumentation emotionaler und körperlicher Zustände (z.B Stimmung, Anspannung, Schmerz)",
+    "WELCOME_LIST_ITEM_2": "sowie dem Erstellen von individuellen Hilfe/Krisenpläne.",
+    "NUMBERED_LIST_HEADING": "Wenn du die App nutzen möchtest gehst du am besten so vor:",
+    "NUMBERED_LIST_ITEM_1": "Definiere emotionale und körperliche Zustände, welche du regelmäßig auf einer Skala von 0 – 10 einschätzen möchtest -> Meine Befindlichkeitsparameter",
+    "NUMBERED_LIST_ITEM_2": "Stelle ein, ob und wann du an das Einschätzen deiner Befindlichkeit erinnert werden möchtest -> Meine Erinnerungen",
+    "NUMBERED_LIST_ITEM_3": "Erstelle individuelle Hilfe/Krisenpläne -> Meine Krisenpläne",
+    "NUMBERED_LIST_ITEM_4": "Ordne die Hilfe/Krisenpläne deinen Befindlichkeitsparametern zu -> Meine Befindlichkeitsparameter"
   },
   "CRISIS_PLAN_INFO": {
     "TITLE": "Krisenpläne",
-    "TEXT": "Im Bereich Krisenpläne können individuelle Hilfs-Pläne erstellt werden. Diese sollen dir helfen in schwierigen Zeiten geeignete Maßnahmen zu ergreifen und/oder Unterstützung zu erhalten.  Die Pläne sollten in einem entspannten Zustand aufgrund von persönlichen Erfahrungen erstellt werden. Es können mehrere Pläne für verschiedene Situationen erstellt werden. \n\nDie verschiedenen Krisenpläne können den einzelnen Skalenwerten deiner gewählten Befindlichkeiten zugeordnet werden. Erreichst du diesen Skalenwert bei deiner Befindlichkeitsabfrage, wird dir der dazugehörige Krisenplan automatisch angezeigt."
+    "TEXT": "Du kannst mit der App individuelle Hilfe-Pläne erstellen. Diese sollen dir helfen in schwierigen Zeiten geeignete Maßnahmen zu ergreifen und/oder Unterstützung zu erhalten.  Die Pläne sollten in einem entspannten Zustand aufgrund von persönlichen Erfahrungen erstellt werden. <br><br>Es können mehrere Pläne für verschiedene Situationen erstellt werden (z.B. ein Hilfe-Plan für leichte Anspannung und ein Hilfe-Plan für starke Anspannung). Verwende für deine Hilfe-Pläne sprechende Namen, damit du sie leichter zuordnen kannst. <br><br>Im Anschluss kannst du im Bereich ‚meine Befindlichkeitsparameter‘ die Hilfe-Pläne den einzelnen Skalenwerten zuordnen (z.B. Anspannung 5 -> Hilfe-Plan für leichte Anspannung, Anspannung 7 -> Hilfe-Plan für starke Anspannung). <br><br>Erreichst du diesen Skalenwert bei deiner Befindlichkeitsabfrage, wird dir der dazugehörige Hilfe-Plan automatisch angezeigt."
   },
   "MOOD_LOG_INFO": {
     "TITLE": "Befindlichkeitstagebuch",
-    "TEXT": "Du kannst individuelle Befindlichkeiten definieren, welche du auf einer Skala von 0 – 10 regelmäßig eingeschätzt und dokumentierst. Du kannst von der APP vorgeschlagene Befindlichkeiten übernehmen oder definierst eigene (z.B. Schmerz, Anspannung, Leid, Angst, Übelkeit).\n\n Die App erinnert dich an das Einschätzen deiner Befindlichkeit. Im Notizbereich kannst du zusätzlich Gedanken, Auslöser, Highlights oder Ähnliches vermerken."
+    "TEXT": "Definiere emotionale und körperliche Zustände, welche du regelmäßig auf einer Skala von 0 – 10 einschätzen möchtest. Entweder du übernimmst von der App vorgeschlagene Befindlichkeiten oder formulierst eigene (z.B. Schmerz, Anspannung, Leid, Angst, Übelkeit)."
   },
   "NOTIFICATION_INFO": {
     "TITLE": "Erinnerungen",
-    "TEXT": "Die App erinnert dich täglich an das Einschätzen deiner Befindlichkeit. Du kannst bis zu fünf Zeitpunkte auswählen an denen dich die App auffordern soll. Wichtig ist, dass die App auf deinem Smartphone die Erlaubnis hat Benachrichtigungen zu senden."
+    "TEXT": "Die App kann dich täglich an das Einschätzen deiner Befindlichkeit erinnern. Du kannst bis zu fünf Zeitpunkte auswählen an denen dich die App dazu auffordern soll. <br><br>Wichtig ist, dass die App auf deinem Smartphone die Erlaubnis hat Benachrichtigungen zu senden. <br><br>Unabhängig davon kannst du deine Befindlichkeit jederzeit einschätzen und dokumentieren. -> Neuer Stimmungstagebucheintrag"
   },
   "MOOD_LOG_HISTORY_INFO": {
     "TITLE": "Stimmungsverlauf",

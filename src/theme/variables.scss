@@ -1,2 +1,16 @@
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
+
+:root {
+  --ion-color-mymoodlogcolor: #642BD5;
+
+}
+
+.ion-color-mymoodlogcolor {
+  --ion-color-base: var(--ion-color-mymoodlogcolor);
+  --ion-color-base-rgb: var(--ion-color-mymoodlogcolor-rgb);
+  --ion-color-contrast: var(--ion-color-mymoodlogcolor-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-mymoodlogcolor-contrast-rgb);
+  --ion-color-shade: var(--ion-color-mymoodlogcolor-shade);
+  --ion-color-tint: var(--ion-color-mymoodlogcolor-tint);
+}
