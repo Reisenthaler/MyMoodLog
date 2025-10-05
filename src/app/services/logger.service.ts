@@ -39,19 +39,19 @@ export class LoggerService {
     return {
       log: async (message: any, ...optional: any[]) => {
         console.log(`[MYML-${tag}]`, message, ...optional);
-        await this.appendToFile(this.formatMessage(tag, 'log', message, optional));
+        // await this.appendToFile(this.formatMessage(tag, 'log', message, optional));
       },
       info: async (message: any, ...optional: any[]) => {
         console.info(`[MYML-${tag}]`, message, ...optional);
-        await this.appendToFile(this.formatMessage(tag, 'info', message, optional));
+        // await this.appendToFile(this.formatMessage(tag, 'info', message, optional));
       },
       warn: async (message: any, ...optional: any[]) => {
         console.warn(`[MYML-${tag}]`, message, ...optional);
-        await this.appendToFile(this.formatMessage(tag, 'warn', message, optional));
+        // await this.appendToFile(this.formatMessage(tag, 'warn', message, optional));
       },
       error: async (message: any, ...optional: any[]) => {
         console.error(`[MYML-${tag}]`, message, ...optional);
-        await this.appendToFile(this.formatMessage(tag, 'error', message, optional));
+        // await this.appendToFile(this.formatMessage(tag, 'error', message, optional));
       },
     };
   }
