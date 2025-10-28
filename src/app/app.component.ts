@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
+import { IonApp, IonRouterOutlet, ToastController } from '@ionic/angular/standalone';
 import { Storage } from '@ionic/storage-angular';
 import { StatusBar, Style } from '@capacitor/status-bar';
 import { App } from '@capacitor/app';
@@ -15,19 +15,24 @@ import { LoggerService } from './services/logger.service';
   imports: [IonApp, IonRouterOutlet],
 })
 export class AppComponent implements OnInit {
+  @ViewChild(IonRouterOutlet, { static: true }) routerOutlet!: IonRouterOutlet;
+
   private logger = this.loggerService.createLogger('AppComponent');
+  private lastBackPress = 0;
+  private exitDelay = 2000; // 2 seconds
+  private toast: HTMLIonToastElement | null = null;
 
   constructor(
     private router: Router,
     private storage: Storage,
     private translateService: TranslateService,
     private notificationService: NotificationService,
-    private loggerService: LoggerService
+    private loggerService: LoggerService,
+    private toastController: ToastController
   ) {
     this.initStatusBar();
 
     this.logger.info('Constructor called, initializing app...');
-
     this.translateService.addLangs(['de']);
     this.translateService.setDefaultLang('de');
     this.translateService.use('de');
@@ -67,6 +72,41 @@ export class AppComponent implements OnInit {
         this.logger.info('No pending mood log found → staying on current screen');
       }
     });
+
+    // Handle hardware back button with double press to exit
+    App.addListener('backButton', async () => {
+      if (this.routerOutlet && this.routerOutlet.canGoBack()) {
+        this.logger.info('Back button pressed → navigating back');
+        this.routerOutlet.pop();
+      } else {
+        const currentTime = Date.now();
+
+        if (currentTime - this.lastBackPress < this.exitDelay) {
+          this.logger.info('Double back press detected → exiting app');
+          if (this.toast) {
+            await this.toast.dismiss();
+            this.toast = null;
+          }
+          App.exitApp();
+        } else {
+          this.logger.info('First back press → showing exit hint');
+          this.lastBackPress = currentTime;
+          await this.showExitToast();
+        }
+      }
+    });
+  }
+
+  private async showExitToast() {
+    if (this.toast) {
+      await this.toast.dismiss();
+    }
+    this.toast = document.createElement('ion-toast');
+	  this.toast.message = this.translateService.instant('COMMON.PRESS_BACK_AGAIN_TO_EXIT');
+    this.toast.duration = this.exitDelay;
+    this.toast.position = 'bottom';
+    document.body.appendChild(this.toast);
+    await this.toast.present();
   }
 
   private async initStatusBar() {

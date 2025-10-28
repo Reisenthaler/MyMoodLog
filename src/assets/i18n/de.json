@@ -1,7 +1,8 @@
 {
   "COMMON": {
     "NOTIFICATION": "Benachrichtigung",
-    "CLOSE": "schließen"
+    "CLOSE": "schließen",
+    "PRESS_BACK_AGAIN_TO_EXIT": "Zum Beenden erneut drücken"
   },
   "HOME": {
     "PAGE_TITLE": "MyMoodLog",
