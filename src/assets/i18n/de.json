@@ -22,7 +22,8 @@
     "COMMENT_LABEL": "Kommentar",
     "COMMENT_PLACEHOLDER": "Schreibe deine Gedanken hier...",
     "SAVE_SUCCESS": "Dein Stimmungseintrag wurde gespeichert.",
-    "SAVE_ERROR": "Fehler beim Speichern des Stimmungseintrags!"
+    "SAVE_ERROR": "Fehler beim Speichern des Stimmungseintrags!",
+    "DATE_TIME_LABEL": "Datum und Uhrzeit"
   },
     "MOOD_LOG_HISTORY": {
     "PAGE_TITLE": "Verlauf & Rückblick",

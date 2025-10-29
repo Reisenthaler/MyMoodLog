@@ -13,14 +13,17 @@ import {
   IonTitle,
   IonContent,
   IonTextarea,
+  IonDatetime,
   ToastController,
+  IonDatetimeButton,
+  IonModal,
 } from '@ionic/angular/standalone';
 import { Storage } from '@ionic/storage-angular';
 import { MoodItem } from '../../models/mood-item.model';
 import { CrisisPlan } from '../../models/crisis-plan.model';
 import { Router } from '@angular/router';
 import { MoodLogEntry } from 'src/app/models/mood-log-entry.model';
-import { TranslateModule, TranslateService } from '@ngx-translate/core'; 
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ButtonComponent } from 'src/app/components/button/button.component';
 import { LoggerService } from 'src/app/services/logger.service';
 import { NotificationService } from 'src/app/services/notification-service';
@@ -45,7 +48,10 @@ import { NotificationService } from 'src/app/services/notification-service';
     IonSelectOption,
     TranslateModule,
     ButtonComponent,
-    IonTextarea
+    IonTextarea,
+    IonDatetime,
+    IonDatetimeButton,
+    IonModal,
   ],
 })
 export class MoodLogPage implements OnInit {
@@ -53,6 +59,10 @@ export class MoodLogPage implements OnInit {
   crisisPlans: CrisisPlan[] = [];
   selections: { [id: number]: number } = {};
   comment: string = '';
+
+  logDateTime: string = this.getLocalISOString();
+  maxDateIso: string = this.getLocalISOString();
+
   private logger = new LoggerService().createLogger('MoodLogPage');
 
   constructor(
@@ -97,7 +107,7 @@ export class MoodLogPage implements OnInit {
       // Build log entry
       const logEntry: MoodLogEntry = {
         id: Date.now(), // unique ID
-        date: new Date().toISOString(),
+        date: this.logDateTime,
         notificationId: pendingNotifId,
         selections: this.selections,
         comment: this.comment || undefined,
@@ -149,5 +159,13 @@ export class MoodLogPage implements OnInit {
       });
       toast.present();
     }
+  }
+
+  getLocalISOString(date: Date = new Date()): string {
+    const tzOffset = date.getTimezoneOffset() * 60000; // ms offset from UTC
+    const localISOTime = new Date(date.getTime() - tzOffset)
+      .toISOString()
+      .slice(0, -1); // remove 'Z' at the end to indicate local time
+    return localISOTime;
   }
 }

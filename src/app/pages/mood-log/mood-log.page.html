@@ -33,6 +33,35 @@
       autoGrow="true"
     ></ion-textarea>
   </ion-item>
+
+  <!-- Read‑only trigger that opens a date‑time picker modal -->
+  <ion-item>
+    <ion-label position="stacked" >
+      {{ 'MOOD_LOG.DATE_TIME_LABEL' | translate }}
+    </ion-label>
+
+    <!-- This renders a button showing the time -->
+    <ion-datetime-button
+      datetime="moodLogDatetimePicker"
+      display-format="HH:mm"
+      style="padding-top: 10px; padding-bottom: 10px;"
+    >
+    </ion-datetime-button>
+
+    <!-- The datetime picker itself in a modal -->
+    <ion-modal keepContentsMounted="true">
+      <ng-template>
+        <ion-datetime
+          id="moodLogDatetimePicker"
+          [(ngModel)]="logDateTime"
+          presentation="date-time"
+          [max]="maxDateIso"
+          hourCycle="h23"
+          locale="en-GB"
+        ></ion-datetime>
+      </ng-template>
+    </ion-modal>
+  </ion-item>
 </ion-content>
 
 <ion-footer class="ion-no-border">
