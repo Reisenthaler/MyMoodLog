@@ -62,10 +62,24 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 import { addIcons } from 'ionicons';
-import { trashOutline } from 'ionicons/icons';
+import {
+  chevronBackOutline,
+  chevronForwardOutline,
+  calendarOutline,
+  calendarNumberOutline,
+  checkmarkOutline,
+  closeOutline,
+  trashOutline,
+} from 'ionicons/icons';
 
 // Register the icon(s)
 addIcons({
+  chevronBackOutline,
+  chevronForwardOutline,
+  calendarOutline,
+  calendarNumberOutline,
+  checkmarkOutline,
+  closeOutline,
   'trash-outline': trashOutline,
 });
 

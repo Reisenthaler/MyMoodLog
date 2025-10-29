@@ -6,7 +6,7 @@
 
 <ion-content class="ion-padding">
   <!-- Filter control -->
-  <ion-segment *ngIf="filteredHistory.length > 0" [(ngModel)]="selectedRange" (ionChange)="filterHistory()" style="padding-bottom: 10px;">
+<ion-segment [(ngModel)]="selectedRange" (ionChange)="onRangeChange()" style="padding-bottom: 10px;">
     <ion-segment-button value="7">
       <ion-label>{{ 'MOOD_LOG_HISTORY.FILTER.LAST_7' | translate }}</ion-label>
     </ion-segment-button>
@@ -17,6 +17,73 @@
       <ion-label>{{ 'MOOD_LOG_HISTORY.FILTER.ALL' | translate }}</ion-label>
     </ion-segment-button>
   </ion-segment>
+
+<!-- Date navigation (hidden when "all" is selected) -->
+<div
+  class="date-navigation"
+  *ngIf="selectedRange !== 'all'"
+  style="
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  "
+>
+  <!-- Previous range button -->
+  <ion-button fill="outline" size="small" shape="round" (click)="changeRange('prev')">
+    <ion-icon name="chevron-back-outline"></ion-icon>
+  </ion-button>
+
+<!-- Two inline date pickers -->
+<div style="display: flex; align-items: center; gap: 8px;">
+
+  <!-- Start Date -->
+  <ion-datetime-button
+    datetime="currentStartPicker"
+    display-format="dd.MM.yyyy"
+  ></ion-datetime-button>
+
+  <ion-modal keepContentsMounted="true">
+    <ng-template>
+      <ion-datetime
+        id="currentStartPicker"
+        presentation="date"
+        [(ngModel)]="currentStart"
+        [max]="currentEnd"
+        locale="en-GB"
+        (ionChange)="filterHistory()"
+      ></ion-datetime>
+    </ng-template>
+  </ion-modal>
+
+  <span>–</span>
+
+  <!-- End Date -->
+  <ion-datetime-button
+    datetime="currentEndPicker"
+    display-format="dd.MM.yyyy"
+  ></ion-datetime-button>
+
+  <ion-modal keepContentsMounted="true">
+    <ng-template>
+      <ion-datetime
+        id="currentEndPicker"
+        presentation="date"
+        [(ngModel)]="currentEnd"
+        [min]="currentStart"
+        locale="en-GB"
+        (ionChange)="filterHistory()"
+      ></ion-datetime>
+    </ng-template>
+  </ion-modal>
+</div>
+
+  <!-- Next range button -->
+  <ion-button fill="outline" size="small" shape="round" (click)="changeRange('next')">
+    <ion-icon name="chevron-forward-outline"></ion-icon>
+  </ion-button>
+</div>
 
   <!-- Graph at the top -->
   <app-mood-log-graph
