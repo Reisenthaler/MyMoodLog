@@ -1,96 +1,74 @@
 <ion-header>
   <ion-toolbar color="mymoodlogcolor">
     <ion-title>{{ 'HOME.PAGE_TITLE' | translate }}</ion-title>
+    <!-- <ion-buttons slot="end">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons> -->
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <ion-list>
-    <!-- Crisis Plan Settings -->
-    <ion-item button detail (click)="goTo('crisis-plan-settings')">
-      <ion-label>{{ 'HOME.CRISIS_PLAN_SETTINGS' | translate }}</ion-label>
-      <ion-button fill="clear" slot="end" (click)="openCrisisPlanInfo($event)">
-        <ion-icon name="information-circle-outline"></ion-icon>
-      </ion-button>
-    </ion-item>
+<ion-content class="ion-padding home-content">
+  <div class="grid-container">
+    <!-- Meine Befindlichkeitsparameter -->
+    <ion-card button class="feature-card" (click)="goTo('mood-tracking-settings')">
+      <ion-card-content>
+        <ion-icon name="heart-outline"></ion-icon>
+        <h2>{{ 'HOME.MOOD_TRACKING_SETTINGS' | translate }}</h2>
+      </ion-card-content>
+    </ion-card>
 
-    <!-- Mood Tracking Settings -->
-    <ion-item button detail (click)="goTo('mood-tracking-settings')">
-      <ion-label>{{ 'HOME.MOOD_TRACKING_SETTINGS' | translate }}</ion-label>
-      <ion-button fill="clear" slot="end" (click)="openMoodLogInfo($event)">
-        <ion-icon name="information-circle-outline"></ion-icon>
-      </ion-button>
-    </ion-item>
+    <!-- Meine Krisenpläne -->
+    <ion-card button class="feature-card" (click)="goTo('crisis-plan-settings')">
+      <ion-card-content>
+        <ion-icon name="list-outline"></ion-icon>
+        <h2>{{ 'HOME.CRISIS_PLAN_SETTINGS' | translate }}</h2>
+      </ion-card-content>
+    </ion-card>
 
-    <!-- Other items unchanged -->
-    <ion-item button detail (click)="goTo('notification-settings')">
-      <ion-label>{{ 'HOME.NOTIFICATION_SETTINGS' | translate }}</ion-label>
-      <ion-button fill="clear" slot="end" (click)="openNotificationInfo($event)">
-        <ion-icon name="information-circle-outline"></ion-icon>
-      </ion-button>
-    </ion-item>
+    <!-- Meine Erinnerungen -->
+    <ion-card button class="feature-card" (click)="goTo('notification-settings')">
+      <ion-card-content>
+        <ion-icon name="alarm-outline"></ion-icon>
+        <h2>{{ 'HOME.NOTIFICATION_SETTINGS' | translate }}</h2>
+      </ion-card-content>
+    </ion-card>
 
-    <ion-item button detail (click)="goTo('mood-log-history')">
-      <ion-label>{{ 'HOME.MOOD_LOG_HISTORY' | translate }}</ion-label>
-      <ion-button fill="clear" slot="end" (click)="openMoodLogHistoryInfo($event)">
-        <ion-icon name="information-circle-outline"></ion-icon>
-      </ion-button>
-    </ion-item>
+    <!-- Verlauf & Rückblick -->
+    <ion-card button class="feature-card" (click)="goTo('mood-log-history')">
+      <ion-card-content>
+        <ion-icon name="stats-chart-outline"></ion-icon>
+        <h2>{{ 'HOME.MOOD_LOG_HISTORY' | translate }}</h2>
+      </ion-card-content>
+    </ion-card>
 
-    <ion-item button detail (click)="goTo('legal-notice-disclaimer')">
-      <ion-label>{{ 'HOME.LEGAL_NOTICE_DISCLAIMER' | translate }}</ion-label>
-    </ion-item>
+    <!-- So funktioniert die App -->
+    <ion-card button class="feature-card" (click)="goTo('onboarding')">
+      <ion-card-content>
+        <ion-icon name="help-circle-outline"></ion-icon>
+        <h2>{{ 'HOME.ONBOARDING' | translate }}</h2>
+      </ion-card-content>
+    </ion-card>
 
-    <ion-item button detail (click)="goTo('onboarding')">
-      <ion-label>{{ 'HOME.ONBOARDING' | translate }}</ion-label>
-    </ion-item>
+    <!-- Hilfe in akuten Krisen -->
+    <ion-card button class="feature-card crisis-card" (click)="goTo('help-crisis-situations')">
+      <ion-card-content>
+        <ion-icon name="warning-outline"></ion-icon>
+        <h2>{{ 'HOME.HELP_CRISIS_SITUATIONS' | translate }}</h2>
+      </ion-card-content>
+    </ion-card>
 
-    <ion-item button detail (click)="goTo('help-crisis-situations')">
-      <ion-label>{{ 'HOME.HELP_CRISIS_SITUATIONS' | translate }}</ion-label>
-    </ion-item>
-
-    <ion-item button detail (click)="goTo('mood-log')">
-      <ion-label>{{ 'HOME.LOG_CURRENT_MOOD' | translate }}</ion-label>
-    </ion-item>
-  </ion-list>
-
-  <!-- Overlay Crisis Plan Info -->
-  <div *ngIf="showCrisisPlanInfo" class="overlay" (click)="closeInfo()">
-    <div class="overlay-content" (click)="$event.stopPropagation()">
-      <app-crisis-plan-info></app-crisis-plan-info>
-      <ion-button expand="block" (click)="closeInfo()" class="close-btn">
-        {{ 'COMMON.CLOSE' | translate }}
-      </ion-button>
-    </div>
-  </div>
-
-  <!-- Overlay Mood Log Info -->
-  <div *ngIf="showMoodLogInfo" class="overlay" (click)="closeInfo()">
-    <div class="overlay-content" (click)="$event.stopPropagation()">
-      <app-mood-log-info></app-mood-log-info>
-      <ion-button expand="block" (click)="closeInfo()" class="close-btn">
-        {{ 'COMMON.CLOSE' | translate }}
-      </ion-button>
-    </div>
-  </div>
-
-  <!-- Overlay Notification Info -->
-  <div *ngIf="showNotificationInfo" class="overlay" (click)="closeInfo()">
-    <div class="overlay-content" (click)="$event.stopPropagation()">
-      <app-notification-info></app-notification-info>
-      <ion-button expand="block" (click)="closeInfo()" class="close-btn">
-        {{ 'COMMON.CLOSE' | translate }}
-      </ion-button>
-    </div>
-  </div>
-
-  <!-- Overlay Mood Log History Info -->
-  <div *ngIf="showMoodLogHistoryInfo" class="overlay" (click)="closeInfo()">
-    <div class="overlay-content" (click)="$event.stopPropagation()">
-      <app-mood-log-history-info></app-mood-log-history-info>
-      <ion-button expand="block" (click)="closeInfo()" class="close-btn">
-        {{ 'COMMON.CLOSE' | translate }}
-      </ion-button>
-    </div>
+    <!-- legal notice and disclaimer -->
+    <ion-card button class="feature-card" (click)="goTo('legal-notice-disclaimer')">
+      <ion-card-content>
+        <ion-icon name="document-text-outline"></ion-icon>
+        <h2>{{ 'HOME.LEGAL_NOTICE_DISCLAIMER' | translate }}</h2>
+      </ion-card-content>
+    </ion-card>
   </div>
 </ion-content>
+
+<!-- Bottom button -->
+<ion-button expand="block" (click)="goTo('mood-log')" class="new-entry-button">
+  <ion-icon name="create-outline" slot="start"></ion-icon>
+  {{ 'HOME.LOG_CURRENT_MOOD' | translate }}
+</ion-button> 

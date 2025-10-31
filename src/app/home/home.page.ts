@@ -10,6 +10,10 @@ import {
   IonLabel,
   IonIcon,
   IonButton,
+  IonCard,
+  IonCardContent,
+  IonButtons,
+  IonMenuButton
 } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -40,6 +44,10 @@ addIcons({
     TranslateModule,
     IonIcon,
     IonButton,
+    IonCard,
+    IonCardContent,
+    IonButtons,
+    IonMenuButton,
     CrisisPlanInfoComponent,
     MoodLogInfoComponent,
     NotificationInfoComponent,

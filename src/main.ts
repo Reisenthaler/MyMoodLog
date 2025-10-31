@@ -70,9 +70,17 @@ import {
   checkmarkOutline,
   closeOutline,
   trashOutline,
+  heartOutline,
+  listOutline,
+  alarmOutline,
+  statsChartOutline,
+  helpCircleOutline,
+  warningOutline,
+  createOutline,
+  documentTextOutline,
 } from 'ionicons/icons';
 
-// Register the icon(s)
+// Register the icons
 addIcons({
   chevronBackOutline,
   chevronForwardOutline,
@@ -81,6 +89,14 @@ addIcons({
   checkmarkOutline,
   closeOutline,
   'trash-outline': trashOutline,
+  heartOutline,
+  listOutline,
+  alarmOutline,
+  statsChartOutline,
+  helpCircleOutline,
+  warningOutline,
+  createOutline,
+  documentTextOutline,
 });
 
 bootstrapApplication(AppComponent, {

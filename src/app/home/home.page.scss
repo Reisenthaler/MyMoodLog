@@ -1,55 +1,123 @@
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
-}
-
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5); // dark backdrop
+.home-content {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  z-index: 9999; // on top of everything
 }
 
-.overlay-content {
-  background: var(--ion-color-light, #fff);
-  border-radius: 16px;
-  padding: 20px;
-  max-width: 90%;
-  max-height: 80%;
-  overflow-y: auto;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+/* === FIXED 2×3 GRID (always two rows of three) === */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
+  gap: 2vw;
+  justify-items: center;
+  width: 100%;
+  max-width: 900px;
+  margin-top: 1rem;
+  padding: 1vw;
 }
 
-.close-btn {
-  --border-radius: 16px;
-  font-weight: bold;
+/* === FEATURE CARDS === */
+.feature-card {
+  text-align: center;
+  border-radius: 1vw;
+  width: 100%;
+  aspect-ratio: 1 / 1; /* keep perfect square */
+  background-color: #dce7f9;
+  color: #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.8vw solid #1a68e6;
+  border-radius: 2vw;
+  transition: transform 0.15s ease-in-out;
+  word-break: break-all;
 }
+
+.feature-card:hover {
+  transform: scale(1.03);
+}
+
+.feature-card ion-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === TRUE FLUID ICON & TEXT SIZES === */
+.feature-card ion-icon {
+  font-size: 10vw; /* scales with width */
+  line-height: 1;
+  color: #444;
+}
+
+.feature-card h2 {
+  font-size: 2.8vw; /* always proportional to screen width */
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.2;
+  margin-top: 0.5vw;
+  color: #444;
+}
+
+.crisis-card {
+  background-color: #ffe9d2;
+  border: 0.8vw solid #e6a300;
+}
+
+/* === BOTTOM RECTANGULAR BUTTON (Green Themed) === */
+.new-entry-button {
+  /* Visual base (matches card style) */
+  background-color: #0eaf2333 !important; /* soft translucent green */
+  --background: #0eaf2333 !important;
+  --color: #000;
+  color: #000;
+
+  /* Outline and corners — same proportion as cards */
+  border: 0.8vw solid #0eaf23; /* dark green outline like blue ones */
+  border-radius: 2vw; /* squirkle-like corners */
+
+  /* Size and proportions */
+  width: 80%;
+  max-width: 650px;
+  height: clamp(85px, 12vw, 140px); /* slightly taller for rectangular look */
+  font-size: clamp(1rem, 1.8vw, 1.4rem);
+  font-weight: 700;
+  text-transform: none;
+  white-space: normal; /* ✅ allow text wrapping */
+  word-break: break-word; /* break long words if needed */
+  overflow-wrap: anywhere; /* ensure text never leaks outside */
+  overflow: auto;
+  /* Center layout */
+  display: flex;
+  flex-direction: column; /* allow wrapping vertically */
+  align-items: center;
+  justify-content: center;
+  text-align: center; /* keep wrapped text centered */
+
+  /* Shadow for consistency */
+  box-shadow: 0 0 0 0.3vw #0eaf23;
+
+  /* Proper spacing for the icon */
+  --padding-start: 3vw;
+  --padding-end: 3vw;
+
+  /* Hover / pressed feedback */
+  transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out;
+
+  margin: 10%;
+}
+
+.new-entry-button:hover {
+  transform: scale(1.03);
+  background-color: rgba(143, 250, 163, 0.8) !important; /* slightly less transparent */
+}
+
+/* === ICON === */
+.new-entry-button ion-icon {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  margin-right: 1vw;
+  color: #444; /* matches border for color harmony */
+  padding-left: 10px;
+} 
