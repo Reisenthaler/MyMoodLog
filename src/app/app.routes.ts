@@ -56,4 +56,8 @@ export const routes: Routes = [
     path: 'help-crisis-situations',
     loadComponent: () => import('./pages/help-crisis-situations/help-crisis-situations.page').then( m => m.HelpCrisisSituationsPage)
   },
+  {
+    path: 'export-history',
+    loadComponent: () => import('./pages/export-history/export-history.page').then( m => m.ExportHistoryPage)
+  },
 ];

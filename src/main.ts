@@ -78,6 +78,7 @@ import {
   warningOutline,
   createOutline,
   documentTextOutline,
+  downloadOutline
 } from 'ionicons/icons';
 
 // Register the icons
@@ -97,6 +98,7 @@ addIcons({
   warningOutline,
   createOutline,
   documentTextOutline,
+  downloadOutline
 });
 
 bootstrapApplication(AppComponent, {

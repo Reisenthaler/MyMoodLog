@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   IonList,
@@ -11,6 +11,7 @@ import {
   IonSegment,
   IonSegmentButton,
   IonButton,
+  IonButtons,
   IonIcon,
   IonDatetime,
   IonDatetimeButton,
@@ -23,6 +24,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { MoodLogGraphComponent } from 'src/app/components/mood-log-graph/mood-log-graph.component';
 import { FormsModule } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mood-log-history',
@@ -42,6 +44,7 @@ import { AlertController } from '@ionic/angular';
     IonSegment,
     IonSegmentButton,
     IonButton,
+    IonButtons,
     IonIcon,
     IonDatetimeButton,
     IonModal,
@@ -68,7 +71,8 @@ export class MoodLogHistoryPage implements OnInit {
   constructor(
     private storage: Storage,
     private alertController: AlertController,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private router: Router,       
   ) {}
 
   async ngOnInit() {
@@ -232,5 +236,9 @@ export class MoodLogHistoryPage implements OnInit {
     this.history = this.history.filter((entry) => entry !== log);
     await this.storage.set('mood_log_history', this.history);
     this.filterHistory();
+  }
+
+  goToExport() {
+    this.router.navigate(['/export-history']);
   }
 }

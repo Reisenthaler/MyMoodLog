@@ -191,5 +191,27 @@
         "NUMBER": "0800246247"
       }
     }
+  },
+  "EXPORT_HISTORY": {
+    "PAGE_TITLE": "Stimmungsverlauf exportieren",
+    "START_DATE": "Startdatum",
+    "END_DATE": "Enddatum",
+    "FILE_TYPE": "Dateiformat",
+    "EXPORT_BUTTON": "Exportieren",
+    "NO_ENTRIES_FOUND": "Keine Einträge im ausgewählten Zeitraum gefunden.",
+    "EXPORT_SUCCESS": "Dein Stimmungsverlauf wurde erfolgreich exportiert.",
+    "EXPORT_FAILED": "Beim Export ist ein Fehler aufgetreten.",
+    "EXPORT_TITLE": "Stimmungsprotokoll Export",
+    "DATE": "Datum",
+    "ENTRY": "Eintrag",
+    "MOODS": "Stimmungen",
+    "COMMENT": "Kommentar",
+    "NO_ENTRIES_FOUND": "Keine Einträge im ausgewählten Zeitraum gefunden.",
+    "UNKNOWN_MOOD": "Stimmung {{id}}",
+    "FILE_SHEET": "Stimmungsverlauf",
+    "FILE_NAME_JSON": "stimmungsverlauf_export",
+    "FILE_NAME_EXCEL": "stimmungsverlauf_export",
+    "FILE_NAME_PDF": "stimmungsverlauf_export",
+    "FILE_NAME_WORD": "stimmungsverlauf_export"
   }
 }

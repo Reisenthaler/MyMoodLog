@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="mymoodlogcolor">
+    <ion-title>{{ 'EXPORT_HISTORY.PAGE_TITLE' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label>{{ 'EXPORT_HISTORY.START_DATE' | translate }}</ion-label>
+    <ion-datetime-button datetime="startPicker"></ion-datetime-button>
+  </ion-item>
+
+  <ion-modal keepContentsMounted="true">
+    <ng-template>
+      <ion-datetime
+        id="startPicker"
+        presentation="date"
+        [(ngModel)]="startDate"
+      ></ion-datetime>
+    </ng-template>
+  </ion-modal>
+
+  <ion-item>
+    <ion-label>{{ 'EXPORT_HISTORY.END_DATE' | translate }}</ion-label>
+    <ion-datetime-button datetime="endPicker"></ion-datetime-button>
+  </ion-item>
+
+  <ion-modal keepContentsMounted="true">
+    <ng-template>
+      <ion-datetime
+        id="endPicker"
+        presentation="date"
+        [(ngModel)]="endDate"
+      ></ion-datetime>
+    </ng-template>
+  </ion-modal>
+
+  <ion-item>
+    <ion-label>{{ 'EXPORT_HISTORY.FILE_TYPE' | translate }}</ion-label>
+    <ion-select [(ngModel)]="fileType">
+      <ion-select-option value="json">JSON</ion-select-option>
+      <ion-select-option value="excel">Excel (.xlsx)</ion-select-option>
+      <ion-select-option value="pdf">PDF</ion-select-option>
+      <ion-select-option value="word">Word (.docx)</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-button expand="block" color="primary" (click)="export()">
+    {{ 'EXPORT_HISTORY.EXPORT_BUTTON' | translate }}
+  </ion-button>
+</ion-content>
