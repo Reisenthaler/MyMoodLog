@@ -1,3 +1,11 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="mymoodlogcolor">
+    <ion-title>
+      {{ 'NOTIFICATION_SETTINGS.PAGE_TITLE' | translate }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content >
   
    <!-- Select number of notifications per day -->
@@ -22,11 +30,29 @@
       <ion-label>
         {{ 'COMMON.NOTIFICATION' | translate }} {{ i + 1 }}
       </ion-label>
-      <ion-datetime
-        presentation="time"
-        [(ngModel)]="times[i]"
-        hour-cycle="h23"
-      ></ion-datetime>
+
+      <!-- Trigger button -->
+      <ion-datetime-button
+        [datetime]="'notifTimePicker' + i"
+        display-format="HH:mm"
+        style="padding-top: 10px; padding-bottom: 10px;"
+      ></ion-datetime-button>
+
+      <!-- Modal with actual picker -->
+      <ion-modal keepContentsMounted="true">
+        <ng-template>
+          <ion-datetime
+            [id]="'notifTimePicker' + i"
+            [(ngModel)]="times[i]"
+            presentation="time"
+            hourCycle="h23"
+            locale="de-AT"
+            show-default-buttons="true"
+            done-text="OK"
+            cancel-text="Abbrechen"
+          ></ion-datetime>
+        </ng-template>
+      </ion-modal>
     </ion-item>
   </ion-list>
 

@@ -12,6 +12,10 @@ import {
   IonToolbar,
   IonFooter,
   ToastController,
+  IonHeader,
+  IonTitle,
+  IonDatetimeButton,
+  IonModal
 } from '@ionic/angular/standalone';
 import { Storage } from '@ionic/storage-angular';
 import {
@@ -44,6 +48,10 @@ import { Device } from '@capacitor/device';
     IonFooter,
     IonToolbar,
     TranslateModule,
+    IonHeader,
+    IonTitle,
+    IonDatetimeButton,
+    IonModal
   ],
 })
 export class NotificationSettingsComponent implements OnInit {

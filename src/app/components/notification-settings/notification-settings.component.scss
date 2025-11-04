@@ -9,7 +9,7 @@ ion-content {
   flex: 1; /* take up available space */
   overflow-y: auto; /* make it scrollable */ 
   --padding-bottom: 120px; /* adjust to be >= button height + margin */
-
+  padding-top: 0px;
 }
 
 .save-button-container {

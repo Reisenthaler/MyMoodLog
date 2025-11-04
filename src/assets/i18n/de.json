@@ -85,8 +85,9 @@
     "NOTE_PLACEHOLDER": "info hinzufügen..."
   },
   "NOTIFICATION_SETTINGS": {
+    "PAGE_TITLE": "Meine Erinnerungen",
     "NOTIFICATIONS_PER_DAY": "Benachrichtigungen pro Tag",
-    "SAVE_AND_SCHEDULE": "Speichern & Benachrichtigungen planen",
+    "SAVE_AND_SCHEDULE": "Speichern",
     "TOAST_SAVE_SUCCESS": "Benachrichtigung erfolgreich geplant",
     "TOAST_SAVE_ERROR": "Fehler beim Planen der Benachrichtigung",
     "NOTIFICATION_TITLE": "Meine Erinnerungen",
