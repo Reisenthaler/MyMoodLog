@@ -23,6 +23,7 @@
     "COMMENT_PLACEHOLDER": "Schreibe deine Gedanken hier...",
     "SAVE_SUCCESS": "Dein Stimmungseintrag wurde gespeichert.",
     "SAVE_ERROR": "Fehler beim Speichern des Stimmungseintrags!",
+    "NO_SELECTION_ERROR": "Bitte wähle mindestens eine Stimmung aus, bevor du speicherst.",
     "DATE_TIME_LABEL": "Datum und Uhrzeit"
   },
     "MOOD_LOG_HISTORY": {

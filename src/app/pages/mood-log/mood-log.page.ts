@@ -82,6 +82,22 @@ export class MoodLogPage implements OnInit {
 
   async save() {
     try {
+      // Validation: check if at least one mood is selected
+      const hasSelections = Object.values(this.selections).some(
+        (value) => value !== null && value !== undefined
+      );
+
+      if (!hasSelections) {
+        const toast = await this.toastCtrl.create({
+          message: this.translateService.instant('MOOD_LOG.NO_SELECTION_ERROR') ||
+            'Please select at least one mood before saving.',
+          duration: 2500,
+          color: 'danger',
+        });
+        await toast.present();
+        return; // Stop the save process
+      }
+
       const triggeredPlans: CrisisPlan[] = [];
       const addedPlanIds = new Set<number>();
 
