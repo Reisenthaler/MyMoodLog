@@ -67,8 +67,10 @@
   </div>
 </ion-content>
 
-<!-- Bottom button -->
-<ion-button expand="block" (click)="goTo('mood-log')" class="new-entry-button">
-  <ion-icon name="create-outline" slot="start"></ion-icon>
-  {{ 'HOME.LOG_CURRENT_MOOD' | translate }}
-</ion-button> 
+<ion-footer style="box-shadow: none;">
+  <!-- Bottom button -->
+  <ion-button expand="block" (click)="goTo('mood-log')" class="new-entry-button">
+    <ion-icon name="create-outline" slot="start"></ion-icon>
+    {{ 'HOME.LOG_CURRENT_MOOD' | translate }}
+  </ion-button> 
+</ion-footer>

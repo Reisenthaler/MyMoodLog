@@ -13,7 +13,8 @@ import {
   IonCard,
   IonCardContent,
   IonButtons,
-  IonMenuButton
+  IonMenuButton,
+  IonFooter
 } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -48,6 +49,7 @@ addIcons({
     IonCardContent,
     IonButtons,
     IonMenuButton,
+    IonFooter,
     CrisisPlanInfoComponent,
     MoodLogInfoComponent,
     NotificationInfoComponent,
