@@ -132,15 +132,8 @@
     "PAGE_TITLE": "Krisenpläne",
     "NO_PLANS": "Keine Krisenpläne ausgelöst."
   },
-  "LEGAL_NOTICE_DISCLAIMER": {
-    "PAGE_TITLE": "Urheberrecht & Haftungsausschluss",
-    "DISCLAIMER_TITLE": "Haftungsausschluss",
-    "DISCLAIMER_CONTENT": "Die App MyMoodLog bietet Unterstützung zur Selbstreflexion und Selbsthilfe. Sie stellt keine medizinische, psychologische oder psychotherapeutische Beratung dar und ersetzt keine professionelle Behandlung. Bei akuten psychischen Belastungen oder Krisen wende dich an qualifizierte Fachpersonen oder entsprechende Hilfsangebote.",
-    "COPYRIGHT_TITLE": "Datenschutz",
-    "COPYRIGHT_CONTENT": "Die App MyMoodLog ist dafür ausgelegt deine personenbezogenen Daten zu schützen. Du kannst die App dauerhaft ohne Registrierung und Angabe von personenbezogenen Daten nutzen. Alle eingegeben Daten werden nur lokal in der App erhoben und gespeichert."
-  },
   "ONBOARDING": {
-    "WELCOME_HEADING": "Willkommen bei MyMoodLog",
+    "PAGE_TITLE": "Willkommen bei MyMoodLog",
     "WELCOME_TEXT": "MyMoodLog ist ein Stimmungstagebuch und dient",
     "START_BUTTON": "Los geht's",
     "WELCOME_LIST_ITEM_1": "der persönlichen Einschätzung und Dokumentation emotionaler und körperlicher Zustände (z.B Stimmung, Anspannung, Schmerz)",
@@ -149,7 +142,11 @@
     "NUMBERED_LIST_ITEM_1": "Definiere emotionale und körperliche Zustände, welche du regelmäßig auf einer Skala von 0 – 10 einschätzen möchtest -> Meine Befindlichkeitsparameter",
     "NUMBERED_LIST_ITEM_2": "Stelle ein, ob und wann du an das Einschätzen deiner Befindlichkeit erinnert werden möchtest -> Meine Erinnerungen",
     "NUMBERED_LIST_ITEM_3": "Erstelle individuelle Hilfe/Krisenpläne -> Meine Krisenpläne",
-    "NUMBERED_LIST_ITEM_4": "Ordne die Hilfe/Krisenpläne deinen Befindlichkeitsparametern zu -> Meine Befindlichkeitsparameter"
+    "NUMBERED_LIST_ITEM_4": "Ordne die Hilfe/Krisenpläne deinen Befindlichkeitsparametern zu -> Meine Befindlichkeitsparameter",
+    "DISCLAIMER_TITLE": "Haftungsausschluss",
+    "DISCLAIMER_CONTENT": "Die App MyMoodLog bietet Unterstützung zur Selbstreflexion und Selbsthilfe. Sie stellt keine medizinische, psychologische oder psychotherapeutische Beratung dar und ersetzt keine professionelle Behandlung. Bei akuten psychischen Belastungen oder Krisen wende dich an qualifizierte Fachpersonen oder entsprechende Hilfsangebote.",
+    "COPYRIGHT_TITLE": "Datenschutz",
+    "COPYRIGHT_CONTENT": "Die App MyMoodLog ist dafür ausgelegt deine personenbezogenen Daten zu schützen. Du kannst die App dauerhaft ohne Registrierung und Angabe von personenbezogenen Daten nutzen. Alle eingegeben Daten werden nur lokal in der App erhoben und gespeichert."
   },
   "CRISIS_PLAN_INFO": {
     "TITLE": "Krisenpläne",

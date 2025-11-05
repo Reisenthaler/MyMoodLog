@@ -1,7 +1,15 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
-import { IonContent, IonToolbar, IonFooter } from '@ionic/angular/standalone';
+import { IonContent, IonToolbar, IonFooter,
+  IonHeader,
+  IonTitle,
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardContent,
+  IonText
+ } from '@ionic/angular/standalone';
 import { MoodLogInfoComponent } from 'src/app/components/mood-log-info/mood-log-info.component';
 import { CrisisPlanInfoComponent } from 'src/app/components/crisis-plan-info/crisis-plan-info.component';
 import { NotificationInfoComponent } from 'src/app/components/notification-info/notification-info.component';
@@ -17,6 +25,13 @@ import { ButtonComponent } from 'src/app/components/button/button.component';
     IonContent,
     IonToolbar,
     IonFooter,
+    IonHeader,  
+    IonTitle,
+    IonCard,
+    IonCardHeader,
+    IonCardTitle,
+    IonCardContent,
+    IonText,
     MoodLogInfoComponent,
     CrisisPlanInfoComponent,
     NotificationInfoComponent,

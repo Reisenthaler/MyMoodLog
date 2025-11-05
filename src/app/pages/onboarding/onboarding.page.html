@@ -1,22 +1,76 @@
-<ion-content class="ion-padding">
-  <h2>{{ 'ONBOARDING.WELCOME_HEADING' | translate }}</h2>
-  <p class="welcome-text">{{ 'ONBOARDING.WELCOME_TEXT' | translate }}</p>
+<ion-header [translucent]="true">
+  <ion-toolbar color="mymoodlogcolor">
+    <ion-title>
+      {{ 'ONBOARDING.PAGE_TITLE' | translate }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  <ul>
-    <li>{{ 'ONBOARDING.WELCOME_LIST_ITEM_1' | translate }}</li>
-    <li>{{ 'ONBOARDING.WELCOME_LIST_ITEM_2' | translate }}</li>
-  </ul>
+<ion-content [fullscreen]="false" class="ion-padding">
+  <!-- general  -->
+  <ion-card class="rounded-card">
+    <ion-card-header>
+      <ion-card-title>
+        {{ 'ONBOARDING.WELCOME_TEXT' | translate }}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-text color="dark">
+        <ul style="margin-left: 0; padding-left: 20px; margin-top: 0px;">
+          <li>{{ 'ONBOARDING.WELCOME_LIST_ITEM_1' | translate }}</li>
+          <li>{{ 'ONBOARDING.WELCOME_LIST_ITEM_2' | translate }}</li>
+        </ul>
+      </ion-text>
+    </ion-card-content>
+  </ion-card>
 
-  <p class="numbered-list-heading">{{ 'ONBOARDING.NUMBERED_LIST_HEADING' | translate }}</p>
-
-  <ol>
-    <li class="numbered-list-item">{{ 'ONBOARDING.NUMBERED_LIST_ITEM_1' | translate }}</li>
-    <li class="numbered-list-item">{{ 'ONBOARDING.NUMBERED_LIST_ITEM_2' | translate }}</li>
-    <li class="numbered-list-item">{{ 'ONBOARDING.NUMBERED_LIST_ITEM_3' | translate }}</li>
-    <li class="numbered-list-item">{{ 'ONBOARDING.NUMBERED_LIST_ITEM_4' | translate }}</li>
-  </ol>
+  <!-- Step by step -->
+  <ion-card class="rounded-card">
+    <ion-card-header>
+      <ion-card-title>
+        {{ 'ONBOARDING.NUMBERED_LIST_HEADING' | translate }}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-text color="dark">
+        <ol style="margin-left: 0; padding-left: 20px; margin-top: 0px;">
+          <li>{{ 'ONBOARDING.NUMBERED_LIST_ITEM_1' | translate }}</li>
+          <li>{{ 'ONBOARDING.NUMBERED_LIST_ITEM_2' | translate }}</li>
+          <li>{{ 'ONBOARDING.NUMBERED_LIST_ITEM_3' | translate }}</li>
+          <li>{{ 'ONBOARDING.NUMBERED_LIST_ITEM_4' | translate }}</li>
+        </ol>
+      </ion-text>
+    </ion-card-content>
+  </ion-card>
 
   
+    <!-- Haftungsausschluss -->
+  <ion-card class="rounded-card">
+    <ion-card-header>
+      <ion-card-title>
+        {{ 'ONBOARDING.DISCLAIMER_TITLE' | translate }}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-text color="dark">
+        <p>{{ 'ONBOARDING.DISCLAIMER_CONTENT' | translate }}</p>
+      </ion-text>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Urheberrecht -->
+  <ion-card class="rounded-card" style="margin-bottom: 50px;">
+    <ion-card-header>
+      <ion-card-title>
+        {{ 'ONBOARDING.COPYRIGHT_TITLE' | translate }}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-text color="dark">
+        <p>{{ 'ONBOARDING.COPYRIGHT_CONTENT' | translate }}</p>
+      </ion-text>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
 
 <ion-footer class="ion-no-border">

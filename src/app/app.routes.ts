@@ -45,10 +45,6 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/crisis-plan-settings/crisis-plan-settings.page').then( m => m.CrisisPlanSettingsPage)
   },
   {
-    path: 'legal-notice-disclaimer',
-    loadComponent: () => import('./pages/legal-notice-disclaimer/legal-notice-disclaimer.page').then( m => m.LegalNoticeDisclaimerPage)
-  },
-  {
     path: 'onboarding',
     loadComponent: () => import('./pages/onboarding/onboarding.page').then( m => m.OnboardingPage)
   },
