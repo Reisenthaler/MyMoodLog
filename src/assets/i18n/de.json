@@ -6,14 +6,14 @@
   },
   "HOME": {
     "PAGE_TITLE": "MyMoodLog",
-    "MOOD_TRACKING_SETTINGS": "Meine Befindlichkeitsparameter",
-    "CRISIS_PLAN_SETTINGS": "Meine Krisenpläne",
+    "MOOD_TRACKING_SETTINGS": "Meine Befindlichkeits&shy;parameter",
+    "CRISIS_PLAN_SETTINGS": "Meine Krisen&shy;pläne",
     "NOTIFICATION_SETTINGS": "Meine Erinnerungen",
     "MOOD_LOG_HISTORY": "Verlauf & Rückblick",
-    "LEGAL_NOTICE_DISCLAIMER": "Urheberrecht & Haftungsausschluss",
+    "LEGAL_NOTICE_DISCLAIMER": "Urheberrecht & Haftungs&shy;ausschluss",
     "ONBOARDING": "So funktioniert die App",
-    "HELP_CRISIS_SITUATIONS": "Hilfe in akuten krisen",
-    "LOG_CURRENT_MOOD": "Neuer Stimmungstagebucheintrag"
+    "HELP_CRISIS_SITUATIONS": "Hilfe in akuten Krisen",
+    "LOG_CURRENT_MOOD": "Neuer Stimmungs&shy;tagebuch&shy;eintrag"
   },
   "MOOD_LOG": {
     "TITLE": "Stimmungstagebuch",

@@ -13,7 +13,7 @@
     <ion-card button class="feature-card" (click)="goTo('mood-tracking-settings')">
       <ion-card-content>
         <ion-icon name="heart-outline"></ion-icon>
-        <h2>{{ 'HOME.MOOD_TRACKING_SETTINGS' | translate }}</h2>
+        <h2 [innerHTML]="'HOME.MOOD_TRACKING_SETTINGS' | translate"></h2>      
       </ion-card-content>
     </ion-card>
 
@@ -21,7 +21,7 @@
     <ion-card button class="feature-card" (click)="goTo('crisis-plan-settings')">
       <ion-card-content>
         <ion-icon name="list-outline"></ion-icon>
-        <h2>{{ 'HOME.CRISIS_PLAN_SETTINGS' | translate }}</h2>
+        <h2 [innerHTML]="'HOME.CRISIS_PLAN_SETTINGS' | translate"></h2>
       </ion-card-content>
     </ion-card>
 
@@ -29,7 +29,7 @@
     <ion-card button class="feature-card" (click)="goTo('notification-settings')">
       <ion-card-content>
         <ion-icon name="alarm-outline"></ion-icon>
-        <h2>{{ 'HOME.NOTIFICATION_SETTINGS' | translate }}</h2>
+        <h2 [innerHTML]="'HOME.NOTIFICATION_SETTINGS' | translate"></h2>
       </ion-card-content>
     </ion-card>
 
@@ -37,7 +37,7 @@
     <ion-card button class="feature-card" (click)="goTo('mood-log-history')">
       <ion-card-content>
         <ion-icon name="stats-chart-outline"></ion-icon>
-        <h2>{{ 'HOME.MOOD_LOG_HISTORY' | translate }}</h2>
+        <h2 [innerHTML]="'HOME.MOOD_LOG_HISTORY' | translate"></h2>
       </ion-card-content>
     </ion-card>
 
@@ -45,7 +45,7 @@
     <ion-card button class="feature-card" (click)="goTo('onboarding')">
       <ion-card-content>
         <ion-icon name="help-circle-outline"></ion-icon>
-        <h2>{{ 'HOME.ONBOARDING' | translate }}</h2>
+        <h2 [innerHTML]="'HOME.ONBOARDING' | translate"></h2>
       </ion-card-content>
     </ion-card>
 
@@ -53,7 +53,7 @@
     <ion-card button class="feature-card crisis-card" (click)="goTo('help-crisis-situations')">
       <ion-card-content>
         <ion-icon name="warning-outline"></ion-icon>
-        <h2>{{ 'HOME.HELP_CRISIS_SITUATIONS' | translate }}</h2>
+        <h2 [innerHTML]="'HOME.HELP_CRISIS_SITUATIONS' | translate"></h2>
       </ion-card-content>
     </ion-card>
 
@@ -64,6 +64,6 @@
   <!-- Bottom button -->
   <ion-button expand="block" (click)="goTo('mood-log')" class="new-entry-button">
     <ion-icon name="create-outline" slot="start"></ion-icon>
-    {{ 'HOME.LOG_CURRENT_MOOD' | translate }}
+    <span [innerHTML]="'HOME.LOG_CURRENT_MOOD' | translate"></span>
   </ion-button> 
 </ion-footer>

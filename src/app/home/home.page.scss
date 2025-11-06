@@ -31,7 +31,6 @@
   border: 0.8vw solid #1a68e6;
   border-radius: 2vw;
   transition: transform 0.15s ease-in-out;
-  word-break: break-all;
 }
 
 .feature-card:hover {
@@ -43,6 +42,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  padding-left: 1vw;
+  padding-right: 1vw;
 }
 
 /* === TRUE FLUID ICON & TEXT SIZES === */
@@ -58,7 +60,10 @@
   text-align: center;
   line-height: 1.2;
   margin-top: 0.5vw;
+  width: 100%;
   color: #444;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .crisis-card {
