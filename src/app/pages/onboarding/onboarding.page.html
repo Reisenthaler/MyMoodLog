@@ -59,7 +59,7 @@
   </ion-card>
 
   <!-- Urheberrecht -->
-  <ion-card class="rounded-card" style="margin-bottom: 50px;">
+  <ion-card class="rounded-card">
     <ion-card-header>
       <ion-card-title>
         {{ 'ONBOARDING.COPYRIGHT_TITLE' | translate }}
@@ -68,6 +68,36 @@
     <ion-card-content>
       <ion-text color="dark">
         <p>{{ 'ONBOARDING.COPYRIGHT_CONTENT' | translate }}</p>
+      </ion-text>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Open Source -->
+  <ion-card class="rounded-card">
+    <ion-card-header>
+      <ion-card-title>
+        {{ 'ONBOARDING.OPEN_SOURCE_TITLE' | translate }}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-text color="dark">
+        <p>
+         {{ 'ONBOARDING.OPEN_SOURCE_CONTENT_1' | translate }} <a href="https://github.com/Reisenthaler/MyMoodLog" target="_blank" rel="noopener noreferrer"> {{ 'ONBOARDING.OPEN_SOURCE_CONTENT_2' | translate }} </a> {{ 'ONBOARDING.OPEN_SOURCE_CONTENT_3' | translate }}
+        </p>
+      </ion-text>
+    </ion-card-content>
+  </ion-card>
+
+    <!-- Impressum -->
+  <ion-card class="rounded-card" style="margin-bottom: 50px;">
+    <ion-card-header>
+      <ion-card-title>
+        {{ 'ONBOARDING.IMPRESSUM_TITLE' | translate }}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-text color="dark">
+        <p innerHTML="{{ 'ONBOARDING.IMPRESSUM_CONTENT' | translate }}"></p>
       </ion-text>
     </ion-card-content>
   </ion-card>

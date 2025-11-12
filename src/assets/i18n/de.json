@@ -146,7 +146,13 @@
     "DISCLAIMER_TITLE": "Haftungsausschluss",
     "DISCLAIMER_CONTENT": "Die App MyMoodLog bietet Unterstützung zur Selbstreflexion und Selbsthilfe. Sie stellt keine medizinische, psychologische oder psychotherapeutische Beratung dar und ersetzt keine professionelle Behandlung. Bei akuten psychischen Belastungen oder Krisen wende dich an qualifizierte Fachpersonen oder entsprechende Hilfsangebote.",
     "COPYRIGHT_TITLE": "Datenschutz",
-    "COPYRIGHT_CONTENT": "Die App MyMoodLog ist dafür ausgelegt deine personenbezogenen Daten zu schützen. Du kannst die App dauerhaft ohne Registrierung und Angabe von personenbezogenen Daten nutzen. Alle eingegeben Daten werden nur lokal in der App erhoben und gespeichert."
+    "COPYRIGHT_CONTENT": "Die App MyMoodLog ist dafür ausgelegt deine personenbezogenen Daten zu schützen. Du kannst die App dauerhaft ohne Registrierung und Angabe von personenbezogenen Daten nutzen. Alle eingegeben Daten werden nur lokal in der App erhoben und gespeichert.",
+    "IMPRESSUM_TITLE": "Impressum",
+    "IMPRESSUM_CONTENT": "<strong>Name:</strong> Tobias Reisenthaler\n<strong>Email:</strong> reisenthalert@gmail.com",
+    "OPEN_SOURCE_TITLE": " Open Source",
+    "OPEN_SOURCE_CONTENT_1": "Dieses Projekt ist Open Source. Der Source Code ist auf",
+    "OPEN_SOURCE_CONTENT_2": "GitHub",
+    "OPEN_SOURCE_CONTENT_3": "verfügbar."
   },
   "CRISIS_PLAN_INFO": {
     "TITLE": "Krisenpläne",
