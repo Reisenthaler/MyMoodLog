@@ -55,7 +55,7 @@ jobs:
           MINOR=$(echo $VERSION | cut -d. -f2)
           PATCH=$(echo $VERSION | cut -d. -f3)
           CODE=$((MAJOR * 10000 + MINOR * 100 + PATCH))
-          sed -i "s/versionCode [0-9]\+/versionCode $CODE/" android/app/build.gradle
+          sed -i "s/versionCode [0-9]\\+/versionCode $CODE/" android/app/build.gradle
           sed -i "s/versionName \".*\"/versionName \"$VERSION\"/" android/app/build.gradle
           echo "Using versionCode=$CODE, versionName=$VERSION"
 
@@ -69,16 +69,29 @@ jobs:
             -Pandroid.injected.signing.key.alias=${{ secrets.RELEASE_KEY_ALIAS }} \
             -Pandroid.injected.signing.key.password=${{ secrets.RELEASE_KEY_PASSWORD }}
 
-      # 10. Rename APK with version
-      - name: Rename APK
+      # 9b. Build signed AAB
+      - name: Build Signed AAB
+        working-directory: android
+        run: |
+          ./gradlew bundleRelease \
+            -Pandroid.injected.signing.store.file=$GITHUB_WORKSPACE/release.keystore \
+            -Pandroid.injected.signing.store.password=${{ secrets.RELEASE_KEYSTORE_PASSWORD }} \
+            -Pandroid.injected.signing.key.alias=${{ secrets.RELEASE_KEY_ALIAS }} \
+            -Pandroid.injected.signing.key.password=${{ secrets.RELEASE_KEY_PASSWORD }}
+
+      # 10. Rename outputs with version
+      - name: Rename Outputs
         run: |
           VERSION=${GITHUB_REF_NAME#v}
           mv android/app/build/outputs/apk/release/app-release.apk MyMoodLog-$VERSION.apk
+          mv android/app/build/outputs/bundle/release/app-release.aab MyMoodLog-$VERSION.aab
 
-      # 11. Upload APK to GitHub Release
+      # 11. Upload APK and AAB to GitHub Release
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: MyMoodLog-*.apk
+          files: |
+            MyMoodLog-*.apk
+            MyMoodLog-*.aab
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
