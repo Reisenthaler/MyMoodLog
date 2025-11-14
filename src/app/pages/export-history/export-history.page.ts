@@ -54,7 +54,7 @@ import { Filesystem, Directory } from '@capacitor/filesystem';
 export class ExportHistoryPage implements OnInit {
   startDate = '';
   endDate = '';
-  fileType: 'json' | 'pdf' | 'word' | 'excel' = 'json';
+  fileType: 'json' | 'pdf' | 'word' | 'excel' = 'excel';
   moodItems: MoodItem[] = [];
 
   constructor(
@@ -359,7 +359,7 @@ private async saveFile(
       URL.revokeObjectURL(url);
 
       const toast = await this.toastController.create({
-        message: `💾 File downloaded: ${fileName}`,
+        message: this.translate.instant('EXPORT_HISTORY.FILE_PREPARED', { fileName }),
         duration: 3000,
         color: 'medium',
       });
@@ -369,7 +369,7 @@ private async saveFile(
     console.error('File save failed:', err);
 
     const toast = await this.toastController.create({
-      message: `❌ Failed to save file: ${err.message || err}`,
+      message: this.translate.instant('EXPORT_HISTORY.FILE_SAVE_FAILED', { error: err.message || err }),      
       duration: 5000,
       color: 'danger',
     });
