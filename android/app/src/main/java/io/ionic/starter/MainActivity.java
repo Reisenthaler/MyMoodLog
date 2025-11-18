@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package com.reisenthaler.mymoodlog;
 
 import com.getcapacitor.BridgeActivity;
 
