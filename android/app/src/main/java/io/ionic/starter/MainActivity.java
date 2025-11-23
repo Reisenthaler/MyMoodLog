@@ -1,4 +1,4 @@
-package com.reisenthaler.mymoodlog;
+package com.reisenthaler.mymoodlog.app;
 
 import com.getcapacitor.BridgeActivity;
 
