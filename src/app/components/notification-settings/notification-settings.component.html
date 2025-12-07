@@ -1,13 +1,11 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="mymoodlogcolor">
-    <ion-title>
-      {{ 'NOTIFICATION_SETTINGS.PAGE_TITLE' | translate }}
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header
+  [title]="'NOTIFICATION_SETTINGS.PAGE_TITLE' | translate"
+  [showBack]="true"
+  color="mymoodlogcolor"
+></app-header>
 
 <ion-content >
-  
+
    <!-- Select number of notifications per day -->
     <ion-item style="margin-top: 40px;">
       <ion-label>{{ 'NOTIFICATION_SETTINGS.NOTIFICATIONS_PER_DAY' | translate }}</ion-label>
@@ -20,10 +18,10 @@
         </ion-select-option>
       </ion-select>
     </ion-item>
-  
+
     <!-- Scrollable list -->
   <ion-list class="scrollable-list">
-    
+
 
     <!-- Select times -->
     <ion-item *ngFor="let t of times; let i = index">
@@ -56,7 +54,7 @@
     </ion-item>
   </ion-list>
 
-</ion-content> 
+</ion-content>
 
 <!-- Fixed button at bottom -->
 <ion-footer class="ion-no-border">

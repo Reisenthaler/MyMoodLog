@@ -7,9 +7,9 @@ import {
   IonContent,
   ModalController,
   AlertController,
-  IonHeader, 
+  IonHeader,
   IonFooter,
-  IonTitle, 
+  IonTitle,
   IonToolbar,
   ToastController,
 } from '@ionic/angular/standalone';
@@ -20,7 +20,8 @@ import { MoodItem } from 'src/app/models/mood-item.model';
 import { CustomTextPopupComponent } from 'src/app/components/popups/custom-text-popup/custom-text-popup.component';
 import { MoodScaleConfigComponent } from 'src/app/components/mood-scale-config/mood-scale-config.component';
 import { CrisisPlan } from 'src/app/models/crisis-plan.model';
-import { TranslateModule } from '@ngx-translate/core'; 
+import { TranslateModule } from '@ngx-translate/core';
+import { AppHeaderComponent } from 'src/app/components/app-header/app-header.component';
 import { TranslateService } from '@ngx-translate/core';
 import { LoggerService } from 'src/app/services/logger.service';
 
@@ -38,10 +39,11 @@ import { LoggerService } from 'src/app/services/logger.service';
     IonList,
     IonItem,
     IonLabel,
-    IonContent,
-    ButtonComponent, 
+      IonContent,
+    ButtonComponent,
     CustomTextPopupComponent,
-    TranslateModule
+    TranslateModule,
+    AppHeaderComponent,
   ],})
 export class MoodTrackingSettingsPage implements OnInit {
   @ViewChild('addPopup') addPopup!: CustomTextPopupComponent;

@@ -1,8 +1,8 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="mymoodlogcolor">
-    <ion-title>{{ 'MOOD_TRACKING_SETTINGS.PAGE_TITLE' | translate }}</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header
+  [title]="'MOOD_TRACKING_SETTINGS.PAGE_TITLE' | translate"
+  [showBack]="true"
+  color="mymoodlogcolor"
+></app-header>
 
 <ion-content [fullscreen]="false" class="with-bottom-padding">
   <ion-header collapse="condense">
@@ -58,7 +58,7 @@
     [cancelLabel]="'MOOD_TRACKING_SETTINGS.POPUP.CANCEL' | translate"
     (saved)="handleAddItem($event)"
   ></app-custom-text-popup>
-</ion-content> 
+</ion-content>
 
   <ion-footer class="ion-no-border">
   <ion-toolbar>

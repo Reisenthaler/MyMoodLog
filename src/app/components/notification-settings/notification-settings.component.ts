@@ -28,6 +28,7 @@ import { save } from 'ionicons/icons';
 import { TranslateModule } from '@ngx-translate/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Device } from '@capacitor/device';
+import { AppHeaderComponent } from '../app-header/app-header.component';
 
 @Component({
   selector: 'app-notification-settings',
@@ -51,7 +52,8 @@ import { Device } from '@capacitor/device';
     IonHeader,
     IonTitle,
     IonDatetimeButton,
-    IonModal
+    IonModal,
+    AppHeaderComponent
   ],
 })
 export class NotificationSettingsComponent implements OnInit {
@@ -94,7 +96,7 @@ export class NotificationSettingsComponent implements OnInit {
         if (perm.display !== 'granted') {
           this.showToast(
             this.translateService.instant('NOTIFICATION_SETTINGS.PERMISSION_DENIED'),
-            'danger');          
+            'danger');
           return;
         }
       }

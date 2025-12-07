@@ -4,14 +4,26 @@ import { IonList, IonItem, IonLabel, IonHeader, IonToolbar, IonTitle, IonContent
 import { Router } from '@angular/router';
 import { CrisisPlan } from '../../models/crisis-plan.model';
 import { Subscription } from 'rxjs';
-import { TranslateModule } from '@ngx-translate/core'; 
+import { TranslateModule } from '@ngx-translate/core';
+import { AppHeaderComponent } from 'src/app/components/app-header/app-header.component';
 
 @Component({
   selector: 'app-crisis-plan-result',
   templateUrl: './crisis-plan-result.page.html',
   styleUrls: ['./crisis-plan-result.page.scss'],
   standalone: true,
-  imports: [CommonModule, IonList, IonItem, IonLabel, IonHeader, IonToolbar, IonTitle, IonContent, TranslateModule],
+  imports: [
+    CommonModule,
+    IonList,
+    IonItem,
+    IonLabel,
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    TranslateModule,
+    AppHeaderComponent
+  ],
 })
 export class CrisisPlanResultPage implements OnInit, OnDestroy {
   plans: CrisisPlan[] = [];
@@ -33,7 +45,7 @@ export class CrisisPlanResultPage implements OnInit, OnDestroy {
       }
     );
   }
-  
+
   ngOnDestroy() {
     // Clean up subscription when leaving page
     this.backButtonSub?.unsubscribe();

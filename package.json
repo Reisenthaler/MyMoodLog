@@ -27,6 +27,7 @@
     "@capacitor/device": "^7.0.2",
     "@capacitor/filesystem": "^7.1.4",
     "@capacitor/haptics": "7.0.2",
+    "@capacitor/ios": "^7.4.4",
     "@capacitor/keyboard": "7.0.2",
     "@capacitor/local-notifications": "^7.0.2",
     "@capacitor/status-bar": "^7.0.2",

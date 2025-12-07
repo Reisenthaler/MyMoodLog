@@ -1,8 +1,8 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="mymoodlogcolor">
-    <ion-title>{{ 'CRISIS_PLAN_SETTINGS.PAGE_TITLE' | translate }}</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header
+  [title]="'CRISIS_PLAN_SETTINGS.PAGE_TITLE' | translate"
+  [showBack]="true"
+  color="mymoodlogcolor"
+></app-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
@@ -111,7 +111,7 @@
     [multiline]="true"
     (saved)="handleStepSave($event)"
   ></app-custom-text-popup>
-</ion-content>  
+</ion-content>
 
 <ion-footer class="ion-no-border">
   <ion-toolbar>

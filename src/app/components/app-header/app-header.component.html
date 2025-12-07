@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar [color]="color">
+    <ion-buttons slot="start" *ngIf="showBack">
+      <ion-button (click)="onBack()">
+        <ion-icon slot="icon-only" name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>
+      <ng-container *ngIf="title; else empty">
+        {{ title }}
+      </ng-container>
+      <ng-template #empty></ng-template>
+    </ion-title>
+
+    <!-- slot for page-specific actions: use <div header-actions>...</div> inside header usage -->
+    <div slot="end">
+      <ng-content select="[header-actions]"></ng-content>
+    </div>
+  </ion-toolbar>
+</ion-header>

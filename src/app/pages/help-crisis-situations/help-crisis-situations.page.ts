@@ -1,20 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { 
-  IonContent, 
-  IonHeader, 
-  IonTitle, 
-  IonToolbar, 
-  IonLabel, 
-  IonItem, 
+import {
+  IonContent,
+  IonHeader,
+  IonTitle,
+  IonToolbar,
+  IonLabel,
+  IonItem,
   IonList,
   IonCard,
   IonCardContent,
   IonIcon } from '@ionic/angular/standalone';
-import { TranslateModule } from '@ngx-translate/core'; 
+import { TranslateModule } from '@ngx-translate/core';
 import { addIcons } from 'ionicons';
 import { call, helpCircle, informationCircle } from 'ionicons/icons';
+import { AppHeaderComponent } from 'src/app/components/app-header/app-header.component';
 addIcons({
   call,
   helpCircle,
@@ -27,19 +28,20 @@ addIcons({
   styleUrls: ['./help-crisis-situations.page.scss'],
   standalone: true,
   imports: [
-    IonContent, 
-    IonHeader, 
-    IonTitle, 
-    IonToolbar, 
-    CommonModule, 
-    FormsModule, 
-    IonLabel, 
+    IonContent,
+    IonHeader,
+    IonTitle,
+    IonToolbar,
+    CommonModule,
+    FormsModule,
+    IonLabel,
     IonItem,
     IonList,
     IonCard,
     IonCardContent,
     IonIcon,
-    TranslateModule
+    TranslateModule,
+    AppHeaderComponent,
   ]
 })
 export class HelpCrisisSituationsPage implements OnInit {
@@ -58,7 +60,7 @@ export class HelpCrisisSituationsPage implements OnInit {
 
     // Regex for ph one numbers (simple version, matches digits, spaces, +, -)
     const phoneRegex = /(\+?\d[\d\s\-]{1,}\d)/g;
-    
+
     // Regex for URLs (http, https, www)
     const urlRegex =
       /\b((https?:\/\/|www\.)[^\s<]+)/gi;

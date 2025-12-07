@@ -22,6 +22,7 @@ import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
 import { MoodLogEntry } from 'src/app/models/mood-log-entry.model';
 import { MoodItem } from 'src/app/models/mood-item.model';
+import { AppHeaderComponent } from 'src/app/components/app-header/app-header.component';
 
 import * as XLSX from 'xlsx';
 import { jsPDF } from 'jspdf';
@@ -49,6 +50,7 @@ import { Filesystem, Directory } from '@capacitor/filesystem';
     IonSelect,
     IonSelectOption,
     TranslateModule,
+    AppHeaderComponent,
   ],
 })
 export class ExportHistoryPage implements OnInit {
@@ -369,7 +371,7 @@ private async saveFile(
     console.error('File save failed:', err);
 
     const toast = await this.toastController.create({
-      message: this.translate.instant('EXPORT_HISTORY.FILE_SAVE_FAILED', { error: err.message || err }),      
+      message: this.translate.instant('EXPORT_HISTORY.FILE_SAVE_FAILED', { error: err.message || err }),
       duration: 5000,
       color: 'danger',
     });

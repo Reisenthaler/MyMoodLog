@@ -27,6 +27,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ButtonComponent } from 'src/app/components/button/button.component';
 import { LoggerService } from 'src/app/services/logger.service';
 import { NotificationService } from 'src/app/services/notification-service';
+import { AppHeaderComponent } from 'src/app/components/app-header/app-header.component';
 
 @Component({
   selector: 'app-mood-log',
@@ -52,6 +53,7 @@ import { NotificationService } from 'src/app/services/notification-service';
     IonDatetime,
     IonDatetimeButton,
     IonModal,
+    AppHeaderComponent,
   ],
 })
 export class MoodLogPage implements OnInit {

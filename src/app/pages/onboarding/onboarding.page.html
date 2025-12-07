@@ -1,10 +1,8 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="mymoodlogcolor">
-    <ion-title>
-      {{ 'ONBOARDING.PAGE_TITLE' | translate }}
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header
+  [title]="'ONBOARDING.PAGE_TITLE' | translate"
+  [showBack]="false"
+  color="mymoodlogcolor"
+></app-header>
 
 <ion-content [fullscreen]="false" class="ion-padding">
   <!-- general  -->
@@ -43,7 +41,7 @@
     </ion-card-content>
   </ion-card>
 
-  
+
     <!-- Haftungsausschluss -->
   <ion-card class="rounded-card">
     <ion-card-header>

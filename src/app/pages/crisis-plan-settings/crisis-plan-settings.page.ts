@@ -21,8 +21,9 @@ import { CrisisPlan } from '../../models/crisis-plan.model';
 import { ItemReorderEventDetail } from '@ionic/angular';
 import { CustomTextPopupComponent } from 'src/app/components/popups/custom-text-popup/custom-text-popup.component';
 import { ButtonComponent } from 'src/app/components/button/button.component';
-import { TranslateModule } from '@ngx-translate/core'; 
+import { TranslateModule } from '@ngx-translate/core';
 import { TranslateService } from '@ngx-translate/core';
+import { AppHeaderComponent } from 'src/app/components/app-header/app-header.component';
 
 @Component({
   selector: 'app-crisis-plan-settings',
@@ -30,21 +31,22 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./crisis-plan-settings.page.scss'],
   standalone: true,
   imports: [
-    IonContent, 
-    IonHeader, 
+    IonContent,
+    IonHeader,
     IonFooter,
-    IonTitle, 
-    IonToolbar, 
-    IonList, 
-    IonItem, 
-    IonLabel, 
+    IonTitle,
+    IonToolbar,
+    IonList,
+    IonItem,
+    IonLabel,
     IonReorder,
-    IonReorderGroup, 
-    CommonModule, 
-    FormsModule, 
-    ButtonComponent, 
+    IonReorderGroup,
+    CommonModule,
+    FormsModule,
+    ButtonComponent,
     CustomTextPopupComponent,
-    TranslateModule
+    TranslateModule,
+    AppHeaderComponent,
   ] })
 export class CrisisPlanSettingsPage implements OnInit {
 private STORAGE_KEY = 'crisis_plans';

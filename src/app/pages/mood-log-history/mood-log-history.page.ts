@@ -25,6 +25,7 @@ import { MoodLogGraphComponent } from 'src/app/components/mood-log-graph/mood-lo
 import { FormsModule } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { AppHeaderComponent } from 'src/app/components/app-header/app-header.component';
 
 @Component({
   selector: 'app-mood-log-history',
@@ -46,12 +47,12 @@ import { Router } from '@angular/router';
     IonButton,
     IonButtons,
     IonIcon,
+    IonDatetime,
     IonDatetimeButton,
     IonModal,
     TranslateModule,
     MoodLogGraphComponent,
-    IonDatetime,
-    IonDatetimeButton
+    AppHeaderComponent,
   ],
 })
 export class MoodLogHistoryPage implements OnInit {
@@ -72,7 +73,7 @@ export class MoodLogHistoryPage implements OnInit {
     private storage: Storage,
     private alertController: AlertController,
     private translate: TranslateService,
-    private router: Router,       
+    private router: Router,
   ) {}
 
   async ngOnInit() {
@@ -208,7 +209,7 @@ export class MoodLogHistoryPage implements OnInit {
     const strKey = String(key);
 
     const mood = this.moodItems.find((m) => m.id.toString() === strKey);
-    
+
     return mood ? mood.name : strKey;
   }
 

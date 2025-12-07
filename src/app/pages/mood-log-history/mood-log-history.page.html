@@ -1,15 +1,16 @@
-<ion-header>
-  <ion-toolbar color="mymoodlogcolor">
-    <ion-title>{{ 'MOOD_LOG_HISTORY.PAGE_TITLE' | translate }}</ion-title>
-    
+<app-header
+  [title]="'MOOD_LOG_HISTORY.PAGE_TITLE' | translate"
+  [showBack]="true"
+  color="mymoodlogcolor"
+>
+  <!-- optional action slot projected to header end -->
+  <div header-actions>
     <!-- Export button -->
-    <!--<ion-buttons slot="end">-->
-      <!--<ion-button style="width: 50px; height: 50px;" (click)="goToExport()">-->
-        <!--<ion-icon name="download-outline" style="width: 25px; height: 25px;" ></ion-icon>-->
-      <!--</ion-button>-->
-    <!--</ion-buttons>-->
-  </ion-toolbar>
-</ion-header>
+    <ion-button slot="" (click)="goToExport()" style="height: 36px;">
+      <ion-icon name="download-outline"></ion-icon>
+    </ion-button>
+  </div>
+</app-header>
 
 <ion-content class="ion-padding">
   <!-- Filter control -->
@@ -121,7 +122,7 @@
           {{ log.comment }}
         </p>
       </ion-label>
-      
+
       <ion-button color="danger" fill="clear" slot="end" aria-label="Delete" (click)="confirmDelete(log)">
         <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
       </ion-button>

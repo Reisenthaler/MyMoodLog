@@ -1,0 +1,9 @@
+:host {
+  display: block;
+}
+
+ion-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
