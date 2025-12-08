@@ -211,14 +211,15 @@
     "ENTRY": "Eintrag",
     "MOODS": "Stimmungen",
     "COMMENT": "Kommentar",
-    "NO_ENTRIES_FOUND": "Keine Einträge im ausgewählten Zeitraum gefunden.",
     "UNKNOWN_MOOD": "Stimmung {{id}}",
     "FILE_SHEET": "Stimmungsverlauf",
     "FILE_NAME_JSON": "stimmungsverlauf_export",
     "FILE_NAME_EXCEL": "stimmungsverlauf_export",
     "FILE_NAME_PDF": "stimmungsverlauf_export",
     "FILE_NAME_WORD": "stimmungsverlauf_export",
-    "FILE_PREPARED": "💾 Datei vorbereitet: {{fileName}}",
-    "FILE_SAVE_FAILED": "❌ Datei konnte nicht gespeichert werden: {{error}}"
+    "FILE_SAVE_FAILED": "❌ Datei konnte nicht gespeichert werden: {{error}}",
+    "FILE_SAVED_READABLE": "{{fileName}} wurde im Ordner {{folderName}} gespeichert.",
+    "IOS_DOCUMENTS_FOLDER": "Dokumente",
+    "FILE_PREPARED": "{{fileName}} ist zum Herunterladen bereit."
   }
 }

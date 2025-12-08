@@ -320,13 +320,12 @@ private async saveFile(
     const pureBase64 = (base64Data as string).split(',')[1];
 
     if (this.platform.is('hybrid')) {
-      // Use safer directory choice
-      const directory = this.platform.is('android')
-        ? Directory.Documents
-        : Directory.Documents;
+      const isAndroid = this.platform.is('android');
+      const directory = isAndroid
+        ? Directory.ExternalStorage // Public storage on Android
+        : Directory.Documents; // iOS sandbox
 
-      // Ensure permission for Android
-      if (this.platform.is('android')) {
+      if (isAndroid) {
         try {
           await Filesystem.requestPermissions();
         } catch (permError) {
@@ -334,23 +333,40 @@ private async saveFile(
         }
       }
 
+      // Ensure unique file name
+      const uniquePath = await this.getUniqueFilePath(
+        `Download/${fileName}`,
+        directory
+      );
+
       const result = await Filesystem.writeFile({
-        path: fileName,
+        path: uniquePath,
         data: pureBase64,
         directory,
         recursive: true,
       });
 
+      console.log('File saved to:', result.uri);
+
+      const folderName = isAndroid
+        ? 'Downloads'
+        : this.translate.instant('EXPORT_HISTORY.IOS_DOCUMENTS_FOLDER');
+
+      const message =
+        this.translate.instant('EXPORT_HISTORY.FILE_SAVED_READABLE', {
+          fileName: uniquePath.split('/').pop(),
+          folderName,
+        }) ||
+        `${uniquePath.split('/').pop()} saved to your ${folderName} folder.`;
+
       const toast = await this.toastController.create({
-        message: `✅ File saved!\nURI: ${result.uri}`,
+        message,
         duration: 4000,
         color: 'success',
       });
       await toast.present();
-
-      console.log('File saved to:', result.uri);
     } else {
-      // For web/browser fallback
+      // Web fallback
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
@@ -361,7 +377,9 @@ private async saveFile(
       URL.revokeObjectURL(url);
 
       const toast = await this.toastController.create({
-        message: this.translate.instant('EXPORT_HISTORY.FILE_PREPARED', { fileName }),
+        message: this.translate.instant('EXPORT_HISTORY.FILE_PREPARED', {
+          fileName,
+        }),
         duration: 3000,
         color: 'medium',
       });
@@ -371,7 +389,9 @@ private async saveFile(
     console.error('File save failed:', err);
 
     const toast = await this.toastController.create({
-      message: this.translate.instant('EXPORT_HISTORY.FILE_SAVE_FAILED', { error: err.message || err }),
+      message: this.translate.instant('EXPORT_HISTORY.FILE_SAVE_FAILED', {
+        error: err.message || err,
+      }),
       duration: 5000,
       color: 'danger',
     });
@@ -385,5 +405,30 @@ private async saveFile(
       reader.onload = () => resolve(reader.result);
       reader.readAsDataURL(blob);
     });
+  }
+
+
+  private async getUniqueFilePath(
+    basePath: string,
+    directory: Directory
+  ): Promise<string> {
+    const dotIndex = basePath.lastIndexOf('.');
+    const name = dotIndex !== -1 ? basePath.substring(0, dotIndex) : basePath;
+    const ext = dotIndex !== -1 ? basePath.substring(dotIndex) : '';
+
+    let uniquePath = basePath;
+    let counter = 1;
+
+    while (true) {
+      try {
+        await Filesystem.stat({ path: uniquePath, directory });
+        // File exists — generate new name
+        uniquePath = `${name}_${counter}${ext}`;
+        counter++;
+      } catch {
+        // File does not exist — use this one
+        return uniquePath;
+      }
+    }
   }
 }
