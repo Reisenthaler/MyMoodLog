@@ -213,7 +213,7 @@ export class MoodTrackingSettingsPage implements OnInit {
     const newItem: MoodItem = {
       id: Date.now(),
       name,
-      active: false,
+      active: true,
       isDefault: false,
       scalePlans: {},
     };
