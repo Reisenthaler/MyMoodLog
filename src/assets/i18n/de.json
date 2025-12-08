@@ -31,7 +31,7 @@
     "NOTIFICATION": "Benachrichtigung",
     "MANUAL": "Manuell",
     "INTENSITY": "Intensität",
-    "NO_LOGS": "Noch keine Stimmungseinträge.",    
+    "NO_LOGS": "Noch keine Stimmungseinträge.",
     "COMMENT": "Kommentar",
     "FILTER": {
       "LAST_7": "7 Tage",
@@ -137,7 +137,7 @@
     "WELCOME_TEXT": "MyMoodLog ist ein Stimmungstagebuch und dient",
     "START_BUTTON": "Los geht's",
     "WELCOME_LIST_ITEM_1": "der persönlichen Einschätzung und Dokumentation emotionaler und körperlicher Zustände (z.B Stimmung, Anspannung, Schmerz)",
-    "WELCOME_LIST_ITEM_2": "sowie dem Erstellen von individuellen Hilfe/Krisenpläne.",
+    "WELCOME_LIST_ITEM_2": "sowie dem Erstellen von individuellen Hilfe/Krisenplänen.",
     "NUMBERED_LIST_HEADING": "Wenn du die App nutzen möchtest gehst du am besten so vor:",
     "NUMBERED_LIST_ITEM_1": "Definiere emotionale und körperliche Zustände, welche du regelmäßig auf einer Skala von 0 – 10 einschätzen möchtest -> Meine Befindlichkeitsparameter",
     "NUMBERED_LIST_ITEM_2": "Stelle ein, ob und wann du an das Einschätzen deiner Befindlichkeit erinnert werden möchtest -> Meine Erinnerungen",
