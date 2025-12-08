@@ -12,8 +12,6 @@ import {
   IonToolbar,
   IonFooter,
   ToastController,
-  IonHeader,
-  IonTitle,
   IonDatetimeButton,
   IonModal
 } from '@ionic/angular/standalone';
@@ -48,8 +46,6 @@ import { AppHeaderComponent } from '../app-header/app-header.component';
     IonFooter,
     IonToolbar,
     TranslateModule,
-    IonHeader,
-    IonTitle,
     IonDatetimeButton,
     IonModal,
     AppHeaderComponent

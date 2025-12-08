@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
-import { IonList, IonItem, IonLabel, IonHeader, IonToolbar, IonTitle, IonContent, Platform } from '@ionic/angular/standalone';
+import { IonList, IonItem, IonLabel, IonContent, Platform } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { CrisisPlan } from '../../models/crisis-plan.model';
 import { Subscription } from 'rxjs';
@@ -16,9 +16,6 @@ import { AppHeaderComponent } from 'src/app/components/app-header/app-header.com
     IonList,
     IonItem,
     IonLabel,
-    IonHeader,
-    IonToolbar,
-    IonTitle,
     IonContent,
     TranslateModule,
     AppHeaderComponent

@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import {
-  IonHeader,
-  IonToolbar,
-  IonTitle,
   IonContent,
   IonItem,
   IonLabel,
@@ -36,9 +33,6 @@ import { Filesystem, Directory } from '@capacitor/filesystem';
   standalone: true,
   imports: [
     FormsModule,
-    IonHeader,
-    IonToolbar,
-    IonTitle,
     IonContent,
     IonItem,
     IonLabel,

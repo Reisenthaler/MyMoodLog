@@ -17,7 +17,7 @@ import {
 import { MoodItem } from '../../models/mood-item.model';
 import { CrisisPlan } from '../../models/crisis-plan.model';
 import { ButtonComponent } from '../button/button.component';
-import { TranslateModule } from '@ngx-translate/core'; 
+import { TranslateModule } from '@ngx-translate/core';
 import { ActionSheetController } from '@ionic/angular';
 
 @Component({
