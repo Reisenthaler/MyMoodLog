@@ -6,52 +6,54 @@
 
 <ion-content >
 
-   <!-- Select number of notifications per day -->
-    <ion-item style="margin-top: 40px;">
-      <ion-label>{{ 'NOTIFICATION_SETTINGS.NOTIFICATIONS_PER_DAY' | translate }}</ion-label>
-      <ion-select
-        [(ngModel)]="notificationsPerDay"
-        (ionChange)="updateTimes()"
+  <!-- Select number of notifications per day -->
+  <ion-item style="margin-top: 40px;">
+    <ion-label>{{ 'NOTIFICATION_SETTINGS.NOTIFICATIONS_PER_DAY' | translate }}</ion-label>
+    <ion-select
+      [(ngModel)]="notificationsPerDay"
+      (ionChange)="updateTimes()"
       >
-        <ion-select-option *ngFor="let n of [0,1, 2, 3, 4, 5]" [value]="n">
+      @for (n of [0,1, 2, 3, 4, 5]; track n) {
+        <ion-select-option [value]="n">
           {{ n }}
         </ion-select-option>
-      </ion-select>
-    </ion-item>
+      }
+    </ion-select>
+  </ion-item>
 
-    <!-- Scrollable list -->
+  <!-- Scrollable list -->
   <ion-list class="scrollable-list">
 
 
     <!-- Select times -->
-    <ion-item *ngFor="let t of times; let i = index">
-      <ion-label>
-        {{ 'COMMON.NOTIFICATION' | translate }} {{ i + 1 }}
-      </ion-label>
-
-      <!-- Trigger button -->
-      <ion-datetime-button
-        [datetime]="'notifTimePicker' + i"
-        display-format="HH:mm"
-        style="padding-top: 10px; padding-bottom: 10px;"
-      ></ion-datetime-button>
-
-      <!-- Modal with actual picker -->
-      <ion-modal keepContentsMounted="true">
-        <ng-template>
-          <ion-datetime
-            [id]="'notifTimePicker' + i"
-            [(ngModel)]="times[i]"
-            presentation="time"
-            hourCycle="h23"
-            locale="de-AT"
-            show-default-buttons="true"
-            done-text="OK"
-            cancel-text="Abbrechen"
-          ></ion-datetime>
-        </ng-template>
-      </ion-modal>
-    </ion-item>
+    @for (t of times; track t; let i = $index) {
+      <ion-item>
+        <ion-label>
+          {{ 'COMMON.NOTIFICATION' | translate }} {{ i + 1 }}
+        </ion-label>
+        <!-- Trigger button -->
+        <ion-datetime-button
+          [datetime]="'notifTimePicker' + i"
+          display-format="HH:mm"
+          style="padding-top: 10px; padding-bottom: 10px;"
+        ></ion-datetime-button>
+        <!-- Modal with actual picker -->
+        <ion-modal keepContentsMounted="true">
+          <ng-template>
+            <ion-datetime
+              [id]="'notifTimePicker' + i"
+              [(ngModel)]="times[i]"
+              presentation="time"
+              hourCycle="h23"
+              locale="de-AT"
+              show-default-buttons="true"
+              done-text="OK"
+              cancel-text="Abbrechen"
+            ></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </ion-item>
+    }
   </ion-list>
 
 </ion-content>

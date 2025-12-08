@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 import {
   IonList,
@@ -36,7 +36,6 @@ import { AppHeaderComponent } from '../app-header/app-header.component';
   styleUrls: ['./notification-settings.component.scss'],
   standalone: true,
   imports: [
-    CommonModule,
     FormsModule,
     IonList,
     IonItem,
@@ -54,7 +53,7 @@ import { AppHeaderComponent } from '../app-header/app-header.component';
     IonDatetimeButton,
     IonModal,
     AppHeaderComponent
-  ],
+],
 })
 export class NotificationSettingsComponent implements OnInit {
   private STORAGE_KEY = 'notification_settings';

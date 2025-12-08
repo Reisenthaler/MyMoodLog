@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import {
   IonHeader,
   IonToolbar,
@@ -35,7 +35,6 @@ import { Filesystem, Directory } from '@capacitor/filesystem';
   styleUrls: ['./export-history.page.scss'],
   standalone: true,
   imports: [
-    CommonModule,
     FormsModule,
     IonHeader,
     IonToolbar,
@@ -50,8 +49,8 @@ import { Filesystem, Directory } from '@capacitor/filesystem';
     IonSelect,
     IonSelectOption,
     TranslateModule,
-    AppHeaderComponent,
-  ],
+    AppHeaderComponent
+],
 })
 export class ExportHistoryPage implements OnInit {
   startDate = '';

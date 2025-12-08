@@ -2,7 +2,7 @@
   [title]="'MOOD_LOG_HISTORY.PAGE_TITLE' | translate"
   [showBack]="true"
   color="mymoodlogcolor"
->
+  >
   <!-- optional action slot projected to header end -->
   <div header-actions>
     <!-- Export button -->
@@ -14,7 +14,7 @@
 
 <ion-content class="ion-padding">
   <!-- Filter control -->
-<ion-segment [(ngModel)]="selectedRange" (ionChange)="onRangeChange()" style="padding-bottom: 10px;">
+  <ion-segment [(ngModel)]="selectedRange" (ionChange)="onRangeChange()" style="padding-bottom: 10px;">
     <ion-segment-button value="7">
       <ion-label>{{ 'MOOD_LOG_HISTORY.FILTER.LAST_7' | translate }}</ion-label>
     </ion-segment-button>
@@ -26,10 +26,10 @@
     </ion-segment-button>
   </ion-segment>
 
-<!-- Date navigation (hidden when "all" is selected) -->
-<div
-  class="date-navigation"
-  *ngIf="selectedRange !== 'all'"
+  <!-- Date navigation (hidden when "all" is selected) -->
+  @if (selectedRange !== 'all') {
+    <div
+      class="date-navigation"
   style="
     display: flex;
     justify-content: center;
@@ -37,101 +37,101 @@
     gap: 8px;
     margin-bottom: 12px;
   "
->
-  <!-- Previous range button -->
-  <ion-button fill="outline" size="small" shape="round" (click)="changeRange('prev')">
-    <ion-icon name="chevron-back-outline"></ion-icon>
-  </ion-button>
-
-<!-- Two inline date pickers -->
-<div style="display: flex; align-items: center; gap: 8px;">
-
-  <!-- Start Date -->
-  <ion-datetime-button
-    datetime="currentStartPicker"
-    display-format="dd.MM.yyyy"
-  ></ion-datetime-button>
-
-  <ion-modal keepContentsMounted="true">
-    <ng-template>
-      <ion-datetime
-        id="currentStartPicker"
-        presentation="date"
-        [(ngModel)]="currentStart"
-        [max]="currentEnd"
-        locale="en-GB"
-        (ionChange)="filterHistory()"
-      ></ion-datetime>
-    </ng-template>
-  </ion-modal>
-
-  <span>–</span>
-
-  <!-- End Date -->
-  <ion-datetime-button
-    datetime="currentEndPicker"
-    display-format="dd.MM.yyyy"
-  ></ion-datetime-button>
-
-  <ion-modal keepContentsMounted="true">
-    <ng-template>
-      <ion-datetime
-        id="currentEndPicker"
-        presentation="date"
-        [(ngModel)]="currentEnd"
-        [min]="currentStart"
-        locale="en-GB"
-        (ionChange)="filterHistory()"
-      ></ion-datetime>
-    </ng-template>
-  </ion-modal>
-</div>
-
-  <!-- Next range button -->
-  <ion-button fill="outline" size="small" shape="round" (click)="changeRange('next')">
-    <ion-icon name="chevron-forward-outline"></ion-icon>
-  </ion-button>
-</div>
+      >
+      <!-- Previous range button -->
+      <ion-button fill="outline" size="small" shape="round" (click)="changeRange('prev')">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+      <!-- Two inline date pickers -->
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <!-- Start Date -->
+        <ion-datetime-button
+          datetime="currentStartPicker"
+          display-format="dd.MM.yyyy"
+        ></ion-datetime-button>
+        <ion-modal keepContentsMounted="true">
+          <ng-template>
+            <ion-datetime
+              id="currentStartPicker"
+              presentation="date"
+              [(ngModel)]="currentStart"
+              [max]="currentEnd"
+              locale="en-GB"
+              (ionChange)="filterHistory()"
+            ></ion-datetime>
+          </ng-template>
+        </ion-modal>
+        <span>–</span>
+        <!-- End Date -->
+        <ion-datetime-button
+          datetime="currentEndPicker"
+          display-format="dd.MM.yyyy"
+        ></ion-datetime-button>
+        <ion-modal keepContentsMounted="true">
+          <ng-template>
+            <ion-datetime
+              id="currentEndPicker"
+              presentation="date"
+              [(ngModel)]="currentEnd"
+              [min]="currentStart"
+              locale="en-GB"
+              (ionChange)="filterHistory()"
+            ></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </div>
+      <!-- Next range button -->
+      <ion-button fill="outline" size="small" shape="round" (click)="changeRange('next')">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-button>
+    </div>
+  }
 
   <!-- Graph at the top -->
-  <app-mood-log-graph
-    *ngIf="filteredHistory.length > 0"
-    [history]="filteredHistory"
-    [moodItems]="moodItems"
-  ></app-mood-log-graph>
+  @if (filteredHistory.length > 0) {
+    <app-mood-log-graph
+      [history]="filteredHistory"
+      [moodItems]="moodItems"
+    ></app-mood-log-graph>
+  }
 
   <!-- List of entries -->
-  <ion-list *ngIf="filteredHistory.length > 0; else noLogs">
-    <ion-item *ngFor="let log of filteredHistory">
-      <ion-label>
-        <h2>{{ log.date | date: 'short' }}</h2>
-        <p>
-          {{ 'MOOD_LOG_HISTORY.NOTIFICATION' | translate }}:
-          {{ log.notificationId || ('MOOD_LOG_HISTORY.MANUAL' | translate) }}
-        </p>
-        <ul>
-          <li *ngFor="let entry of (log.selections | keyvalue)">
-            {{ getMoodName(entry.key) }} →
-            {{ 'MOOD_LOG_HISTORY.INTENSITY' | translate }} {{ entry.value }}
-          </li>
-        </ul>
-
-       <!-- Show comment if it exists -->
-        <p *ngIf="log.comment" class="comment">
-          <strong>{{ 'MOOD_LOG_HISTORY.COMMENT' | translate }}:</strong>
-          {{ log.comment }}
-        </p>
-      </ion-label>
-
-      <ion-button color="danger" fill="clear" slot="end" aria-label="Delete" (click)="confirmDelete(log)">
-        <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
-      </ion-button>
-    </ion-item>
-  </ion-list>
-
-  <ng-template #noLogs>
+  @if (filteredHistory.length > 0) {
+    <ion-list>
+      @for (log of filteredHistory; track log) {
+        <ion-item>
+          <ion-label>
+            <h2>{{ log.date | date: 'short' }}</h2>
+            <p>
+              {{ 'MOOD_LOG_HISTORY.NOTIFICATION' | translate }}:
+              {{ log.notificationId || ('MOOD_LOG_HISTORY.MANUAL' | translate) }}
+            </p>
+            <ul>
+              @for (entry of (log.selections | keyvalue); track entry) {
+                <li>
+                  {{ getMoodName(entry.key) }} →
+                  {{ 'MOOD_LOG_HISTORY.INTENSITY' | translate }} {{ entry.value }}
+                </li>
+              }
+            </ul>
+            <!-- Show comment if it exists -->
+            @if (log.comment) {
+              <p class="comment">
+                <strong>{{ 'MOOD_LOG_HISTORY.COMMENT' | translate }}:</strong>
+                {{ log.comment }}
+              </p>
+            }
+          </ion-label>
+          <ion-button color="danger" fill="clear" slot="end" aria-label="Delete" (click)="confirmDelete(log)">
+            <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+          </ion-button>
+        </ion-item>
+      }
+    </ion-list>
+  } @else {
     <div class="no-logs">
       <p>{{ 'MOOD_LOG_HISTORY.NO_LOGS' | translate }}</p>
     </div>
-  </ng-template>
+  }
+
 </ion-content>

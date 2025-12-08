@@ -1,4 +1,4 @@
- <ion-header translucent="true">
+<ion-header translucent="true">
   <ion-toolbar>
     <ion-title>
       {{ item?.name }}
@@ -8,21 +8,22 @@
 
 <ion-content class="ion-padding">
   <ion-list class="scrollable-list">
-    <ng-container *ngIf="item?.scalePlans">
-      <ion-item *ngFor="let i of [0,1,2,3,4,5,6,7,8,9,10]">
-        <ion-label>{{ 'MOOD_SCALE.LEVEL' | translate:{ i: i } }}</ion-label>
-
-        <!-- Button instead of ion-select -->
-        <ion-button
-          expand="block"
-          fill="outline"
-          (click)="openPlanMenu(i)"
-          [ngClass]="{ 'none-selected': item.scalePlans[i] == null }"
-        >
-          {{ getPlanTitle(item.scalePlans[i]) }}
-        </ion-button>
-      </ion-item>
-    </ng-container>
+    @if (item?.scalePlans) {
+      @for (i of [0,1,2,3,4,5,6,7,8,9,10]; track i) {
+        <ion-item>
+          <ion-label>{{ 'MOOD_SCALE.LEVEL' | translate:{ i: i } }}</ion-label>
+          <!-- Button instead of ion-select -->
+          <ion-button
+            expand="block"
+            fill="outline"
+            (click)="openPlanMenu(i)"
+            [ngClass]="{ 'none-selected': item.scalePlans[i] == null }"
+            >
+            {{ getPlanTitle(item.scalePlans[i]) }}
+          </ion-button>
+        </ion-item>
+      }
+    }
   </ion-list>
 
   <!-- comment field -->
@@ -42,7 +43,7 @@
 
 <ion-footer class="ion-no-border">
   <ion-toolbar>
- <!-- Fixed button bar -->
+    <!-- Fixed button bar -->
     <div class="button-container">
       <app-button
         size="small"

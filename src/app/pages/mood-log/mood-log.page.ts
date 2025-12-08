@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 import {
   IonList,
@@ -35,7 +35,6 @@ import { AppHeaderComponent } from 'src/app/components/app-header/app-header.com
   styleUrls: ['./mood-log.page.scss'],
   standalone: true,
   imports: [
-    CommonModule,
     FormsModule,
     IonHeader,
     IonFooter,
@@ -53,8 +52,8 @@ import { AppHeaderComponent } from 'src/app/components/app-header/app-header.com
     IonDatetime,
     IonDatetimeButton,
     IonModal,
-    AppHeaderComponent,
-  ],
+    AppHeaderComponent
+],
 })
 export class MoodLogPage implements OnInit {
   moodItems: MoodItem[] = [];

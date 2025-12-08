@@ -12,7 +12,7 @@ import {
   IonFooter,
   AlertController,
 } from '@ionic/angular/standalone';
-import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 import { addIcons } from 'ionicons';
 import { add, create, trash } from 'ionicons/icons';
@@ -41,13 +41,12 @@ import { AppHeaderComponent } from 'src/app/components/app-header/app-header.com
     IonLabel,
     IonReorder,
     IonReorderGroup,
-    CommonModule,
     FormsModule,
     ButtonComponent,
     CustomTextPopupComponent,
     TranslateModule,
-    AppHeaderComponent,
-  ] })
+    AppHeaderComponent
+] })
 export class CrisisPlanSettingsPage implements OnInit {
 private STORAGE_KEY = 'crisis_plans';
 

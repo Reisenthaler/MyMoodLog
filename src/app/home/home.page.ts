@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import {
   IonHeader,
   IonToolbar,
@@ -34,7 +34,6 @@ addIcons({
   styleUrls: ['home.page.scss'],
   standalone: true,
   imports: [
-    CommonModule,
     IonHeader,
     IonToolbar,
     IonTitle,
@@ -53,8 +52,8 @@ addIcons({
     CrisisPlanInfoComponent,
     MoodLogInfoComponent,
     NotificationInfoComponent,
-    MoodLogHistoryInfoComponent,
-  ],
+    MoodLogHistoryInfoComponent
+],
 })
 export class HomePage {
   showCrisisPlanInfo = false;

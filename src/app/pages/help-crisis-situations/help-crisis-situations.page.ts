@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 import {
   IonContent,
@@ -32,7 +32,6 @@ addIcons({
     IonHeader,
     IonTitle,
     IonToolbar,
-    CommonModule,
     FormsModule,
     IonLabel,
     IonItem,
@@ -41,8 +40,8 @@ addIcons({
     IonCardContent,
     IonIcon,
     TranslateModule,
-    AppHeaderComponent,
-  ]
+    AppHeaderComponent
+]
 })
 export class HelpCrisisSituationsPage implements OnInit {
 

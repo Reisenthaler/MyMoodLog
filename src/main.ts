@@ -20,7 +20,7 @@ import { HttpClient } from '@angular/common/http';
 
 // ✅ ngx-translate
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { importProvidersFrom } from '@angular/core';
+import { importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 import { Observable } from 'rxjs';
 
 // Import ngx-echarts provider
@@ -103,7 +103,7 @@ addIcons({
 
 bootstrapApplication(AppComponent, {
   providers: [
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    provideZoneChangeDetection(),{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     provideIonicAngular(),
     provideRouter(routes, withPreloading(PreloadAllModules)),
     Storage,

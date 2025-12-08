@@ -1,5 +1,5 @@
 import { Component, OnInit, viewChild, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import {
   IonList,
   IonItem,
@@ -31,7 +31,6 @@ import { LoggerService } from 'src/app/services/logger.service';
   styleUrls: ['./mood-tracking-settings.page.scss'],
   standalone: true,
   imports: [
-    CommonModule,
     IonTitle,
     IonHeader,
     IonFooter,
@@ -39,12 +38,12 @@ import { LoggerService } from 'src/app/services/logger.service';
     IonList,
     IonItem,
     IonLabel,
-      IonContent,
+    IonContent,
     ButtonComponent,
     CustomTextPopupComponent,
     TranslateModule,
-    AppHeaderComponent,
-  ],})
+    AppHeaderComponent
+],})
 export class MoodTrackingSettingsPage implements OnInit {
   @ViewChild('addPopup') addPopup!: CustomTextPopupComponent;
   private STORAGE_KEY = 'mood_items';

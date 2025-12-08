@@ -2,20 +2,20 @@
   [disabled]="disabled"
   [ngClass]="[color, size]"
   (click)="handleClick()"
->
+  >
   <!-- Icon only -->
-  <ng-container *ngIf="size === 'icon' && icon">
+  @if (size === 'icon' && icon) {
     <ion-icon [name]="icon"></ion-icon>
-  </ng-container>
+  }
 
   <!-- Icon + Text -->
-  <ng-container *ngIf="size === 'iconWithText' && icon">
+  @if (size === 'iconWithText' && icon) {
     <ion-icon [name]="icon" class="icon-left"></ion-icon>
     <span>{{ label }}</span>
-  </ng-container>
+  }
 
   <!-- Text only (small, medium, wide) -->
-  <ng-container *ngIf="size !== 'icon' && size !== 'iconWithText'">
+  @if (size !== 'icon' && size !== 'iconWithText') {
     {{ label }}
-  </ng-container>
+  }
 </button>

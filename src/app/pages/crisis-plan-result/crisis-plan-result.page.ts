@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { IonList, IonItem, IonLabel, IonHeader, IonToolbar, IonTitle, IonContent, Platform } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
 import { CrisisPlan } from '../../models/crisis-plan.model';
@@ -13,7 +13,6 @@ import { AppHeaderComponent } from 'src/app/components/app-header/app-header.com
   styleUrls: ['./crisis-plan-result.page.scss'],
   standalone: true,
   imports: [
-    CommonModule,
     IonList,
     IonItem,
     IonLabel,
@@ -23,14 +22,14 @@ import { AppHeaderComponent } from 'src/app/components/app-header/app-header.com
     IonContent,
     TranslateModule,
     AppHeaderComponent
-  ],
+],
 })
 export class CrisisPlanResultPage implements OnInit, OnDestroy {
   plans: CrisisPlan[] = [];
   private backButtonSub?: Subscription;
 
   constructor(private router: Router, private platform: Platform) {
-    const nav = this.router.getCurrentNavigation();
+    const nav = this.router.currentNavigation();
     if (nav?.extras.state && nav.extras.state['plans']) {
       this.plans = nav.extras.state['plans'];
     }

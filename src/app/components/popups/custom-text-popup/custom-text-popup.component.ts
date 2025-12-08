@@ -6,14 +6,14 @@ import {
   ViewChild,
   ElementRef,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 import { ButtonComponent } from '../../button/button.component';
   
 @Component({
   selector: 'app-custom-text-popup',
   standalone: true,
-  imports: [CommonModule, FormsModule, ButtonComponent],
+  imports: [FormsModule, ButtonComponent],
   templateUrl: './custom-text-popup.component.html',
   styleUrls: ['./custom-text-popup.component.scss'],
 })

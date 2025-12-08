@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { CommonModule, Location } from '@angular/common';
+import { Location } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { App as CapacitorApp } from '@capacitor/app';
 import { TranslateModule } from '@ngx-translate/core';
@@ -7,7 +7,7 @@ import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, IonicModule, TranslateModule],
+  imports: [IonicModule, TranslateModule],
   templateUrl: './app-header.component.html',
   styleUrls: ['./app-header.component.scss'],
 })

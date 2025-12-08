@@ -14,70 +14,67 @@
   <ion-content>
     <!-- ✅ List of plans -->
     <ion-list>
-      <ion-item *ngFor="let plan of crisisPlans" lines="full">
-        <ion-label class="ion-text-wrap">
-          <!-- Plan title -->
-          <h2>{{ 'CRISIS_PLAN_SETTINGS.TITLE_LABEL' | translate }} {{ plan.title }}</h2>
-
-          <!-- Reorderable steps -->
-          <ion-reorder-group
-            [disabled]="false"
-            (ionItemReorder)="reorderSteps($event, plan)"
-          >
-            <ion-item *ngFor="let step of plan.steps; let i = index">
-              <ion-label
-                style="white-space: pre-line;"
-                [innerHTML]="formatUserText(step)"
-              ></ion-label>
-
-              <!-- Edit/Delete buttons -->
+      @for (plan of crisisPlans; track plan) {
+        <ion-item lines="full">
+          <ion-label class="ion-text-wrap">
+            <!-- Plan title -->
+            <h2>{{ 'CRISIS_PLAN_SETTINGS.TITLE_LABEL' | translate }} {{ plan.title }}</h2>
+            <!-- Reorderable steps -->
+            <ion-reorder-group
+              [disabled]="false"
+              (ionItemReorder)="reorderSteps($event, plan)"
+              >
+              @for (step of plan.steps; track step; let i = $index) {
+                <ion-item>
+                  <ion-label
+                    style="white-space: pre-line;"
+                    [innerHTML]="formatUserText(step)"
+                  ></ion-label>
+                  <!-- Edit/Delete buttons -->
+                  <app-button
+                    size="icon"
+                    color="default"
+                    icon="create"
+                    (clicked)="openEditStep(plan, i)"
+                  ></app-button>
+                  <app-button
+                    size="icon"
+                    color="red"
+                    icon="trash"
+                    (clicked)="deleteStep(plan, i)"
+                  ></app-button>
+                  <!-- Drag handle -->
+                  <ion-reorder slot="end"></ion-reorder>
+                </ion-item>
+              }
+            </ion-reorder-group>
+            <!-- Plan-level actions -->
+            <div class="plan-actions">
               <app-button
-                size="icon"
+                size="iconWithText"
                 color="default"
                 icon="create"
-                (clicked)="openEditStep(plan, i)"
+                [label]="'CRISIS_PLAN_SETTINGS.EDIT_PLAN' | translate"
+                (clicked)="openEditPlan(plan)"
               ></app-button>
-
               <app-button
-                size="icon"
+                size="iconWithText"
                 color="red"
                 icon="trash"
-                (clicked)="deleteStep(plan, i)"
+                [label]="'CRISIS_PLAN_SETTINGS.DELETE_PLAN' | translate"
+                (clicked)="deletePlan(plan)"
               ></app-button>
-
-              <!-- Drag handle -->
-              <ion-reorder slot="end"></ion-reorder>
-            </ion-item>
-          </ion-reorder-group>
-
-          <!-- Plan-level actions -->
-          <div class="plan-actions">
-            <app-button
-              size="iconWithText"
-              color="default"
-              icon="create"
-              [label]="'CRISIS_PLAN_SETTINGS.EDIT_PLAN' | translate"
-              (clicked)="openEditPlan(plan)"
-            ></app-button>
-
-            <app-button
-              size="iconWithText"
-              color="red"
-              icon="trash"
-              [label]="'CRISIS_PLAN_SETTINGS.DELETE_PLAN' | translate"
-              (clicked)="deletePlan(plan)"
-            ></app-button>
-
-            <app-button
-              size="iconWithText"
-              color="green"
-              icon="add"
-              [label]="'CRISIS_PLAN_SETTINGS.ADD_STEP' | translate"
-              (clicked)="openAddStep(plan)"
-            ></app-button>
-          </div>
-        </ion-label>
-      </ion-item>
+              <app-button
+                size="iconWithText"
+                color="green"
+                icon="add"
+                [label]="'CRISIS_PLAN_SETTINGS.ADD_STEP' | translate"
+                (clicked)="openAddStep(plan)"
+              ></app-button>
+            </div>
+          </ion-label>
+        </ion-item>
+      }
     </ion-list>
   </ion-content>
 

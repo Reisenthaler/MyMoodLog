@@ -1,16 +1,18 @@
 <ion-header [translucent]="true">
   <ion-toolbar [color]="color">
-    <ion-buttons slot="start" *ngIf="showBack">
-      <ion-button (click)="onBack()">
-        <ion-icon slot="icon-only" name="chevron-back-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+    @if (showBack) {
+      <ion-buttons slot="start">
+        <ion-button (click)="onBack()">
+          <ion-icon slot="icon-only" name="chevron-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    }
 
     <ion-title>
-      <ng-container *ngIf="title; else empty">
+      @if (title) {
         {{ title }}
-      </ng-container>
-      <ng-template #empty></ng-template>
+      } @else {
+      }
     </ion-title>
 
     <!-- slot for page-specific actions: use <div header-actions>...</div> inside header usage -->

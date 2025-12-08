@@ -6,20 +6,23 @@
 
 <ion-content class="ion-padding">
   <ion-list>
-    <ion-item *ngFor="let item of moodItems">
-      <ion-label>{{ item.name }}</ion-label>
-      <ion-select
-        [(ngModel)]="selections[item.id]"
-        [placeholder]="'MOOD_LOG.SELECT_INTENSITY' | translate"
-      >
-        <ion-select-option
-          *ngFor="let i of [0,1,2,3,4,5,6,7,8,9,10]"
-          [value]="i"
-        >
-          {{ i }}
-        </ion-select-option>
-      </ion-select>
-    </ion-item>
+    @for (item of moodItems; track item) {
+      <ion-item>
+        <ion-label>{{ item.name }}</ion-label>
+        <ion-select
+          [(ngModel)]="selections[item.id]"
+          [placeholder]="'MOOD_LOG.SELECT_INTENSITY' | translate"
+          >
+          @for (i of [0,1,2,3,4,5,6,7,8,9,10]; track i) {
+            <ion-select-option
+              [value]="i"
+              >
+              {{ i }}
+            </ion-select-option>
+          }
+        </ion-select>
+      </ion-item>
+    }
   </ion-list>
 
   <!-- Comment field -->
@@ -45,7 +48,7 @@
       datetime="moodLogDatetimePicker"
       display-format="HH:mm"
       style="padding-top: 10px; padding-bottom: 10px;"
-    >
+      >
     </ion-datetime-button>
 
     <!-- The datetime picker itself in a modal -->

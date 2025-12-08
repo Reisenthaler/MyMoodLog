@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { NgxEchartsModule } from 'ngx-echarts';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -15,9 +15,8 @@ export interface MoodLogEntry {
   selector: 'app-mood-log-graph',
   standalone: true,
   imports: [
-    CommonModule, 
-    NgxEchartsModule,
-  ],
+    NgxEchartsModule
+],
   templateUrl: './mood-log-graph.component.html',
   styleUrls: ['./mood-log-graph.component.scss'],
 })
