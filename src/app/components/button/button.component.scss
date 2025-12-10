@@ -27,9 +27,15 @@ button {
 }
 
 .small {
-  font-size: 1rem;        
-  padding: 0.4rem 0.8rem; 
+  font-size: 1rem;
+  padding: 0.4rem 0.8rem;
   width: 100%;
+}
+
+.wide-small {
+  padding: 10px 20px;
+  width: 100%;
+  font-size: 1rem;
 }
 
 /* Icon only */
@@ -40,7 +46,7 @@ button {
   height: auto;
   font-size: 1.4rem;
 
-  background-color: transparent !important;  //Force transparent background 
+  background-color: transparent !important;  //Force transparent background
 }
 
 /* Icon + Text */

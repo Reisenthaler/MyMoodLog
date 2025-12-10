@@ -20,7 +20,7 @@ constructor() {
   addIcons({ add, trash, create });
 }
   // 👇 size now includes icon + iconWithText
-  @Input() size: 'small' | 'medium' | 'wide' | 'icon' | 'iconWithText' = 'medium';
+  @Input() size: 'small' | 'medium' | 'wide' | 'wide-small' | 'icon' | 'iconWithText' = 'medium';
 
   @Input() disabled: boolean = false;
 
