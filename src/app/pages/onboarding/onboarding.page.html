@@ -86,6 +86,28 @@
     </ion-card-content>
   </ion-card>
 
+  <!-- Export / Import -->
+  <ion-card class="rounded-card">
+    <ion-card-header>
+      <ion-card-title>
+        {{ 'ONBOARDING.EXPORT_IMPORT_TITLE' | translate }}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div style="margin-bottom: 12px;">
+        <ion-text color="dark">
+          <p>{{ 'ONBOARDING.EXPORT_IMPORT_CONTENT' | translate }}</p>
+        </ion-text>
+      </div>
+      <app-button
+        size="wide-small"
+        color="default"
+        [label]="'ONBOARDING.EXPORT_IMPORT_BUTTON' | translate"
+        routerLink="/export-import"
+      ></app-button>
+    </ion-card-content>
+  </ion-card>
+
     <!-- Impressum -->
   <ion-card class="rounded-card" style="margin-bottom: 50px;">
     <ion-card-header>

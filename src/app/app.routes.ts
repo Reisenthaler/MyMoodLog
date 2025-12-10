@@ -49,6 +49,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/onboarding/onboarding.page').then( m => m.OnboardingPage)
   },
   {
+    path: 'export-import',
+    loadComponent: () => import('./pages/export-import/export-import.page').then( m => m.ExportImportPage)
+  },
+  {
     path: 'help-crisis-situations',
     loadComponent: () => import('./pages/help-crisis-situations/help-crisis-situations.page').then( m => m.HelpCrisisSituationsPage)
   },

@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
 import { IonContent, IonToolbar, IonFooter,
   IonCard,
   IonCardHeader,
   IonCardTitle,
   IonCardContent,
-  IonText
+  IonText,
  } from '@ionic/angular/standalone';
 import { TranslateModule } from '@ngx-translate/core';
 import { ButtonComponent } from 'src/app/components/button/button.component';
@@ -28,6 +28,7 @@ import { AppHeaderComponent } from 'src/app/components/app-header/app-header.com
     TranslateModule,
     ButtonComponent,
     AppHeaderComponent,
+    RouterLink,
   ]
 })
 export class OnboardingPage {

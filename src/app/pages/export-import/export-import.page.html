@@ -1,0 +1,38 @@
+<app-header [title]="'EXPORT_IMPORT.PAGE_TITLE' | translate" [showBack]="true" color="mymoodlogcolor"></app-header>
+
+<ion-content class="ion-padding">
+  <ion-card class="rounded-card">
+    <ion-card-header>
+      <ion-card-title>{{ 'EXPORT_IMPORT.EXPORT_TITLE' | translate }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div style="margin-bottom: 12px;">
+        <p>{{ 'EXPORT_IMPORT.EXPORT_DESC' | translate }}</p>
+      </div>
+      <app-button
+        size="wide-small"
+        color="default"
+        [label]="'EXPORT_IMPORT.EXPORT_BUTTON' | translate"
+        (click)="exportAll()"
+      ></app-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="rounded-card">
+    <ion-card-header>
+      <ion-card-title>{{ 'EXPORT_IMPORT.IMPORT_TITLE' | translate }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ 'EXPORT_IMPORT.IMPORT_DESC' | translate }}</p>
+      <div style="margin-bottom: 12px;">
+      <input #fileInput type="file" accept="application/json" (change)="onFileSelected($event)" style="display:none" />
+      </div>
+      <app-button
+        size="wide-small"
+        color="default"
+        [label]="'EXPORT_IMPORT.IMPORT_BUTTON'  | translate"
+        (click)="fileInput.click()"
+      ></app-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

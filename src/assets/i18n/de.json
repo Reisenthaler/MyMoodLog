@@ -152,7 +152,10 @@
     "OPEN_SOURCE_TITLE": " Open Source",
     "OPEN_SOURCE_CONTENT_1": "Dieses Projekt ist Open Source. Der Source Code ist auf",
     "OPEN_SOURCE_CONTENT_2": "GitHub",
-    "OPEN_SOURCE_CONTENT_3": "verfügbar."
+    "OPEN_SOURCE_CONTENT_3": "verfügbar.",
+    "EXPORT_IMPORT_TITLE": "Export / Import",
+    "EXPORT_IMPORT_CONTENT": "Sichere oder stelle deine App-Daten wieder her — nützlich beim Gerätewechsel oder zur Sicherung.",
+    "EXPORT_IMPORT_BUTTON": "Export / Import"
   },
   "CRISIS_PLAN_INFO": {
     "TITLE": "Krisenpläne",
@@ -221,5 +224,19 @@
     "FILE_SAVED_READABLE": "{{fileName}} wurde im Ordner {{folderName}} gespeichert.",
     "IOS_DOCUMENTS_FOLDER": "Dokumente",
     "FILE_PREPARED": "{{fileName}} ist zum Herunterladen bereit."
+  },
+  "EXPORT_IMPORT": {
+    "PAGE_TITLE": "Daten exportieren / importieren",
+    "EXPORT_TITLE": "Exportieren",
+    "EXPORT_DESC": "Erstelle ein Backup deiner App-Daten als JSON-Datei. Diese Datei kannst du später wieder importieren.",
+    "EXPORT_BUTTON": "Backup erstellen",
+    "EXPORT_DONE": "Backup wurde vorbereitet.",
+    "EXPORT_FAILED": "Fehler beim Erstellen des Backups.",
+
+    "IMPORT_TITLE": "Importieren",
+    "IMPORT_DESC": "Wähle eine zuvor erstellte JSON-Backup-Datei, um Daten in die App zu importieren. Vorhandene Daten und Einstellungen werden überschrieben.",
+    "IMPORT_DONE": "Daten erfolgreich importiert.",
+    "IMPORT_FAILED": "Fehler beim Importieren der Datei.",
+    "IMPORT_BUTTON": "Daten importieren"
   }
 }
