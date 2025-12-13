@@ -9,6 +9,10 @@
       <div style="margin-bottom: 12px;">
         <p>{{ 'EXPORT_IMPORT.EXPORT_DESC' | translate }}</p>
       </div>
+      <ion-item lines="none">
+       <ion-label position="stacked">{{ 'EXPORT_IMPORT.EXPORT_PASSWORD_LABEL' | translate }}</ion-label>
+       <ion-input type="password" [(ngModel)]="exportPassword" placeholder="{{ 'EXPORT_IMPORT.EXPORT_PASSWORD_PLACEHOLDER' | translate }}"></ion-input>
+      </ion-item>
       <app-button
         size="wide-small"
         color="default"

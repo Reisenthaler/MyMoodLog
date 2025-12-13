@@ -7,6 +7,9 @@ import {
   IonCardContent,
   ToastController,
   Platform,
+  IonItem,
+  IonLabel,
+  IonInput,
 } from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -15,6 +18,7 @@ import { AppHeaderComponent } from 'src/app/components/app-header/app-header.com
 import { environment } from 'src/environments/environment';
 import { Filesystem, Directory } from '@capacitor/filesystem';
 import { ButtonComponent } from 'src/app/components/button/button.component';
+import { CryptoService } from 'src/app/services/crypto';
 
 @Component({
   selector: 'app-export-import',
@@ -30,23 +34,25 @@ import { ButtonComponent } from 'src/app/components/button/button.component';
     TranslateModule,
     FormsModule,
     AppHeaderComponent,
-    ButtonComponent
+    ButtonComponent,
+    IonItem,
+    IonLabel,
+    IonInput,
   ],
 })
 export class ExportImportPage implements OnInit {
-  public enableClaudeStorageFlag = false;
-  public environmentFlag = !!environment.enableClaudeHaiku45;
+  public exportPassword: string = '';
 
   constructor(
     private storage: Storage,
     private toastController: ToastController,
     private translate: TranslateService,
-    private platform: Platform
+    private platform: Platform,
+    private cryptoService: CryptoService
   ) {}
 
   async ngOnInit() {
     await this.storage.create();
-    this.enableClaudeStorageFlag = (await this.storage.get('enable_claude_haiku_45')) ?? this.environmentFlag;
   }
 
   async exportAll() {
@@ -57,11 +63,18 @@ export class ExportImportPage implements OnInit {
         result[k] = await this.storage.get(k);
       }
 
-      const blob = new Blob([JSON.stringify(result, null, 2)], { type: 'application/json' });
-      await this.saveFile('mymoodlog_backup.json', blob, 'application/json');
+      // Always encrypt, even if password is empty
+      const password = this.exportPassword || ''; // empty string fallback
+      const encryptedBase64 = await this.cryptoService.encryptJson(result, password);
+      const blob = new Blob([encryptedBase64], { type: 'text/plain' });
+
+      await this.saveFile('mymoodlog_backup.json', blob, 'text/plain');
+
     } catch (err: any) {
       const toast = await this.toastController.create({
-        message: this.translate.instant('EXPORT_IMPORT.EXPORT_FAILED') || ('Export failed: ' + (err?.message || err)),
+        message:
+          this.translate.instant('EXPORT_IMPORT.EXPORT_FAILED') ||
+          ('Export failed: ' + (err?.message || err)),
         duration: 5000,
         color: 'danger',
       });
@@ -194,23 +207,74 @@ export class ExportImportPage implements OnInit {
   async onFileSelected(ev: any) {
     const file = ev?.target?.files?.[0];
     if (!file) return;
+
     try {
-      const text = await file.text();
-      const obj = JSON.parse(text);
-      const keys = Object.keys(obj);
-      for (const k of keys) {
-        await this.storage.set(k, obj[k]);
+      // Read encrypted file content (it's just plain text now)
+      const encryptedText = await file.text();
+
+      // Ask user for password and attempt decryption until successful or they cancel
+      while (true) {
+        const input = window.prompt(
+          this.translate.instant('EXPORT_IMPORT.ENTER_PASSWORD')
+        );
+
+      // Case 1: User clicked "Cancel"
+      if (input === null) {
+        const cancelToast = await this.toastController.create({
+          message:
+            this.translate.instant('EXPORT_IMPORT.IMPORT_CANCELLED') ||
+            'Import cancelled by user.',
+          duration: 2500,
+          color: 'medium',
+        });
+        await cancelToast.present();
+        return; // exit import completely
       }
 
-      const toast = await this.toastController.create({
-        message: this.translate.instant('EXPORT_IMPORT.IMPORT_DONE') || 'Import completed',
-        duration: 3000,
-        color: 'success',
-      });
-      await toast.present();
+      // Case 2: User clicked OK (possibly blank) → treat as empty string
+      const pwd = input || '';
+
+        try {
+          // Attempt to decrypt the file content
+          const decrypted: any = await this.cryptoService.decryptJson(
+            encryptedText,
+            pwd
+          );
+
+          // Restore all key-value pairs to Ionic Storage
+          const keys = Object.keys(decrypted || {});
+          for (const k of keys) {
+            await this.storage.set(k, decrypted[k]);
+          }
+
+          // Show success message
+          const toast = await this.toastController.create({
+            message:
+              this.translate.instant('EXPORT_IMPORT.IMPORT_DONE') ||
+              'Import completed',
+            duration: 3000,
+            color: 'success',
+          });
+          await toast.present();
+          return;
+        } catch (e) {
+          // Wrong password or corrupt file
+          const errToast = await this.toastController.create({
+            message:
+              this.translate.instant('EXPORT_IMPORT.WRONG_PASSWORD') ||
+              'Wrong password, try again.',
+            duration: 2500,
+            color: 'danger',
+          });
+          await errToast.present();
+          // Loop again until success or cancel
+        }
+      }
     } catch (err: any) {
       const toast = await this.toastController.create({
-        message: this.translate.instant('EXPORT_IMPORT.IMPORT_FAILED') || ('Import failed: ' + (err?.message || err)),
+        message:
+          this.translate.instant('EXPORT_IMPORT.IMPORT_FAILED') ||
+          'Import failed: ' + (err?.message || err),
         duration: 5000,
         color: 'danger',
       });

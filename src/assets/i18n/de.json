@@ -230,6 +230,8 @@
     "EXPORT_TITLE": "Exportieren",
     "EXPORT_DESC": "Erstelle ein Backup deiner App-Daten als JSON-Datei. Diese Datei kannst du später wieder importieren.",
     "EXPORT_BUTTON": "Backup erstellen",
+    "EXPORT_PASSWORD_LABEL": "Optionales Passwort",
+    "EXPORT_PASSWORD_PLACEHOLDER": "Passwort (leer = kein Passwort)",
     "EXPORT_DONE": "Backup wurde vorbereitet.",
     "EXPORT_FAILED": "Fehler beim Erstellen des Backups.",
 
@@ -237,6 +239,9 @@
     "IMPORT_DESC": "Wähle eine zuvor erstellte JSON-Backup-Datei, um Daten in die App zu importieren. Vorhandene Daten und Einstellungen werden überschrieben.",
     "IMPORT_DONE": "Daten erfolgreich importiert.",
     "IMPORT_FAILED": "Fehler beim Importieren der Datei.",
+    "ENTER_PASSWORD": "Passwort (leer lassen, falls keines):",
+    "WRONG_PASSWORD": "Falsches Passwort, versuche es erneut.",
+    "IMPORT_CANCELLED": "Import abgebrochen.",
     "IMPORT_BUTTON": "Daten importieren"
   }
 }
