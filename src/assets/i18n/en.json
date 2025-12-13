@@ -1,0 +1,251 @@
+{
+  "COMMON": {
+    "NOTIFICATION": "Notification",
+    "CLOSE": "Close",
+    "PRESS_BACK_AGAIN_TO_EXIT": "Press back again to exit",
+    "CANCEL": "Cancel",
+    "CONTINUE": "Continue"
+  },
+  "HOME": {
+    "PAGE_TITLE": "MyMoodLog",
+    "MOOD_TRACKING_SETTINGS": "My mood tracking parameters",
+    "CRISIS_PLAN_SETTINGS": "My crisis plans",
+    "NOTIFICATION_SETTINGS": "My reminders",
+    "MOOD_LOG_HISTORY": "History & reflection",
+    "LEGAL_NOTICE_DISCLAIMER": "Copyright & Disclaimer",
+    "ONBOARDING": "How the app works",
+    "HELP_CRISIS_SITUATIONS": "Help in crisis situations",
+    "LOG_CURRENT_MOOD": "New mood log entry"
+  },
+  "MOOD_LOG": {
+    "TITLE": "Mood Diary",
+    "SELECT_INTENSITY": "Select intensity",
+    "SAVE_BUTTON": "Save",
+    "COMMENT_LABEL": "Comment",
+    "COMMENT_PLACEHOLDER": "Write your thoughts here...",
+    "SAVE_SUCCESS": "Your mood entry has been saved.",
+    "SAVE_ERROR": "Error while saving mood entry!",
+    "NO_SELECTION_ERROR": "Please select at least one mood before saving.",
+    "DATE_TIME_LABEL": "Date and time"
+  },
+  "MOOD_LOG_HISTORY": {
+    "PAGE_TITLE": "History & Reflection",
+    "NOTIFICATION": "Notification",
+    "MANUAL": "Manual",
+    "INTENSITY": "Intensity",
+    "NO_LOGS": "No mood entries yet.",
+    "COMMENT": "Comment",
+    "FILTER": {
+      "LAST_7": "7 days",
+      "LAST_30": "30 days",
+      "ALL": "All"
+    },
+    "CONFIRM_DELETE": {
+      "HEADER": "Confirm deletion",
+      "MESSAGE": "Do you really want to delete this mood entry?",
+      "CANCEL": "Cancel",
+      "DELETE": "Delete"
+    }
+  },
+  "MOOD_TRACKING_SETTINGS": {
+    "PAGE_TITLE": "My mood tracking parameters",
+    "ACTIVE": "Active",
+    "INACTIVE": "Inactive",
+    "EDIT": "Assign crisis plan",
+    "ADD_BUTTON": "Add parameter",
+    "POPUP": {
+      "HEADING": "New parameter",
+      "PLACEHOLDER": "Enter name",
+      "SAVE": "Add",
+      "CANCEL": "Cancel"
+    },
+    "DEFAULT_ITEMS": {
+      "SUICIDAL_THOUGHTS": "Suicidal thoughts",
+      "TENSION": "Tension",
+      "DRIVE": "Drive",
+      "RACING_THOUGHTS": "Racing thoughts"
+    },
+    "ALERT": {
+      "CONFIRM_DELETE_TITLE": "Confirm deletion",
+      "CONFIRM_DELETE_MESSAGE": "Do you really want to delete \"{{name}}\"?",
+      "CANCEL": "Cancel",
+      "DELETE": "Delete",
+      "EDIT_SUCCESS": "Successfully saved",
+      "EDIT_ERROR": "Error while saving",
+      "DELETE_SUCCESS": "Deleted successfully",
+      "DELETE_ERROR": "Error while deleting",
+      "ADD_SUCCESS": "Parameter added successfully",
+      "ADD_ERROR": "Error while adding parameter"
+    }
+  },
+  "MOOD_SCALE": {
+    "LEVEL": "Level {{i}}",
+    "NONE": "None",
+    "SAVE": "Save",
+    "CANCEL": "Cancel",
+    "NOTE": "Note",
+    "NOTE_PLACEHOLDER": "Add a note..."
+  },
+  "NOTIFICATION_SETTINGS": {
+    "PAGE_TITLE": "My reminders",
+    "NOTIFICATIONS_PER_DAY": "Reminders per day",
+    "SAVE_AND_SCHEDULE": "Save",
+    "TOAST_SAVE_SUCCESS": "Reminder scheduled successfully",
+    "TOAST_SAVE_ERROR": "Error scheduling reminder",
+    "NOTIFICATION_TITLE": "My reminders",
+    "NOTIFICATION_BODY": "Please fill in your mood diary.",
+    "PERMISSION_DENIED": "Notification permission not granted",
+    "AUTOSTART": {
+      "XIAOMI": "On Xiaomi devices, please enable autostart: Settings → Apps → Permissions → Autostart → Enable this app",
+      "HUAWEI": "On Huawei devices, please allow manual app start: Settings → Battery → App launch → Manage manually → Enable Auto‑start + Run in background",
+      "OPPO_VIVO": "On Oppo/Vivo devices, please enable autostart for this app in system settings."
+    }
+  },
+  "CRISIS_PLAN_SETTINGS": {
+    "PAGE_TITLE": "My crisis plans",
+    "TITLE_LABEL": "Title:",
+    "EDIT_PLAN": "Edit plan",
+    "DELETE_PLAN": "Delete plan",
+    "ADD_STEP": "Add step",
+    "NEW_PLAN": "New crisis plan",
+    "POPUP": {
+      "NEW_PLAN_HEADING": "New crisis plan",
+      "NEW_PLAN_PLACEHOLDER": "Enter plan title",
+      "EDIT_PLAN_HEADING": "Edit plan title",
+      "EDIT_PLAN_PLACEHOLDER": "Enter new title",
+      "STEP_PLACEHOLDER": "Enter step",
+      "ADD_STEP_HEADING": "Add step",
+      "EDIT_STEP_HEADING": "Edit step",
+      "ADD": "Add",
+      "SAVE": "Save",
+      "CANCEL": "Cancel",
+      "CREATE": "Create"
+    },
+    "ALERT": {
+      "CONFIRM_DELETE_TITLE": "Confirm deletion",
+      "CONFIRM_DELETE_MESSAGE": "Do you really want to delete the crisis plan <b>{{title}}</b>?",
+      "DELETE_STEP_TITLE": "Delete step?",
+      "DELETE_STEP_MESSAGE": "Do you really want to delete this step?",
+      "CANCEL": "Cancel",
+      "DELETE": "Delete"
+    }
+  },
+  "CRISIS_PLAN_RESULTS": {
+    "PAGE_TITLE": "Crisis Plans",
+    "NO_PLANS": "No crisis plans triggered."
+  },
+  "ONBOARDING": {
+    "PAGE_TITLE": "MyMoodLog",
+    "WELCOME_TEXT": "MyMoodLog is a mood diary designed for",
+    "START_BUTTON": "Let's go",
+    "WELCOME_LIST_ITEM_1": "the personal assessment and documentation of emotional and physical states (e.g. mood, tension, pain)",
+    "WELCOME_LIST_ITEM_2": "as well as creating individual crisis or help plans.",
+    "NUMBERED_LIST_HEADING": "To get started using the app:",
+    "NUMBERED_LIST_ITEM_1": "Define emotional and physical states you want to assess regularly on a scale from 0–10 → My mood tracking parameters",
+    "NUMBERED_LIST_ITEM_2": "Set up if and when you want to be reminded to assess your mood → My reminders",
+    "NUMBERED_LIST_ITEM_3": "Create individual help/crisis plans → My crisis plans",
+    "NUMBERED_LIST_ITEM_4": "Assign the help/crisis plans to your tracking parameters → My mood tracking parameters",
+    "DISCLAIMER_TITLE": "Disclaimer",
+    "DISCLAIMER_CONTENT": "The MyMoodLog app provides support for self-reflection and self-help. It does not constitute medical, psychological, or psychotherapeutic advice, and cannot replace professional treatment. In case of acute psychological distress or crisis, please contact qualified professionals or appropriate support services.",
+    "COPYRIGHT_TITLE": "Privacy",
+    "COPYRIGHT_CONTENT": "MyMoodLog is designed to protect your personal data. You can use the app permanently without registration or providing personal details. All entered data is stored and processed only locally within the app.",
+    "IMPRESSUM_TITLE": "Imprint",
+    "IMPRESSUM_CONTENT": "<strong>Name:</strong> Tobias Reisenthaler<br><strong>Email:</strong> reisenthalert@gmail.com",
+    "OPEN_SOURCE_TITLE": "Open Source",
+    "OPEN_SOURCE_CONTENT_1": "This project is open source. The source code is available on",
+    "OPEN_SOURCE_CONTENT_2": "GitHub",
+    "OPEN_SOURCE_CONTENT_3": ".",
+    "EXPORT_IMPORT_TITLE": "Export / Import",
+    "EXPORT_IMPORT_CONTENT": "Back up or restore your app data — useful when changing devices or for creating secure backups.",
+    "EXPORT_IMPORT_BUTTON": "Export / Import"
+  },
+  "CRISIS_PLAN_INFO": {
+    "TITLE": "Crisis Plans",
+    "TEXT": "You can use the app to create individual crisis or help plans. These are designed to support you in difficult times to take appropriate actions or seek help. Plans should be created in a calm state and based on personal experiences.<br><br>You can create multiple plans for different situations (e.g. one plan for mild tension and another for high tension). Use descriptive names to make them easier to identify.<br><br>Later, in the 'My Mood Tracking Parameters' section, you can assign the crisis plans to specific scale levels (e.g. Tension 5 → Plan for mild tension, Tension 7 → Plan for strong tension). When you reach that scale level during your mood check, the corresponding plan will appear automatically."
+  },
+  "MOOD_LOG_INFO": {
+    "TITLE": "Mood Diary",
+    "TEXT": "Define emotional and physical states you want to regularly assess on a 0–10 scale. You can use the default options provided by the app or define your own (e.g. pain, tension, distress, fear, nausea)."
+  },
+  "NOTIFICATION_INFO": {
+    "TITLE": "Reminders",
+    "TEXT": "The app can remind you daily to assess your current mood state. You can choose up to five times per day when you’d like to be reminded.<br><br>Make sure that notifications are allowed for this app on your smartphone.<br><br>You can also record your mood at any time manually → New Mood Log Entry"
+  },
+  "MOOD_LOG_HISTORY_INFO": {
+    "TITLE": "Mood History",
+    "TEXT": "The app records your inputs so you can review the history of your feelings and moods over time."
+  },
+  "HELP_CRISIS_SITUATIONS": {
+    "TITLE": "🆘 Help in crises",
+    "INTRO": "MyMoodLog supports reflection and self-help, but is not a substitute for professional counseling. If you are in an acute mental health crisis, please contact qualified professionals or the following free and confidential helplines in Austria:",
+    "OUTRO": "These services are available for you — anytime, anonymously, and free of charge.",
+    "HOTLINES": {
+      "TELEFONSEELSORGE": {
+        "NAME": "Telephone helpline – 142",
+        "DESC": "Available 24/7, anonymous and free of charge",
+        "NUMBER": "142"
+      },
+      "RATAUFDRATH": {
+        "NAME": "Rat auf Draht – 147",
+        "DESC": "For children, adolescents, and caregivers — 24/7",
+        "NUMBER": "147"
+      },
+      "FRAUENHELPLINE": {
+        "NAME": "Women's helpline against violence – 0800 222 555",
+        "DESC": "Available 24/7, anonymous, multilingual",
+        "NUMBER": "0800222555"
+      },
+      "MAENNERNOTRUF": {
+        "NAME": "Men’s helpline Austria – 0800 246 247",
+        "DESC": "Support for men in crisis or violent situations, available 24/7",
+        "NUMBER": "0800246247"
+      }
+    }
+  },
+  "EXPORT_HISTORY": {
+    "PAGE_TITLE": "Export mood history",
+    "START_DATE": "Start date",
+    "END_DATE": "End date",
+    "FILE_TYPE": "File type",
+    "EXPORT_BUTTON": "Export",
+    "NO_ENTRIES_FOUND": "No entries found for the selected time range.",
+    "EXPORT_SUCCESS": "Your mood history was exported successfully.",
+    "EXPORT_FAILED": "An error occurred while exporting.",
+    "EXPORT_TITLE": "Mood Log Export",
+    "DATE": "Date",
+    "ENTRY": "Entry",
+    "MOODS": "Moods",
+    "COMMENT": "Comment",
+    "UNKNOWN_MOOD": "Mood {{id}}",
+    "FILE_SHEET": "Mood History",
+    "FILE_NAME_JSON": "mood_history_export",
+    "FILE_NAME_EXCEL": "mood_history_export",
+    "FILE_NAME_PDF": "mood_history_export",
+    "FILE_NAME_WORD": "mood_history_export",
+    "FILE_SAVE_FAILED": "❌ File could not be saved: {{error}}",
+    "FILE_SAVED_READABLE": "{{fileName}} was saved in the {{folderName}} folder.",
+    "IOS_DOCUMENTS_FOLDER": "Documents",
+    "FILE_PREPARED": "{{fileName}} is ready for download."
+  },
+  "EXPORT_IMPORT": {
+    "PAGE_TITLE": "Export / Import data",
+    "EXPORT_TITLE": "Export",
+    "EXPORT_DESC": "Create a backup of your app data in a JSON file. You can later import this file back into the app.",
+    "EXPORT_BUTTON": "Create backup",
+    "EXPORT_PASSWORD_LABEL": "Optional password",
+    "EXPORT_PASSWORD_PLACEHOLDER": "Password (leave empty for none)",
+    "EXPORT_DONE": "Backup prepared successfully.",
+    "EXPORT_FAILED": "Error while creating backup.",
+    "IMPORT_TITLE": "Import",
+    "IMPORT_DESC": "Select a previously saved JSON backup file to import data into the app. Existing data and settings will be overwritten.",
+    "IMPORT_DONE": "Data imported successfully.",
+    "IMPORT_FAILED": "Error while importing file.",
+    "ENTER_PASSWORD": "Enter password (leave blank if none):",
+    "WRONG_PASSWORD": "Wrong password, please try again.",
+    "IMPORT_CANCELLED": "Import cancelled.",
+    "IMPORT_BUTTON": "Import data",
+    "CONFIRM_OVERWRITE": "Confirm import",
+    "ERASE_WARNING": "Importing will erase all current app data. Do you really want to continue? You can continue in {{seconds}} seconds.",
+    "ERASE_WARNING_READY": "You can now continue — all current data will be erased."
+  }
+}

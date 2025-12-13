@@ -32,11 +32,21 @@ export class AppComponent implements OnInit {
   ) {
     this.initStatusBar();
 
-    this.logger.info('Constructor called, initializing app...');
-    this.translateService.addLangs(['de']);
-    this.translateService.setDefaultLang('de');
-    this.translateService.use('de');
+    // Define available languages
+    const supportedLangs = ['de', 'en'];
+    this.translateService.addLangs(supportedLangs);
 
+    // Set fallback (default) language
+    this.translateService.setDefaultLang('de');
+
+    // Detect browser or device language
+    const browserLang = this.translateService.getBrowserLang() || 'de';
+
+    // Use it if supported, otherwise fallback to German
+    const chosenLang = supportedLangs.includes(browserLang) ? browserLang : 'de';
+
+    this.translateService.use(chosenLang);
+    this.logger.info(`Using language: ${chosenLang}`);
     this.initApp();
   }
 
