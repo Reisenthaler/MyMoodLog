@@ -10,6 +10,7 @@ import {
   IonItem,
   IonLabel,
   IonInput,
+  AlertController,
 } from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -46,6 +47,7 @@ export class ExportImportPage implements OnInit {
   constructor(
     private storage: Storage,
     private toastController: ToastController,
+    private alertController: AlertController,
     private translate: TranslateService,
     private platform: Platform,
     private cryptoService: CryptoService
@@ -241,6 +243,21 @@ export class ExportImportPage implements OnInit {
             pwd
           );
 
+          // === Ask for confirmation before erasing current data ===
+          const confirmed = await this.confirmOverwrite();
+
+          if (!confirmed) {
+            const cancelToast = await this.toastController.create({
+              message:
+                this.translate.instant('EXPORT_IMPORT.IMPORT_CANCELLED') ||
+                'Import cancelled by user.',
+              duration: 2500,
+              color: 'medium',
+            });
+            await cancelToast.present();
+            return;
+          }
+
           // Restore all key-value pairs to Ionic Storage
           const keys = Object.keys(decrypted || {});
           for (const k of keys) {
@@ -281,4 +298,64 @@ export class ExportImportPage implements OnInit {
       await toast.present();
     }
   }
+
+  /**
+   * Shows a confirmation alert with a 10 second timeout
+   * before the "Continue" button becomes enabled.
+   */
+  private async confirmOverwrite(): Promise<boolean> {
+    return new Promise(async (resolve) => {
+      let countdown = 10;
+      let continueButton!: HTMLButtonElement;
+
+      const alert = await this.alertController.create({
+        header: this.translate.instant('EXPORT_IMPORT.CONFIRM_OVERWRITE') || 'Confirm import',
+        message:
+         this.translate.instant('EXPORT_IMPORT.ERASE_WARNING', {
+          seconds: countdown,
+        }),
+        backdropDismiss: false,
+        buttons: [
+          {
+            text: this.translate.instant('COMMON.CANCEL') || 'Cancel',
+            role: 'cancel',
+            handler: () => resolve(false),
+          },
+          {
+            text: this.translate.instant('COMMON.CONTINUE') || 'Continue',
+            handler: () => resolve(true),
+            cssClass: 'continue-btn',
+          },
+        ],
+      });
+
+      await alert.present();
+
+      continueButton = document.querySelector(
+        '.alert-button.continue-btn'
+      ) as HTMLButtonElement;
+      if (continueButton) continueButton.disabled = true;
+
+      const interval = setInterval(() => {
+        countdown--;
+        const msg = this.translate.instant('EXPORT_IMPORT.ERASE_WARNING', {
+          seconds: countdown,
+        });
+        const messageElement = document.querySelector(
+          'ion-alert .alert-message'
+        );
+        if (messageElement) messageElement.innerHTML = msg;
+
+        if (countdown <= 0) {
+          clearInterval(interval);
+          if (continueButton) continueButton.disabled = false;
+          // Update the message once unlocked
+          if (messageElement)
+            messageElement.innerHTML =
+              this.translate.instant('EXPORT_IMPORT.ERASE_WARNING_READY');
+        }
+      }, 1000);
+    });
+  }
+
 }

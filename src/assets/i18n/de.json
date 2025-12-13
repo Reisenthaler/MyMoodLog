@@ -2,7 +2,9 @@
   "COMMON": {
     "NOTIFICATION": "Benachrichtigung",
     "CLOSE": "schließen",
-    "PRESS_BACK_AGAIN_TO_EXIT": "Zum Beenden erneut drücken"
+    "PRESS_BACK_AGAIN_TO_EXIT": "Zum Beenden erneut drücken",
+    "CANCEL": "Abbrechen",
+    "CONTINUE": "Fortfahren"
   },
   "HOME": {
     "PAGE_TITLE": "MyMoodLog",
@@ -242,6 +244,9 @@
     "ENTER_PASSWORD": "Passwort (leer lassen, falls keines):",
     "WRONG_PASSWORD": "Falsches Passwort, versuche es erneut.",
     "IMPORT_CANCELLED": "Import abgebrochen.",
-    "IMPORT_BUTTON": "Daten importieren"
+    "IMPORT_BUTTON": "Daten importieren",
+    "CONFIRM_OVERWRITE": "Import bestätigen",
+    "ERASE_WARNING": "Durch den Import werden alle aktuellen App-Daten gelöscht. Möchten Sie wirklich fortfahren? Sie können in {{ seconds }} Sekunden fortfahren.",
+    "ERASE_WARNING_READY": "Sie können jetzt fortfahren – alle aktuellen Daten werden gelöscht."
   }
 }
