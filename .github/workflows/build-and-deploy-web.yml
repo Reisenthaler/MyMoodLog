@@ -18,7 +18,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24.11.1
+          node-version: ${{ vars.NODE_VERSION }}
 
       # 3. Install dependencies
       - name: Install dependencies
