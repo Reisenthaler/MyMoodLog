@@ -72,12 +72,12 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
-      # 6. Upload web build via SCP
+      # 6. Upload web build via rsync (fast, deletes old files)
       - name: Upload web files
         run: |
-          scp -r \
-            www/* \
-            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_TARGET_PATH }}
+          rsync -avz --delete \
+            www/ \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_TARGET_PATH }}/
 
       # 7. Set permissions on deployed web files
       - name: Set web file permissions
