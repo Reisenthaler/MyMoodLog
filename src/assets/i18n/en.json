@@ -157,7 +157,10 @@
     "OPEN_SOURCE_CONTENT_3": ".",
     "EXPORT_IMPORT_TITLE": "Export / Import",
     "EXPORT_IMPORT_CONTENT": "Back up or restore your app data — useful when changing devices or for creating secure backups.",
-    "EXPORT_IMPORT_BUTTON": "Export / Import"
+    "EXPORT_IMPORT_BUTTON": "Export / Import",
+    "VERSION": "Version",
+    "BUILD_DATE": "Built",
+    "COMMIT": "Commit"
   },
   "CRISIS_PLAN_INFO": {
     "TITLE": "Crisis Plans",

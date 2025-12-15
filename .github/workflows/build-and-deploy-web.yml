@@ -24,6 +24,24 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+        # 3.5 Inject build metadata
+      - name: Inject build info
+        run: |
+          VERSION=${GITHUB_REF_NAME#v}
+          BUILD_DATE=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          COMMIT_SHA=$(git rev-parse --short HEAD)
+
+          cat <<EOF > src/environments/build-info.ts
+          export const BUILD_INFO = {
+            version: "$VERSION",
+            buildDate: "$BUILD_DATE",
+            commit: "$COMMIT_SHA",
+          };
+          EOF
+
+          echo "Build info injected:"
+          cat src/environments/build-info.ts
+
       # 4. Build Ionic web app
       - name: Build web app
         run: |

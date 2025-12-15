@@ -157,7 +157,10 @@
     "OPEN_SOURCE_CONTENT_3": "verfügbar.",
     "EXPORT_IMPORT_TITLE": "Export / Import",
     "EXPORT_IMPORT_CONTENT": "Sichere oder stelle deine App-Daten wieder her — nützlich beim Gerätewechsel oder zur Sicherung.",
-    "EXPORT_IMPORT_BUTTON": "Export / Import"
+    "EXPORT_IMPORT_BUTTON": "Export / Import",
+    "VERSION": "Version",
+    "BUILD_DATE": "Erstellt am",
+    "COMMIT": "Commit"
   },
   "CRISIS_PLAN_INFO": {
     "TITLE": "Krisenpläne",

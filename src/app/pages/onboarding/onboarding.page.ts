@@ -7,10 +7,15 @@ import { IonContent, IonToolbar, IonFooter,
   IonCardTitle,
   IonCardContent,
   IonText,
+  IonNote,
+  IonItem,
+  IonLabel,
+  IonList,
  } from '@ionic/angular/standalone';
 import { TranslateModule } from '@ngx-translate/core';
 import { ButtonComponent } from 'src/app/components/button/button.component';
 import { AppHeaderComponent } from 'src/app/components/app-header/app-header.component';
+import { AppVersionService } from 'src/app/services/app-version.service';
 
 @Component({
   selector: 'app-onboarding',
@@ -25,6 +30,10 @@ import { AppHeaderComponent } from 'src/app/components/app-header/app-header.com
     IonCardTitle,
     IonCardContent,
     IonText,
+    IonNote,
+    IonItem,
+    IonLabel,
+    IonList,
     TranslateModule,
     ButtonComponent,
     AppHeaderComponent,
@@ -32,10 +41,22 @@ import { AppHeaderComponent } from 'src/app/components/app-header/app-header.com
   ]
 })
 export class OnboardingPage {
-  constructor(private router: Router, private storage: Storage) {}
+
+  appInfo?: {
+    version: string;
+    build: string;
+    buildDate: string;
+    commit: string;
+  };
+
+  constructor(private router: Router, private storage: Storage, private appVersionService: AppVersionService) {}
 
   async ngOnInit() {
     await this.storage.create();
+  }
+
+  async ionViewWillEnter() {
+    this.appInfo = await this.appVersionService.getVersionInfo();
   }
 
   async finishOnboarding() {

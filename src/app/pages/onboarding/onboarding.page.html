@@ -109,7 +109,7 @@
   </ion-card>
 
     <!-- Impressum -->
-  <ion-card class="rounded-card" style="margin-bottom: 50px;">
+  <ion-card class="rounded-card">
     <ion-card-header>
       <ion-card-title>
         {{ 'ONBOARDING.IMPRESSUM_TITLE' | translate }}
@@ -120,6 +120,32 @@
         <p innerHTML="{{ 'ONBOARDING.IMPRESSUM_CONTENT' | translate }}"></p>
       </ion-text>
     </ion-card-content>
+  </ion-card>
+
+  <!-- App version info -->
+  <ion-card class="rounded-card" style="margin-bottom: 50px;">
+    <ion-list lines="full">
+      <ion-item>
+        <ion-label>
+          {{ "ONBOARDING.VERSION" | translate }}
+        </ion-label>
+        <ion-note slot="end">{{ appInfo?.version }}</ion-note>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          {{ "ONBOARDING.BUILD_DATE" | translate }}
+        </ion-label>
+        <ion-note slot="end">{{ appInfo?.buildDate }}</ion-note>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label>
+          {{ "ONBOARDING.COMMIT" | translate }}
+        </ion-label>
+        <ion-note slot="end">{{ appInfo?.commit }}</ion-note>
+      </ion-item>
+    </ion-list>
   </ion-card>
 </ion-content>
 
