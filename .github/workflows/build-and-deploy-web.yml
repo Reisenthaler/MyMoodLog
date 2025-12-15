@@ -21,10 +21,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ vars.NODE_VERSION }}
+          cache: "npm"
 
       # 3. Install dependencies
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
         # 3.5 Inject build metadata
       - name: Inject build info
