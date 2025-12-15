@@ -76,3 +76,10 @@ jobs:
           scp -r \
             www/* \
             ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_TARGET_PATH }}
+
+      # 7. Set permissions on deployed web files
+      - name: Set web file permissions
+        run: |
+          ssh \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+            "chmod -R 777 ${{ secrets.SSH_TARGET_PATH }}"
