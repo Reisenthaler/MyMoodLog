@@ -1,0 +1,48 @@
+name: Build & Deploy Web
+
+on:
+  push:
+    branches:
+      - "**"
+
+jobs:
+  build-web:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24.11.1
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # 4. Build Ionic web app
+      - name: Build web app
+        run: |
+          npx ionic build \
+            --configuration=production \
+            --base-href=/MyMoodLog/ \
+            --deploy-url=/MyMoodLog/
+
+      # 5. Prepare SSH key
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+      # 6. Upload web build via SCP
+      - name: Upload web files
+        run: |
+          scp -r \
+            www/* \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.SSH_TARGET_PATH }}
