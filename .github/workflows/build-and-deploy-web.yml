@@ -27,7 +27,7 @@ jobs:
       # 4. Build Ionic web app
       - name: Build web app
         run: |
-          npx ionic build \
+          npx ng build \
             --configuration=production \
             --base-href=/MyMoodLog/ \
             --deploy-url=/MyMoodLog/
