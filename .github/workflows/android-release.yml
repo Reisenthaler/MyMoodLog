@@ -28,10 +28,22 @@ jobs:
         run: npm install
 
 
-        # 3.5 Inject build metadata
+      # 3.5 Inject build metadata
       - name: Inject build info
         run: |
-          VERSION=${GITHUB_REF_NAME#v}
+          git fetch --tags
+
+          if [[ "${GITHUB_REF_TYPE}" == "tag" ]]; then
+            # Built from a tag (release)
+            VERSION="${GITHUB_REF_NAME#v}"
+          else
+            # Built from a branch (between versions)
+            LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "dev")
+            LAST_TAG="${LAST_TAG#v}"
+            COMMIT_SHA=$(git rev-parse --short HEAD)
+            VERSION="${LAST_TAG}+dev.${COMMIT_SHA}"
+          fi
+
           BUILD_DATE=$(date -u +"%Y-%m-%d %H:%M:%S UTC")
           COMMIT_SHA=$(git rev-parse --short HEAD)
 
