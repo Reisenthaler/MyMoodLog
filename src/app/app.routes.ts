@@ -13,8 +13,8 @@ export const routes: Routes = [
   {
     path: 'notification-settings',
     loadComponent: () =>
-      import('./components/notification-settings/notification-settings.component').then(
-        (m) => m.NotificationSettingsComponent
+      import('./pages/notification-settings/notification-settings.page').then(
+        (m) => m.NotificationSettingsPage
       ),
   },
   {

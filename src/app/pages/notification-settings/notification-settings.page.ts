@@ -20,18 +20,18 @@ import {
   LocalNotifications,
   LocalNotificationSchema,
 } from '@capacitor/local-notifications';
-import { ButtonComponent } from '../button/button.component';
+import { ButtonComponent } from '../../components/button/button.component';
 import { addIcons } from 'ionicons';
 import { save } from 'ionicons/icons';
 import { TranslateModule } from '@ngx-translate/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Device } from '@capacitor/device';
-import { AppHeaderComponent } from '../app-header/app-header.component';
+import { AppHeaderComponent } from '../../components/app-header/app-header.component';
 
 @Component({
   selector: 'app-notification-settings',
-  templateUrl: './notification-settings.component.html',
-  styleUrls: ['./notification-settings.component.scss'],
+  templateUrl: './notification-settings.page.html',
+  styleUrls: ['./notification-settings.page.scss'],
   standalone: true,
   imports: [
     FormsModule,
@@ -51,7 +51,7 @@ import { AppHeaderComponent } from '../app-header/app-header.component';
     AppHeaderComponent
 ],
 })
-export class NotificationSettingsComponent implements OnInit {
+export class NotificationSettingsPage implements OnInit {
   private STORAGE_KEY = 'notification_settings';
 
   notificationsPerDay: number = 1;
