@@ -34,14 +34,12 @@
             (clicked)="editItem(item)"
           ></app-button>
           <!-- Delete button -->
-          @if (!item.isDefault) {
             <app-button
               size="icon"
               color="red"
               icon="trash"
               (clicked)="removeItem(item)"
             ></app-button>
-          }
         </div>
       </ion-item>
     }

@@ -164,8 +164,6 @@ export class MoodTrackingSettingsPage implements OnInit {
   }
 
   async removeItem(item: MoodItem) {
-    if (item.isDefault) return;
-
     const alert = await this.alertCtrl.create({
       header: this.translateService.instant('MOOD_TRACKING_SETTINGS.ALERT.CONFIRM_DELETE_TITLE'),
       message: this.translateService.instant('MOOD_TRACKING_SETTINGS.ALERT.CONFIRM_DELETE_MESSAGE', { name: item.name }),
