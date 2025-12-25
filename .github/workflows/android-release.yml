@@ -126,8 +126,12 @@ jobs:
       - name: Rename Outputs
         run: |
           VERSION=${GITHUB_REF_NAME#v}
-          mv android/app/build/outputs/apk/release/app-release.apk MyMoodLog-$VERSION.apk
-          mv android/app/build/outputs/bundle/release/app-release.aab MyMoodLog-$VERSION.aab
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+          mv android/app/build/outputs/apk/release/app-release.apk \
+            MyMoodLog-$VERSION.apk
+          mv android/app/build/outputs/bundle/release/app-release.aab \
+            MyMoodLog-$VERSION.aab
 
       # 11. Upload APK and AAB to GitHub Release
       - name: Create GitHub Release
@@ -138,3 +142,13 @@ jobs:
             MyMoodLog-*.aab
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # 12. Upload AAB to Google Play
+      - name: Upload to Google Play
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.PLAY_STORE_SERVICE_ACCOUNT_JSON }}
+          packageName: ${{ secrets.PLAY_STORE_PACKAGE_NAME }}
+          releaseFiles: MyMoodLog-${{ env.VERSION }}.aab
+          track: internal
+          status: completed
