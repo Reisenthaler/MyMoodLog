@@ -123,7 +123,7 @@
   </ion-card>
 
   <!-- App version info -->
-  <ion-card class="rounded-card" style="margin-bottom: 50px;">
+  <ion-card class="rounded-card">
     <ion-list lines="full">
       <ion-item>
         <ion-label>
@@ -146,6 +146,22 @@
         <ion-note slot="end">{{ appInfo?.commit }}</ion-note>
       </ion-item>
     </ion-list>
+  </ion-card>
+
+  <!-- FAQ -->
+  <ion-card class="rounded-card" style="margin-bottom: 50px;" button (click)="openFaq()">
+    <ion-card-header>
+      <ion-card-title>
+        {{ 'ONBOARDING.FAQ_TITLE' | translate }}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-text color="dark">
+        <p>
+          {{ 'ONBOARDING.FAQ_CONTENT' | translate }}
+        </p>
+      </ion-text>
+    </ion-card-content>
   </ion-card>
 </ion-content>
 

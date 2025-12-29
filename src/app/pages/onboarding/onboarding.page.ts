@@ -16,6 +16,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ButtonComponent } from 'src/app/components/button/button.component';
 import { AppHeaderComponent } from 'src/app/components/app-header/app-header.component';
 import { AppVersionService } from 'src/app/services/app-version.service';
+import { Browser } from '@capacitor/browser';
 
 @Component({
   selector: 'app-onboarding',
@@ -62,5 +63,11 @@ export class OnboardingPage {
   async finishOnboarding() {
     await this.storage.set('onboardingCompleted', true);
     this.router.navigateByUrl('/home', { replaceUrl: true });
+  }
+
+  async openFaq() {
+    await Browser.open({
+      url: 'https://www.wander-yogi.at/faq-mymoodlog/'
+    });
   }
 }

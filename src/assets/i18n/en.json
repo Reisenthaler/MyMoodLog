@@ -160,7 +160,9 @@
     "EXPORT_IMPORT_BUTTON": "Export / Import",
     "VERSION": "Version",
     "BUILD_DATE": "Built",
-    "COMMIT": "Commit"
+    "COMMIT": "Commit",
+    "FAQ_TITLE": "FAQ",
+    "FAQ_CONTENT": "Frequently asked questions and help"
   },
   "CRISIS_PLAN_INFO": {
     "TITLE": "Crisis Plans",
