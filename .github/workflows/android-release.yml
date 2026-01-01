@@ -16,6 +16,8 @@ jobs:
       # 1. Checkout repo
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # REQUIRED for git describe
 
       # 2. Setup Node.js
       - name: Setup Node.js
@@ -133,10 +135,41 @@ jobs:
           mv android/app/build/outputs/bundle/release/app-release.aab \
             MyMoodLog-$VERSION.aab
 
+      - name: Generate Play Store release notes (EN + DE)
+        run: |
+          mkdir -p release-notes/en-US release-notes/de-DE
+
+          PREV_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
+
+          # English (fallback only)
+          if [ ! -f release-notes/en-US/whatsnew.txt ]; then
+            echo "Whats new in this version:" > release-notes/en-US/whatsnew.txt
+            git log $PREV_TAG..HEAD --pretty=format:"- %s" >> release-notes/en-US/whatsnew.txt
+          fi
+
+          # German (fallback only)
+          if [ ! -f release-notes/de-DE/whatsnew.txt ]; then
+            echo "Was ist neu in dieser Version:" > release-notes/de-DE/whatsnew.txt
+            git log $PREV_TAG..HEAD --pretty=format:"- %s" >> release-notes/de-DE/whatsnew.txt
+          fi
+
+          # Enforce 500 char Play Store limit
+          for f in release-notes/*/whatsnew.txt; do
+            head -c 490 "$f" > "$f.tmp"
+            mv "$f.tmp" "$f"
+          done
+
+          echo "English release notes:"
+          cat release-notes/en-US/whatsnew.txt
+
+          echo "German release notes:"
+          cat release-notes/de-DE/whatsnew.txt
+
       # 11. Upload APK and AAB to GitHub Release
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
+          body_path: release-notes/en-US/whatsnew.txt
           files: |
             MyMoodLog-*.apk
             MyMoodLog-*.aab
@@ -144,11 +177,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # 12. Upload AAB to Google Play
-      - name: Upload to Google Play
+      - name: Upload to Google Play (Production)
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.PLAY_STORE_SERVICE_ACCOUNT_JSON }}
           packageName: ${{ secrets.PLAY_STORE_PACKAGE_NAME }}
           releaseFiles: MyMoodLog-${{ env.VERSION }}.aab
-          track: internal
+          track: production
           status: completed
+          whatsNewDirectory: release-notes
